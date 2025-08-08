@@ -1,161 +1,140 @@
 
-/* Estilo general */
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(to bottom right, #e3f2fd, #f8f9fa);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  color: #2c3e50;
-  background-attachment: fixed;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-/* Contenedor principal */
-.container {
-  max-width: 1100px;
-  width: 100%;
-  background-color: #ffffffcc; /* Blanco translúcido */
-  padding: 40px 50px;
-  margin: 50px 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
+    :root{
+      --bg:#fff5f5;
+      --primary:#77027c;
+      --dark:#230161;
+      --muted:#e9a1bf;
+      --accent:#049cbd;
+      --card-shadow: 0 12px 30px rgba(115,41,121,0.15);
+    }
 
-/* Encabezado */
-header {
-  text-align: center;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
-  padding: 50px 20px 40px;
-  border-radius: 14px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+    html { scroll-behavior: smooth; }
 
-header h1 {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.3);
-}
+    body{
+      margin:0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      display:flex;
+      justify-content:center;
+      min-height:100vh;
+      position:relative;
+    }
 
-header p {
-  margin-top: 12px;
-  font-size: 1.3rem;
-  font-weight: 400;
-  opacity: 0.9;
-  font-style: italic;
-}
+    .btn-regresar{
+      position:fixed;
+      top:18px;
+      left:18px;
+      z-index:1200;
+      background:var(--primary);
+      color:#fff5f5;
+      padding:10px 18px;
+      border-radius:26px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 4px 12px rgba(115,41,121,0.6);
+      transition:transform .14s ease, background .14s ease;
+    }
+    .btn-regresar:hover{ transform:scale(1.05); background:var(--dark); }
 
-/* Secciones */
-section {
-  padding: 35px 0;
-  margin-bottom: 30px;
-  background-color: #ffffff;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    nav#indice{
+      position:fixed;
+      top:68px; 
+      left:18px;
+      z-index:1100;
+      width:220px;
+      background:#f6ecfb;
+      padding:14px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(115,41,121,0.18);
+      font-size:0.95rem;
+    }
+    nav#indice h3{
+      margin:0 0 10px 0;
+      color:var(--dark);
+      font-size:1.05rem;
+      border-bottom:2px solid var(--primary);
+      padding-bottom:6px;
+    }
+    nav#indice ul{ list-style:none; padding:0; margin:0; }
+    nav#indice li{ margin:8px 0; }
+    nav#indice a{ color:var(--dark); text-decoration:none; }
+    nav#indice a:hover{ color:var(--primary); text-decoration:underline; }
 
-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
+    .container{
+      width:100%;
+      max-width:1100px;
+      margin:40px 20px;
+      background:#fff;
+      border-radius:14px;
+      padding:36px 44px;
+      box-shadow:var(--card-shadow);
+      z-index:1;
+    }
 
-section h2 {
-  font-size: 2rem;
-  color: #1a237e;
-  border-left: 6px solid #42a5f5;
-  padding-left: 14px;
-  margin-bottom: 18px;
-  font-weight: 600;
-}
+    header{
+      text-align:center;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color:white;
+      padding:42px 18px;
+      border-radius:10px;
+      box-shadow:0 8px 16px rgba(0,0,0,0.12);
+      margin-bottom:26px;
+    }
+    header h1{ margin:0; font-size:2.8rem; letter-spacing:1px; }
+    header p{ margin-top:8px; font-size:1.05rem; color:var(--muted); }
 
-/* Texto y listas */
-section p,
-section ul,
-section ol {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #37474f;
-}
+    section{
+      background:white;
+      border-radius:10px;
+      padding:26px;
+      margin-bottom:20px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.04);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    section:hover{ transform:translateY(-5px); box-shadow:0 10px 30px rgba(115,41,121,0.12); }
 
-ul, ol {
-  padding-left: 30px;
-  margin-top: 12px;
-}
+    section h2{
+      margin-top:0;
+      color:var(--primary);
+      font-size:1.7rem;
+      padding-left:12px;
+      border-left:6px solid var(--muted);
+    }
+    section p, section ul, section ol {
+      color:#444544;
+      line-height:1.7;
+      font-size:1rem;
+    }
+    ul, ol{ padding-left:30px; margin-top:10px; }
 
-ul li,
-ol li {
-  margin-bottom: 10px;
-  position: relative;
-}
+    ul li{ margin-bottom:10px; }
+    ul li::marker{ color:var(--muted); font-weight:700; }
 
-ul li::before {
-  content: "•";
-  color: #42a5f5;
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
+    section img{
+      display:block;
+      max-width:100%;
+      height:auto;
+      margin-top:14px;
+      border-radius:10px;
+      box-shadow:0 8px 25px rgba(115,41,121,0.12);
+    }
 
-/* Código */
-pre {
-  background-color: #212121;
-  color: #e0e0e0;
-  padding: 25px;
-  border-left: 6px solid #29b6f6;
-  border-radius: 10px;
-  overflow-x: auto;
-  font-size: 0.95rem;
-  font-family: 'Courier New', Consolas, monospace;
-  box-shadow: inset 0 0 8px #00000066;
-  margin-top: 20px;
-  line-height: 1.6;
-}
+    .referencias{
+      background:#f6ecfb;
+      padding:18px;
+      border-radius:10px;
+      margin-top:10px;
+      color:var(--dark);
+      box-shadow:0 6px 20px rgba(115,41,121,0.08);
+    }
+    .referencias ul{ padding-left:20px; }
 
-code {
-  color: #a8ff60;
-  font-weight: 600;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #1a237e;
-  color: white;
-  padding: 20px 15px;
-  font-size: 1rem;
-  border-radius: 0 0 12px 12px;
-  font-weight: 500;
-  letter-spacing: 0.8px;
-  margin-top: 40px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-  }
-
-  header h1 {
-    font-size: 2.3rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  section h2 {
-    font-size: 1.5rem;
-  }
-
-  section {
-    padding: 25px 20px;
-  }
-}
+    @media (max-width:900px){
+      nav#indice{ display:none; } 
+      .container{ padding:26px 20px; margin:20px 12px; }
+      .btn-regresar{ left:12px; top:12px; }
+      header h1{ font-size:2.2rem; }
+    }
