@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-2024060</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/CSS_2024060.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/Frontend/MenuFrontend.html">
+            <img src="https://us-prod.asyncgw.teams.microsoft.com/v1/objects/0-eus-d16-1ab46091b8830afec8f4a91af11f6690/views/imgpsh_fullsize"
+                alt="logoImagen" class="logo">
+        </a>
+        <h1 class="titulo">Bienvenido a mi Paso a Paso de CSS</h1>
+        <img src="https://us-prod.asyncgw.teams.microsoft.com/v1/objects/0-eus-d13-5cc214118cbedf18f748726da53abd06/views/imgpsh_fullsize"
+            alt="CSS3 Logo" class="cssLogo">
+    </nav>
+    <div>
+        <div>
+            <h2>¿Qué es CSS?</h2>
+            <p>
+                Hojas de Estilo en Cascada (Cascading Style Sheets) o CSS es el lenguaje de estilos utilizado para
+                describir
+                la presentación de documentos HTML o XML (incluyendo varios lenguajes basados en XML como SVG, MathML o
+                XHTML). CSS describe cómo debe ser renderizado el elemento estructurado en la pantalla, en papel, en el
+                habla o en otros medios.
+            </p>
+            <p>
+                CSS es uno de los lenguajes base de la Open Web y posee una especificación estandarizada por parte del
+                W3C.
+                Anteriormente , el desarrollo de varias partes de las especificaciones de CSS era realizado de manera
+                sincrónica, lo que permitía el versionado de las recomendaciones. Probablemente habrás escuchado acerca
+                de
+                CSS1, CSS2.1, CSS3. Sin embargo, CSS4 nunca se ha lanzado como una versión oficial.
+            </p>
+            <p>
+                Desde CSS3, el alcance de las especificaciones se incrementó de forma significativa y el progreso de los
+                diferentes módulos de CSS comenzó a mostrar varias diferencias, lo que hizo más efectivo desarrollar y
+                publicar recomendaciones separadas por módulos. En vez de versionar las especificaciones de CSS, la W3C
+                actualmente realiza una captura de las últimas especificaciones estables de CSS.
+            </p>
+            <div class="imagen">
+                <img src="https://lenguajecss.com/css/introduccion/que-es-css/html-css-navegador.webp"
+                    alt="primerImagen">
+            </div>
+
+            <h3>¿Qué significa CSS?</h3>
+            <p>
+                Las siglas CSS (Cascading Style Sheets) significan «Hojas de estilo en cascada» y parten de un concepto
+                simple pero muy potente: aplicar estilos (colores, formas, márgenes, etc...) a uno o varios documentos
+                (generalmente documentos HTML, páginas webs) de forma automática y masiva.
+            </p>
+
+            <p>
+                Se le denomina estilos en cascada porque se lee, procesa y aplica el código desde arriba hacia abajo
+                (siguiendo patrones como herencia o cascada) y en el caso de existir
+                ambigüedad
+                (código que se contradice), se siguen una serie de normas para resolver dicha ambigüedad.
+            </p>
+            <br>
+
+            <h3>¿Por qué se usa CSS?</h3>
+            <p>
+                La idea de CSS es la de utilizar el concepto de separación de presentación y contenido. Este concepto se
+                basa en que, como programadores, lo ideal es separar claramente el código que escribimos. ¿Por qué?
+                Porque
+                con el tiempo, esto hará que el código sea más fácil de modificar y mantener.
+                <br>
+                <br>
+                La idea de esto es lo siguiente:
+            </p>
+            <div class="margenLista">
+                <li>
+                    Los documentos HTML (contenido) incluirán sólo información y datos, todo lo relativo a la
+                    información a
+                    transmitir.
+                </li>
+                <li>
+                    Los documentos CSS (presentación) inclurán sólo los aspectos relacionados con el estilo (diseño,
+                    colores, formas, etc...).
+                </li>
+                <div class="imagen">
+                    <img src="https://lenguajecss.com/css/introduccion/que-es-css/que-es-css.webp" alt="segundaImagen">
+                </div>
+            </div>
+            <p>De esta forma, se puede unificar todo lo relativo al diseño, a lo visual en un solo documento CSS, y con
+                ello, varias ventajas:</p>
+            <div class="margenLista">
+                <li>
+                    Si necesitamos hacer modificaciones visuales, lo haremos en un sólo lugar y se aplica a todo el
+                    sitio.
+                </li>
+                <li>
+                    Se reduce la duplicación de estilos en diferentes lugares. Es más fácil de organizar y hacer
+                    cambios.
+                </li>
+                <li>
+                    La información a transmitir es considerablemente menor
+                </li>
+                <li>Es más fácil crear versiones diferentes para otros dispositivos: tablets, smartphones, etc...</li>
+            </div>
+            <h3>Cómo funciona CSS</h3>
+            <p>
+                Cuando un navegador muestra un documento, ha de combinar el contenido con la información de estilo del
+                documento. Procesa el documento en una serie de etapas, que enumeraremos a continuación. Ten en cuenta
+                que
+                este es un modelo muy simplificado de lo que sucede cuando un navegador carga una página web y que cada
+                navegador gestiona el proceso de manera diferente. Pero esto es más o menos lo que sucede.
+            </p>
+            <div class="margenLista">
+                <li>El navegador carga el HTML (por ejemplo, lo recibe de la red)</li>
+                <br>
+                <li>Convierte el HTML en un DOM (Modelo de objetos del documento). El DOM representa el documento en la
+                    memoria del ordenador. Lo explicaremos más detalladamente en la sección siguiente.</li>
+                <br>
+                <li>Entonces, el navegador va a buscar la mayor parte de los recursos vinculados al documento HTML, como
+                    las
+                    imágenes y los videos incrustados... ¡y también el CSS vinculado! JavaScript aparece un poco más
+                    adelante en el proceso, pero no vamos a hablar de ello aún para evitar complicar las cosas.</li>
+                <br>
+                <li>El navegador analiza el CSS y ordena en diferentes «cubos» las diferentes reglas según el tipo de
+                    selector. Por ejemplo, elemento, clase, ID, y así sucesivamente. Para cada tipo de selector que
+                    encuentre, calcula qué reglas deben aplicarse y a qué nodos en el DOM se les aplica el estilo según
+                    corresponda (este paso intermedio se llama árbol de renderización).</li>
+                <br>
+                <li>El árbol de renderización presenta la estructura en que los nodos deben aparecer después de
+                    aplicarle
+                    las reglas.</li>
+                <br>
+                <li>En la pantalla se muestra el aspecto visual de la página (esta etapa se llama pintura).</li>
+            </div>
+        </div>
+        <div>
+            <h3>Acerca del DOM</h3>
+            <p>Un DOM tiene una estructura en forma de árbol. Cada elemento, atributo o bloque en el lenguaje de marcado
+                se
+                convierte en un nodo DOM con estructura de árbol. Los nodos se definen por su relación con otros nodos
+                DOM.
+                Algunos elementos son padres de nodos secundarios, y estos nodos hijos tienen hermanos.</p>
+            <p>Comprender el DOM te ayuda a diseñar, depurar y mantener tu CSS porque en el DOM es donde tu CSS se
+                encuentra
+                con el contenido del documento. Cuando comiences a trabajar con las herramientas DevTools (o
+                herramientas
+                del desarrollador) del navegador, te moverás por el DOM mientras seleccionas elementos con el fin de ver
+                qué
+                reglas se aplican.</p>
+        </div>
+        <br>
+        <h2>¿Cómo usar CSS?</h2>
+        <p>Ya tenemos claro que nuestros documentos web van a tener código HTML por un lado y código CSS por otro. Pero
+            aún
+            no sabemos como se relacionan entre sí o como se aplican. Antes de comenzar a trabajar con CSS hay que
+            conocer
+            las diferentes formas que existen para incluir estilos en nuestros documentos HTML.</p>
+        <br>
+        <h3>Formas de enlazar CSS</h3>
+        <p>En principio, tenemos tres formas diferentes de hacerlo, siendo la primera la más común y la última la menos
+            habitual:</p>
+
+        <table class="tabla">
+
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Forma</th>
+                <th class="columnasFilasTabla">Descripción</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Etiqueta: &lt;link rel="stylesheet"&gt;</td>
+                <td class="columnasFilasTabla">Se utiliza para vincular hojas de estilo CSS externas al documento HTML.
+                </td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Etiqueta: &lt;style&gt;...&lt;/style&gt;</td>
+                <td class="columnasFilasTabla">Bloque de estilos: El código se escribe en una etiqueta &lt;style&gt; en
+                    el
+                    documento HTML.</td>
+            </tr>
+
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Atributo HTML <code>style="..."</code></td>
+                <td class="columnasFilasTabla">Estilos en línea: El código se escribe en un atributo HTML
+                    <code>style</code>
+                    en una etiqueta.
+                </td>
+            </tr>
+        </table>
+
+        <h3>Archivo CSS externo</h3>
+        <p>En la cabecera de nuestro documento HTML, más concretamente en el bloque
+
+            <head></head>, podemos incluir una etiqueta
+            <link> con la que establecemos una relación entre el documento HTML actual y el archivo .css que indicamos
+            en el
+            atributo href.
+            Veamos el código de nuestro index.html:
+        </p>
+
+
+
+        <div class="bloque-codigo">
+            <pre><code>
+<span class="etiqueta">&lt;link</span> <span class="atributo">rel=</span><span class="valor">"stylesheet"</span> <span class="atributo">href=</span><span class="valor">"index.css"</span> <span class="etiqueta">/&gt;</span>
+  </code></pre>
+        </div>
+        <p>De esta forma, los navegadores sabrán que deben aplicar los estilos que se encuentren en el archivo index.css
+            que
+            está junto al documento index.html actual. Se aconseja escribir esta línea lo antes posible (sobre todo,
+            antes
+            de los scripts), obligando así al navegador a aplicar los estilos cuanto antes y eliminar la falsa
+            percepción
+            visual de que la página está en blanco y no ha sido cargada por completo.</p>
+
+        <br>
+        <h3>Bloque de estilos</h3>
+        <p>Otra de las formas que existen para incluir estilos CSS en nuestra página es la de añadirlos directamente en
+            el
+            documento HTML, a través de una etiqueta <style> </style> que contendrá el código CSS: </p>
+
+
+        <div class="bloque-codigo">
+            <pre><code>
+<span class="etiqueta">&lt;!DOCTYPE html&gt;</span>
+<span class="etiqueta">&lt;html&gt;</span>
+<span class="etiqueta">&lt;head&gt;</span>
+    <span class="etiqueta">&lt;title&gt;</span>Título de la página<span class="etiqueta">&lt;/title&gt;</span>
+    <span class="etiqueta">&lt;style&gt;</span>
+        <span class="selector">div</span> {
+            <span class="propiedad">background</span>: <span class="valor">hotpink</span>;
+            <span class="propiedad">color</span>: <span class="valor">white</span>;
+        }
+    <span class="etiqueta">&lt;/style&gt;</span>
+<span class="etiqueta">&lt;/head&gt;</span>
+...
+<span class="etiqueta">&lt;/html&gt;</span>
+  </code></pre>
+        </div>
+        <p>Este sistema puede servirnos en ciertos casos particulares, pero hay que darle prioridad al método anterior
+            (CSS
+            externo), ya que incluyendo el código CSS en el interior del archivo HTML arruinamos la posibilidad de tener
+            el
+            código CSS en un documento a parte, pudiendo reutilizarlo y enlazarlo desde otros documentos HTML mediante
+            la
+            etiqueta
+            <link>.
+        </p>
+
+        <br>
+        <h3>Estilos en línea</h3>
+        <p>Por último, la tercera forma de aplicar estilos en un documento HTML es el conocido como estilos en línea. Se
+            trata de hacerlo directamente, a través del atributo style de la propia etiqueta donde queramos aplicar el
+            estilo, colocando ahí las propiedades CSS (que pueden separarse por ;):</p>
+
+
+        <div class="bloque-codigo">
+            <pre><code>
+<span class="etiqueta">&lt;p&gt;</span>¡Hola <span class="etiqueta">&lt;span</span> <span class="atributo">style=</span><span class="valor">"color: red; padding: 8px"</span><span class="etiqueta">&gt;</span>amigo lector<span class="etiqueta">&lt;/span&gt;</span>!<span class="etiqueta">&lt;/p&gt;</span>
+  </code></pre>
+        </div>
+
+        <p>De la misma forma que en el método anterior, con la etiqueta <style></style>, se recomienda no utilizar este
+            método salvo en casos muy específicos y justificados, ya que los estilos se asocian a la etiqueta HTML en
+            cuestión y no pueden reutilizarse. Es por eso, que se suele considerar una mala práctica por muchos
+            diseñadores
+            cuando la sobreutilizas (sin una razón de peso). Sin embargo, es una excelente forma de inyectar o incluir
+            variables CSS en una etiqueta y sus etiquetas hijas.</p>
+        <br>
+        <h2>Estructura de CSS</h2>
+        <p>
+            Los documentos CSS son archivos de texto (igual que los documentos HTML), sólo que en este caso tienen
+            extensión
+            .css en lugar de .html. En el código de un documento .css se escriben una serie de órdenes y el cliente
+            (navegador) las interpreta y aplica a los documentos HTML.
+        </p>
+        <p>
+            En este artículo vamos a ver como es la sintaxis de un archivo .css y como se debe escribir el código CSS.
+        </p>
+        <br>
+        <h3>Relación del HTML con CSS</h3>
+        <p>En primer lugar, recuerda que debemos tener el documento .css enlazado desde nuestro documento .html,
+            preferiblemente desde una etiqueta
+            <link rel="stylesheet">. En su atributo href colocaremos el nombre del documento .css que contiene los
+            estilos:
+        </p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+<span class="etiqueta">&lt;!DOCTYPE html&gt;</span>
+<span class="etiqueta">&lt;html&gt;</span>
+<span class="etiqueta">&lt;head&gt;</span>
+    <span class="etiqueta">&lt;title&gt;</span>Título de página<span class="etiqueta">&lt;/title&gt;</span>
+    <span class="etiqueta">&lt;link</span> <span class="atributo">rel=</span><span class="valor">"stylesheet"</span> <span class="atributo">href=</span><span class="valor">"index.css"</span> <span class="etiqueta">/&gt;</span>
+<span class="etiqueta">&lt;/head&gt;</span>
+<span class="etiqueta">&lt;body&gt;</span>
+    <span class="etiqueta">&lt;div</span> <span class="atributo">class=</span><span class="valor">"page"</span><span class="etiqueta">&gt;</span>
+        <span class="etiqueta">&lt;h1&gt;</span>Título de la página.<span class="etiqueta">&lt;/h1&gt;</span>
+        <span class="etiqueta">&lt;p&gt;</span>Me encanta Manz.dev. Lo veo en Twitch o Youtube todos los días.<span class="etiqueta">&lt;/p&gt;</span>
+    <span class="etiqueta">&lt;/div&gt;</span>
+<span class="etiqueta">&lt;/body&gt;</span>
+<span class="etiqueta">&lt;/html&gt;</span>
+  </code></pre>
+        </div>
+        <p>Bien, ya tenemos nuestro archivo .html conectado con nuestro archivo .css. Ahora todo el código CSS que
+            coloquemos en nuestro index.css se aplicará al HTML y se verá reflejado en el navegador.</p>
+
+        <h2>Sintaxis CSS</h2>
+        <p>Vamos a centrarnos ahora en el contenido de nuestro documento index.css. El código CSS de dicho documento, se
+            basa en una serie de conceptos que debemos tener claros antes de continuar. Demos un repaso a cada uno de
+            ellos:
+        </p>
+
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Concepto</th>
+                <th class="columnasFilasTabla">Descripción</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Selector</td>
+                <td class="columnasFilasTabla">Elemento o elementos del documento que vamos a seleccionar para aplicarle
+                    un
+                    estilo concreto.</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Propiedad</td>
+                <td class="columnasFilasTabla">Característica principal que vamos a definir con el valor indicado a
+                    continuación.</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Valor</td>
+                <td class="columnasFilasTabla">Cada propiedad tiene una serie de valores concretos asignables, con los
+                    que
+                    tendrá uno u otro comportamiento.</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Comentario</td>
+                <td class="columnasFilasTabla">Fragmento de texto entre <code>/*</code> y <code>*/</code> con
+                    anotaciones o
+                    aclaraciones para el desarrollador (el navegador los ignorará).</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">Regla</td>
+                <td class="columnasFilasTabla">Par de propiedad y su respectivo valor asociado.</td>
+            </tr>
+        </table>
+        <p>Así pues, tras aprender estos conceptos, la estructura de un documento .css se basaría en organizar el código
+            siguiendo el formato del siguiente bloque:</p>
+        <div class="imagen">
+            <img src="https://lenguajecss.com/css/introduccion/estructura-de-css/sintaxis-visual.png" alt="tecerImagen">
+        </div>
+        <h2>Documento CSS</h2>
+        <p>Sin embargo, esto es sólo un ejemplo muy sencillo. Los documentos CSS se forman por cientos de reglas de este
+            estilo, con diferentes selectores, propiedades y valores. Habitualmente, cada bloque declarado suele incluir
+            múltiples reglas:</p>
+
+        <div class="imagen">
+            <img src="	https://lenguajecss.com/css/introduccion/estructura-de-css/documento-css.png" alt="cuartaImagen">
+        </div>
+        <br>
+        <br>
+        <br>
+        <p>
+            Ten en cuenta que, a medida que escribimos código CSS, este se va haciendo más grande y más difícil de
+            controlar
+            y mantener. Para intentar evitar perder el control del mismo, hay que seguir una serie de buenas prácticas
+            al
+            escribir código, que aunque no son necesarias para que funcione en el navegador, los desarrolladores
+            consideramos obligatorias para que sea más fácil de leer:
+        </p>
+        <div class="margenLista">
+            <li>Escribe una regla por línea. Será mucho más fácil de leer y modificar.</li>
+            <br>
+            <li>Usa la indentación. Tras escribir el carácter { al empezar un bloque de reglas, las propiedades se
+                separan
+                hacia la derecha. Esto hace que sea más fácil de leer y se considera una buena práctica de desarrollo y
+                de
+                programación en general.</li>
+            <br>
+            <li>El último punto y coma de un bloque de reglas es opcional. Sin embargo, se suele aconsejar escribirlo
+                para
+                mantener una coherencia y evitar problemas o descuidos al modificar posteriormente el código.</li>
+        </div>
+
+        <p>Como puedes ver, estos consejos mejoran sustancialmente la legibilidad del código. Se consideran prácticas de
+            cumplimiento obligatorio para ayudar a entender más rápidamente el código ajeno (o incluso el nuestro) sin
+            necesidad de invertir mucho tiempo.</p>
+
+        <h2>Variedad de comandos de CSS con CSS 3</h2>
+        <p>Al principio, los comandos de CSS se utilizaban para definir fuentes y colores de letra, hacer más atractivas
+            las
+            tablas o hacer que el texto fluyera alrededor de los elementos, pero las posibilidades se han ampliado
+            considerablemente. Hoy en día, se pueden crear degradados de color, recortar imágenes, generar sombras y
+            redondeces o usar animaciones.</p>
+        <p>Un comando CSS, también llamado regla CSS, se estructura de la siguiente manera:</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Selector</th>
+                <th class="columnasFilasTabla">Llave de apertura</th>
+                <th class="columnasFilasTabla">Propiedad</th>
+                <th class="columnasFilasTabla">Valor de la propiedad</th>
+                <th class="columnasFilasTabla">Llave de cierre</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">p</td>
+                <td class="columnasFilasTabla">{</td>
+                <td class="columnasFilasTabla">color:</td>
+                <td class="columnasFilasTabla">navy;</td>
+                <td class="columnasFilasTabla">}</td>
+            </tr>
+        </table>
+        <p>La propiedad y el valor de la propiedad juntos forman lo que se llama una declaración.</p>
+        <p>
+            Con CSS debes tener en cuenta que, a pesar de las mejoras y ajustes, no todos los navegadores lo “entienden”
+            todo. En CSS existen los llamados prefijos de navegador, con los que los comandos se dirigen específicamente
+            a
+            los motores de los navegadores. Estos prefijos son:
+        </p>
+        <div class="margenLista">
+            <li>-moz-: para Firefox</li>
+            <br>
+            <li>-ms-: para Internet Explorer</li>
+            <br>
+            <li>-khtml-: para Konqueror</li>
+            <br>
+            <li>-o-: para versiones antiguas de Opera</li>
+            <br>
+            <li>-webkit-: para Safari, Chrome y versiones nuevas de Opera</li>
+        </div>
+
+        <div class="bloque-codigo">
+            <pre><code>
+<span class="etiqueta">&lt;!DOCTYPE html&gt;</span>
+<span class="etiqueta">&lt;html&gt;</span>
+<span class="etiqueta">&lt;head&gt;</span>
+    <span class="etiqueta">&lt;title&gt;</span>Título de página<span class="etiqueta">&lt;/title&gt;</span>
+    <span class="etiqueta">&lt;link</span> <span class="atributo">rel=</span><span class="valor">"stylesheet"</span> <span class="atributo">href=</span><span class="valor">"index.css"</span> <span class="etiqueta">/&gt;</span>
+<span class="etiqueta">&lt;/head&gt;</span>
+<span class="etiqueta">&lt;body&gt;</span>
+    <span class="etiqueta">&lt;div</span> <span class="atributo">class=</span><span class="valor">"page"</span><span class="etiqueta">&gt;</span>
+        <span class="etiqueta">&lt;h1&gt;</span>Título de la página.<span class="etiqueta">&lt;/h1&gt;</span>
+        <span class="etiqueta">&lt;p&gt;</span>Me encanta Manz.dev. Lo veo en Twitch o Youtube todos los días.<span class="etiqueta">&lt;/p&gt;</span>
+    <span class="etiqueta">&lt;/div&gt;</span>
+<span class="etiqueta">&lt;/body&gt;</span>
+<span class="etiqueta">&lt;/html&gt;</span>
+  </code></pre>
+        </div>
+
+        <h3>Colores en CSS</h3>
+        <p>El mundo de los colores en Internet se basa en el espacio de color RGB. Existen comandos de CSS para definir
+            los
+            colores de los distintos componentes de una página web. Casi cada elemento puede ser provisto de un color o
+            incluso de un degradado de colores.</p>
+        <p>La propiedad y el valor de la propiedad juntos forman lo que se llama una declaración.</p>
+        <p>
+            Opciones para especificar los valores de color
+        </p>
+        <div class="margenLista">
+            <li>Hexcode: #63f0ac</li>
+            <br>
+            <li>Nombres de colores: red, green, blue, coral, white, black </li>
+            <br>
+            <li>RGB: rgb(238,130,238) y transparencia RGB con rgba(238,130,238, 0.7)</li>
+            <br>
+            <li>HSL con transparencia: hsla(140,20%,50%,0.5) -Hue (Tono de color) de 0 a 360 grados en la rueda de color
+                -Saturation (Saturación): de 0 % incoloro a 100 % de mayor intensidad de color -Lightness (Luminosidad):
+                de
+                0 % como negro a 100 % como blanco -Valor numérico de transparencia hasta 1,0 = cobertura total del
+                color
+            </li>
+        </div>
+        <h3>Ejemplos de definición de colores para elementos HTML</h3>
+        <p>Para el color del texto, se utiliza la propiedad color:</p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">p { color: red; }</span> <span class="comentario">/* un párrafo en rojo */</span>
+    <span class="css">div { color: #ffc3dd; }</span> <span class="comentario">/* contenedor DIV con texto en rosa claro */</span>
+    <span class="css">h1 { color: rgba(220,0,218,0.85); }</span> <span class="comentario">/* título en violeta intenso con una transparencia del 85 % */</span>
+  </code></pre>
+        </div>
+
+        <h3>Los gradientes de color también son posibles</h3>
+        <p>Lo gradientes de color, que antes había que crear con archivos de imagen, ahora se puede hacer con comandos
+            de
+            CSS. Para ello se utiliza la instrucción background-image: gradient o de forma abreviada
+            background:gradient. El
+            gradient representa un valor para una imagen sin dimensiones y crea un gradiente de color que puede
+            cambiarse en
+            puntos definidos.</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Posibles valores</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">linear-gradient</td>
+                <td class="columnasFilasTabla">Gradiente lineal de un color a otro o con múltiples colores</td>
+                <td class="columnasFilasTabla">to-top, to-right, 45deg (ángulo arbitrario), colores con % como puntos de
+                    parada/transición</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">radial-gradient</td>
+                <td class="columnasFilasTabla">Gradiente radial de un color a otro</td>
+                <td class="columnasFilasTabla">círculo, elipse con valores de píxeles y colores</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">conic-gradient</td>
+                <td class="columnasFilasTabla">Gradiente cónico de un color a otro</td>
+                <td class="columnasFilasTabla">colores con valores % y ángulo de inicio como número</td>
+            </tr>
+        </table>
+        <p>La tabla muestra solo algunos de los atributos posibles. Todos los valores comunes pueden utilizarse como
+            especificaciones de color, incluidos los valores de color con transparencia.</p>
+
+        <h3>Comandos de CSS para fuentes</h3>
+        <p>Con el comando CSS font, se pueden cambiar de una sola vez las seis propiedades de una fuente utilizada.</p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">p { font: italic small-caps 700 1.2em/1.5em Arial, Helvetica, sans-serif; }</span>
+  </code></pre>
+        </div>
+        <p>Esta declaración CSS resumida se puede desglosar individualmente, en el orden dado:</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">font-style</td>
+                <td class="columnasFilasTabla">Estilo de la fuente</td>
+                <td class="columnasFilasTabla">normal, italic, oblique</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">font-variant</td>
+                <td class="columnasFilasTabla">Variante de la fuente</td>
+                <td class="columnasFilasTabla">normal, small-caps</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">font-weight</td>
+                <td class="columnasFilasTabla">Grosor de los caracteres</td>
+                <td class="columnasFilasTabla">normal (= 400), bold, bolder, lighter, 100 a 900 (en incrementos de 100)
+                </td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">font-size / line-height</td>
+                <td class="columnasFilasTabla">Tamaño de la fuente</td>
+                <td class="columnasFilasTabla">Valores en px, %, em, rem, vw, vh</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">font-family</td>
+                <td class="columnasFilasTabla">Familia de fuentes</td>
+                <td class="columnasFilasTabla">Fuentes dependiendo del sistema operativo, navegador o extensiones
+                    instaladas
+                    adicionalmente</td>
+            </tr>
+        </table>
+        <p>La definición de font-family para el cuerpo de la página web se hereda en todas las instrucciones
+            subyacentes. El
+            color del texto no se establece con una instrucción font, sino con color:valor de color.</p>
+
+        <h3>Comandos de CSS para el diseño de texto</h3>
+        <p>Además de la fuente, su color y tamaño, hay otras sutilezas tipográficas importantes para la legibilidad de
+            una
+            página web. Entre ellas:</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">text-align</td>
+                <td class="columnasFilasTabla">Alineación del texto</td>
+                <td class="columnasFilasTabla">left, right, center, justify (justificado)</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">text-decoration</td>
+                <td class="columnasFilasTabla">Decoración del texto</td>
+                <td class="columnasFilasTabla">underline, overline, line-through</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">word-spacing</td>
+                <td class="columnasFilasTabla">Espaciado entre palabras</td>
+                <td class="columnasFilasTabla">valor numérico en pt (puntos), mm, cm, px, em, rem</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">letter-spacing</td>
+                <td class="columnasFilasTabla">Espaciado entre letras</td>
+                <td class="columnasFilasTabla">valor numérico en pt (puntos), mm, cm, px, em, rem</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">text-indent</td>
+                <td class="columnasFilasTabla">Sangría de la primera línea</td>
+                <td class="columnasFilasTabla">valor numérico en pt (puntos), mm, cm, px, em, rem</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">text-transform</td>
+                <td class="columnasFilasTabla">Transformación del texto</td>
+                <td class="columnasFilasTabla">capitalize, uppercase, lowercase, none</td>
+            </tr>
+        </table>
+        <h3>Comandos de CSS para líneas y marcos</h3>
+        <p>Para diseñar bordes, se utiliza el elemento CSS border, en el que, de forma similar a font, se resumen varias
+            propiedades.</p>
+        <p>Ejemplo: una imagen, con la etiqueta HTML img, está rodeada por una línea de 5 píxeles de ancho en azul
+            marino.
+            La forma abreviada es:</p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">img { border: 5px solid #000080; }</span> <span class="comentario">/* borde azul oscuro de 5 píxeles alrededor de la imagen */</span>
+  </code></pre>
+        </div>
+        <p>Este comando CSS puede desglosarse de la siguiente manera:</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">border-width</td>
+                <td class="columnasFilasTabla">Grosor de la línea</td>
+                <td class="columnasFilasTabla">px, mm, in, em, rem</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">border-style</td>
+                <td class="columnasFilasTabla">Estilo de la línea</td>
+                <td class="columnasFilasTabla">none, hidden, dotted, dashed, double, groove, ridge, inset, outset</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">border-color</td>
+                <td class="columnasFilasTabla">Color de la línea</td>
+                <td class="columnasFilasTabla">Ver sección sobre colores</td>
+            </tr>
+        </table>
+
+        <p>Las líneas a lo largo de los bordes individuales de una imagen o rectángulo se colocan individualmente con
+            border-top, border-right, border-bottom y border-left con los mismos atributos que en la forma abreviada de
+            border.</p>
+
+        <h3>Comandos de CSS para definir el espaciado</h3>
+        <p>
+            Existen dos tipos de espaciado:
+        </p>
+        <div class="margenLista">
+            <li>padding como distancia interior del contenido al elemento circundante</li>
+            <br>
+            <li>margin como distancia exterior de un elemento al siguiente</li>
+        </div>
+        <p>El padding define la distancia entre un bloque de texto o una imagen y el marco circundante. Existe una forma
+            abreviada y especificaciones definidas para todas las páginas de un bloque de contenido.</p>
+
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding: 1px;</td>
+                <td class="columnasFilasTabla">Espaciado interior general</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding: 1em 2.5em;</td>
+                <td class="columnasFilasTabla">Espaciado interior arriba y abajo (1er valor), izquierda y derecha (2do
+                    valor)</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding: 5px 2px 4px;</td>
+                <td class="columnasFilasTabla">Espaciado interior arriba (1er valor), izquierda y derecha (2do valor),
+                    abajo
+                    (3er valor)</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding-top: 1mm;</td>
+                <td class="columnasFilasTabla">Espaciado interior en la parte superior</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding-right: 1pc;</td>
+                <td class="columnasFilasTabla">Espaciado interior a la derecha</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding-bottom: 3pt;</td>
+                <td class="columnasFilasTabla">Espaciado interior en la parte inferior</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">padding-left: 2in;</td>
+                <td class="columnasFilasTabla">Espaciado interior a la izquierda</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+        </table>
+
+        <p>Cuando en la forma abreviada de padding se proporcionan valores para las cuatro posiciones, se procede desde
+            arriba en sentido horario, es decir, en el siguiente formato:</p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">p { padding: 5px 0 5px 0; }</span> <span class="comentario">/* 5 píxeles arriba y abajo */</span>
+  </code></pre>
+        </div>
+
+        <p>El comando CSS margin define la distancia entre un elemento de diseño y el siguiente. La sintaxis y
+            enumeración
+            de los valores individuales es idéntica a padding.</p>
+
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin: 5px;</td>
+                <td class="columnasFilasTabla">Margen exterior general</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin: 2em 1.5em;</td>
+                <td class="columnasFilasTabla">Margen exterior arriba y abajo (1er valor), izquierda y derecha (2ndo
+                    valor)
+                </td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin: 2px 10px 15px;</td>
+                <td class="columnasFilasTabla">Margen exterior arriba (1er valor), izquierda y derecha (2do valor),
+                    abajo
+                    (3er valor)</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin-top: 2pc;</td>
+                <td class="columnasFilasTabla">Margen exterior en la parte superior</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin-right: 5mm;</td>
+                <td class="columnasFilasTabla">Margen exterior a la derecha</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin-bottom: 7pt;</td>
+                <td class="columnasFilasTabla">Margen exterior en la parte inferior</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">margin-left: 1in;</td>
+                <td class="columnasFilasTabla">Margen exterior a la izquierda</td>
+                <td class="columnasFilasTabla">px, em, mm, in, pt, pc, %</td>
+            </tr>
+        </table>
+
+        <h3>Comandos de CSS para enlaces</h3>
+        <p>Si defines el diseño de los enlaces en CSS, puedes diseñar cada estado de un enlace por separado. Además de
+            la
+            apariencia normal, también puedes especificar cómo se muestra un enlace al pasar el ratón por encima de él,
+            durante el clic y al seleccionarlo (por ejemplo, con la tecla Tab).</p>
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">a:link { background-color: black; color: white; }</span> <span class="comentario">/* estilo para enlaces no visitados: fondo negro y texto blanco */</span>
+  </code></pre>
+        </div>
+
+        <p>Por regla general, se realizan cambios en estas llamadas pseudoclases para cambiar el color de los enlaces.
+            En
+            principio, sin embargo, todos los comandos de CSS posibles pueden integrarse en estas clases.</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">a:link</td>
+                <td class="columnasFilasTabla">Enlace en estado normal</td>
+                <td class="columnasFilasTabla">Se puede combinar con comandos de CSS</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">a:hover</td>
+                <td class="columnasFilasTabla">Enlace al pasar el cursor sobre él</td>
+                <td class="columnasFilasTabla">Se puede combinar con comandos de CSS</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">a:active</td>
+                <td class="columnasFilasTabla">Enlace mientras se hace clic</td>
+                <td class="columnasFilasTabla">Se puede combinar con comandos de CSS</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">a:focus</td>
+                <td class="columnasFilasTabla">Enlace seleccionado, por ejemplo, con la tecla Tab</td>
+                <td class="columnasFilasTabla">Se puede combinar con comandos de CSS</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">a:visited</td>
+                <td class="columnasFilasTabla">Enlace después de haber sido visitado</td>
+                <td class="columnasFilasTabla">Se puede combinar con comandos de CSS</td>
+            </tr>
+        </table>
+        <h3>Comandos de CSS para fondos</h3>
+        <p>El fondo de una página web también puede modificarse mediante CSS. Esto puede hacerse especificando el color
+            o
+            añadiendo una imagen, por ejemplo. Si seleccionas una imagen, también puedes definir características
+            adicionales.</p>
+
+        <table class="tabla">
+            <tr class="columnasFilasTabla">
+                <th class="columnasFilasTabla">Comando CSS</th>
+                <th class="columnasFilasTabla">Descripción</th>
+                <th class="columnasFilasTabla">Valores posibles</th>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-color</td>
+                <td class="columnasFilasTabla">Color de fondo</td>
+                <td class="columnasFilasTabla">Ver sección sobre colores</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-image</td>
+                <td class="columnasFilasTabla">Imagen de fondo</td>
+                <td class="columnasFilasTabla">URL</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-attachment</td>
+                <td class="columnasFilasTabla">¿El fondo se mueve al desplazarse o permanece fijo?</td>
+                <td class="columnasFilasTabla">scroll, fixed</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-clip</td>
+                <td class="columnasFilasTabla">Determina para qué área se aplican las propiedades de fondo</td>
+                <td class="columnasFilasTabla">padding-box, corner-box, content-box</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-position</td>
+                <td class="columnasFilasTabla">Alineación de la imagen de fondo</td>
+                <td class="columnasFilasTabla">top, center, bottom / left, center, right</td>
+            </tr>
+            <tr class="columnasFilasTabla">
+                <td class="columnasFilasTabla">background-repeat</td>
+                <td class="columnasFilasTabla">¿Si la imagen es más pequeña que el fondo, se puede repetir?</td>
+                <td class="columnasFilasTabla">repeat, repeat-x, repeat-y, space, round</td>
+            </tr>
+        </table>
+        <p>Estos son comandos de detalle. También pueden anidarse bajo el comando de nivel superior fondo:</p>
+
+
+        <div class="bloque-codigo">
+            <pre><code>
+    <span class="css">background: white url("http://example.org/image.png") repeat-x;</span> <span class="comentario">/* fondo blanco con imagen repetida horizontalmente */</span>
+  </code></pre>
+        </div>
+        <div>
+            <h2>¡Gracias por leer mi paso a paso de CSS!</h2>
+            <p>Espero que este paso a paso sobre CSS te haya sido útil y te haya ayudado a comprender mejor cómo dar
+                estilo a tus proyectos web. Cada propiedad, cada selector y cada línea de código que domines te acerca
+                más a crear experiencias visuales increíbles.
+
+                Gracias por tomarte el tiempo de aprender conmigo.
+                Sigue explorando, practicando y creando. ¡Tu próxima gran idea está a solo unos estilos de distancia!
+            </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
