@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>¿Qué es JSP?</title>
+    <link rel="stylesheet" href="/style/JSP_2024427.css">
+</head>
+
+<body>
+    <a class="regresar" href="MenuFrontend.html">Regresar</a>
+    <h1>¿Qué es JSP (JavaServer Pages)?</h1>
+    <div class="section">
+        <p>
+            <strong>JSP</strong> (JavaServer Pages) es una tecnología de Java que permite crear páginas web dinámicas en
+            el lado del servidor.
+            Fue desarrollada por Sun Microsystems y es ampliamente utilizada en aplicaciones web empresariales.
+        </p>
+        <div class="img-container">
+            <img src="https://static.wixstatic.com/media/ff9d7d_6c4add613f9142998981fa424cf843b8~mv2.png/v1/fill/w_1000,h_625,al_c,q_90,usm_0.66_1.00_0.01/ff9d7d_6c4add613f9142998981fa424cf843b8~mv2.png"
+                alt="Logo de Java">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>¿Cómo funciona JSP?</h2>
+        <p>
+            Las páginas JSP contienen código HTML combinado con fragmentos de código Java.
+            Cuando un usuario solicita una página JSP, el servidor la convierte en un servlet Java, lo compila y
+            ejecuta, generando así el HTML final que se envía al navegador.
+        </p>
+        <div class="img-container">
+            <img src="https://javiergarciaescobedo.es/images/stories/despliegue_web/03_serv_aplic/Java_Model_2.png"
+                alt="Arquitectura JSP">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>¿Para qué sirve JSP?</h2>
+        <ul>
+            <li>Crear páginas web dinámicas e interactivas.</li>
+            <li>Separar la lógica de negocio del diseño web.</li>
+            <li>Integrar aplicaciones Java con la web.</li>
+            <li>Facilitar el desarrollo de aplicaciones empresariales.</li>
+        </ul>
+        <div class="img-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBNsvlLTs56rnQPMlkIDPwXz1U4qWvzFr3qA&s"
+                alt="Ejemplo de JSP">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Ventajas de JSP</h2>
+        <ul>
+            <li>Permite reutilizar componentes Java (servlets, beans, etc.).</li>
+            <li>Fácil integración con bases de datos.</li>
+            <li>Separación entre contenido y lógica.</li>
+            <li>Soporte para plantillas y bibliotecas de etiquetas.</li>
+        </ul>
+        <div class="img-container">
+            <img src="https://itdconsulting.com/wp-content/uploads/2022/06/vps-ecuador-jsp-itdconsulting-02.webp"
+                alt="Ejemplo de JSP">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Ejemplo básico de código JSP</h2>
+        <pre>
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h2&gt;Hola, &lt;%= request.getParameter("nombre") %&gt;!&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+    </div>
