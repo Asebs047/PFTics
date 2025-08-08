@@ -73,3 +73,57 @@
 &lt;/html&gt;
         </pre>
     </div>
+
+    <div class="section">
+        <h2>Paso a paso: Cómo agregar JSP a un proyecto Maven en NetBeans</h2>
+        <ol>
+            <li><strong>Crear un nuevo proyecto Maven Web:</strong>
+                <ul>
+                    <li>En NetBeans, ve a <b>Archivo &gt; Nuevo Proyecto</b>.</li>
+                    <li>Selecciona <b>Java With Maven &gt; Aplicación Web</b> y haz clic en <b>Siguiente</b>.</li>
+                    <li>Asigna un nombre y una ubicación al proyecto y haz clic es (es opcional borra el nombre del paquete) <b>Finalizar</b>.</li>
+                </ul>
+            </li>
+            <li><strong>Verifica la estructura del proyecto:</strong>
+                <ul>
+                    <li>Debes tener una carpeta <b>src/main/webapp</b> donde irán tus archivos JSP.</li>
+                </ul>
+            </li>
+            <li><strong>Agrega un archivo JSP:</strong>
+                <ul>
+                    <li>Haz clic derecho en <b>webapp (nombre del proyecto)</b> &gt; <b>Nuevo &gt; JSP</b>.</li>
+                    <li>Asigna un nombre (por ejemplo, <b>index.jsp</b>) y haz clic en <b>Finalizar</b>.</li>
+                </ul>
+            </li>
+            <li><strong>Configura el servidor:</strong>
+                <ul>
+                    <li>Haz clic derecho en el proyecto &gt; <b>Propiedades</b> &gt; <b>Run</b>.</li>
+                    <li>Selecciona un servidor compatible (GlassFish Server).</li>
+                </ul>
+            </li>
+            <li><strong>Agrega dependencias si es necesario:</strong>
+                <ul>
+                    <li>Para proyectos Maven, normalmente no necesitas agregar dependencias para JSP, pero si usas
+                        MySQL, agrega en tu <b>pom.xml</b>:</li>
+                </ul>
+                <pre>
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.33&lt;/version&gt;
+&lt;/version&gt;
+&lt;/dependency&gt;
+            </pre>
+            </li>
+            <li><strong>Ejecuta el proyecto:</strong>
+                <ul>
+                    <li>Haz clic derecho en el proyecto y selecciona <b>Ejecutar</b> o presiona <b>F6</b>.</li>
+                    <li>El navegador abrirá tu archivo <b>index.jsp o index.html</b>.</li>
+                </ul>
+            </li>
+        </ol>
+        <div class="img-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Apache_NetBeans_Logo.svg/800px-Apache_NetBeans_Logo.svg.png" alt="NetBeans Logo">
+        </div>
+    </div>
+</body>
