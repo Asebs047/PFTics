@@ -1,4 +1,5 @@
-/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap');
+
 :root {
     --navy-blue: #0a192f;
     --dark-blue: #172a45;
@@ -19,14 +20,14 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lexend', Arial, sans-serif;
     background-color: var(--navy-blue);
     color: var(--light-slate);
     line-height: 1.6;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Lexend', Arial, sans-serif;
     color: var(--white);
     margin-bottom: 1rem;
 }
@@ -43,7 +44,7 @@ a:hover {
 }
 
 code {
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Lexend', Arial, sans-serif;
     background-color: var(--dark-gray);
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
