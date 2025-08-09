@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>¿Qué es el POM y el archivo XML? | Análisis y Curiosidades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/pom_20244399.css">
+</head>
+<body>
+
+<header>
+    <h1>¿Qué es el POM y el archivo XML?</h1>
+    <p>Análisis detallado y curiosidades sobre estos conceptos clave en desarrollo de software</p>
+</header>
+
+<main>
+
+    <section id="pom">
+        <h2>¿Qué es el POM?</h2>
+
+        <figure>
+            <img src="https://miro.medium.com/v2/resize:fit:743/1*aOSmi422R9CedKJDOeMgDw.png" alt="Maven xd" />
+        </figure>
+
+        <p><strong>POM</strong> es el acrónimo de <em>Project Object Model</em> y es un archivo XML fundamental en proyectos que usan <strong>Apache Maven</strong>, una herramienta popular para la automatización y gestión de proyectos, especialmente en Java.</p>
+
+        <h3>Análisis</h3>
+        <p>El archivo <code>pom.xml</code> contiene toda la configuración necesaria para construir el proyecto:</p>
+        <ul>
+            <li><strong>Dependencias:</strong> las librerías externas que el proyecto necesita para funcionar.</li>
+            <li><strong>Plugins:</strong> herramientas que extienden el proceso de construcción, como compilación, generación de documentación, pruebas, empaquetado, etc.</li>
+            <li><strong>Propiedades:</strong> variables reutilizables dentro del proyecto.</li>
+            <li><strong>Perfiles:</strong> configuraciones para diferentes entornos, como desarrollo, pruebas o producción.</li>
+        </ul>
+        <p>Gracias al POM, Maven puede descargar automáticamente las dependencias correctas, ejecutar las tareas definidas y facilitar la integración continua.</p>
+
+        <h3>Curiosidades</h3>
+        <ul>
+            <li>El POM puede heredar configuraciones de otros proyectos, permitiendo la reutilización y estandarización.</li>
+            <li>Facilita el control de versiones de dependencias, ayudando a evitar conflictos conocidos como "infierno de dependencias".</li>
+            <li>Algunos desarrolladores prefieren Gradle, una alternativa a Maven, que usa un lenguaje de scripting en lugar de XML para configuración.</li>
+            <li>El formato XML del POM facilita su lectura y edición manual, pero también la generación automática por herramientas.</li>
+        </ul>
+    </section>
+
+    <section id="xml">
+        <h2>¿Qué es el archivo .xml?</h2>
+
+        <figure>
+            <img src="https://play-lh.googleusercontent.com/udaso9cumIBCQvHoNHaSocwABfilHF_bOxtHklAZbQaRsp7Z9zBlYOSEmQlE1CeHSQ=w600-h300-pc0xffffff-pd" alt="XML" />
+            <figcaption>Logo del lenguaje XML, formato para datos estructurados.</figcaption>
+        </figure>
+
+        <p><strong>XML</strong> significa <em>eXtensible Markup Language</em> y es un estándar para almacenar y transportar datos estructurados de forma legible para humanos y máquinas.</p>
+
+        <h3>Análisis</h3>
+        <p>Los archivos <code>.xml</code> utilizan etiquetas personalizadas que describen la información de forma jerárquica. Por ejemplo, un archivo XML puede representar un libro, una factura o la configuración de un programa.</p>
+        <p>Su uso es muy común en:</p>
+        <ul>
+            <li>Configuración de software (como el <code>pom.xml</code> en Maven).</li>
+            <li>Intercambio de datos entre diferentes sistemas o aplicaciones.</li>
+            <li>Definición de formatos para documentos (como SVG para gráficos vectoriales).</li>
+        </ul>
+
+        <h3>Curiosidades</h3>
+        <ul>
+            <li>Aunque XML fue muy popular durante los 2000, formatos más ligeros como JSON han ganado terreno en desarrollo web moderno.</li>
+            <li>XML permite validar la estructura del archivo con esquemas como XSD para garantizar datos correctos.</li>
+            <li>Existen muchos lenguajes derivados o basados en XML, como XHTML, RSS y SOAP.</li>
+            <li>El uso de espacios de nombres (namespaces) permite evitar conflictos en etiquetas cuando se combinan datos de diferentes fuentes.</li>
+        </ul>
+    </section>
+
+</main>
+</body>
+</html>
