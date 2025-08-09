@@ -1,0 +1,137 @@
+body {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+}
+
+.columnaNavegacion {
+    width: 140px;
+    background-color: #230161;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+}
+
+.columnaNavegacion h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.columnaNavegacion a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.columnaNavegacion a:hover {
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    color: black;
+    background-color: orange;
+}
+
+.contenidoPrincipal {
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 80px;
+    padding: 30px;
+}
+
+.separacion {
+    margin-bottom: 30px;
+}
+
+.separacion-h2 {
+    font-size: 30px;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+
+p {
+    letter-spacing: 1px;
+    font-size: 20px;
+    text-align: left;
+    margin: 0px;
+}
+
+.imagenes {
+    margin-top: 30px;
+}
+
+li {
+    font-size: 20px;
+    margin-top: 5px;
+    text-align: left;
+    margin-bottom: 2px;
+    /*Lo utilice para evitar el "sangrado" del texto*/
+    list-style-position: outside;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.logo {
+    height: 50px;
+    width: 40px;
+}
+
+.navegacion {
+    text-align: left;
+    font-size: 14px;
+    color: #666;
+}
+
+.navegacion a {
+    color: #666;
+    text-decoration: none;
+}
+
+pre {
+    text-align: left;
+    background-color: black;
+    padding: 20px;
+    padding-bottom: 0px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+code {
+    font-size: 19px;
+    color: white;
+}
+
+.contenidoPrincipal-Ejemplos {
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 80px;
+    padding: 30px;
+}
+.contenidoPrincipal-Ejemplos2 {
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 80px;
+    padding: 30px;
+}
+
+.cajitaEjemplo {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+#imgEjemplo {
+    max-width: 200px;
+}
+
