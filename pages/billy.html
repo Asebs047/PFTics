@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJB</title>
+    <link href="../style/2024396.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <a class="btn-regresar" href="../pages/Backend.html" aria-label="Regresar">← Regresar</a>
+    <nav id="indice">
+        <h3>Índice</h3>
+        <div class="indice-table-container">
+            <table class="indice-table">
+                <tbody>
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#introduccion" class="indice-link">
+                                <span class="indice-number">1.</span>
+                                <span class="indice-title">Introducción a EJB</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#tipos-ejb" class="indice-link">
+                                <span class="indice-number">1.1</span>
+                                <span class="indice-title">Tipos de EJB</span>
+                            </a>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#ventajas" class="indice-link">
+                                <span class="indice-number">2.</span>
+                                <span class="indice-title">Ventajas de EJB</span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#estructura" class="indice-link">
+                                <span class="indice-number">3.</span>
+                                <span class="indice-title">Estructura de EJB</span>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#implementacion" class="indice-link">
+                                <span class="indice-number">4.</span>
+                                <span class="indice-title">Implementación paso a paso</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#requisitos" class="indice-link">
+                                <span class="indice-number">4.1</span>
+                                <span class="indice-title">Requisitos previos</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso1" class="indice-link">
+                                <span class="indice-number">4.2</span>
+                                <span class="indice-title">Paso 1: Configurar entorno</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso2" class="indice-link">
+                                <span class="indice-number">4.3</span>
+                                <span class="indice-title">Paso 2: Crear proyecto</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso3" class="indice-link">
+                                <span class="indice-number">4.4</span>
+                                <span class="indice-title">Paso 3: Configurar MySQL</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso4" class="indice-link">
+                                <span class="indice-number">4.5</span>
+                                <span class="indice-title">Paso 4: Configurar DataSource</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso5" class="indice-link">
+                                <span class="indice-number">4.6</span>
+                                <span class="indice-title">Paso 5: Entidad JPA</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso6" class="indice-link">
+                                <span class="indice-number">4.7</span>
+                                <span class="indice-title">Paso 6: Session Bean</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso7" class="indice-link">
+                                <span class="indice-number">4.8</span>
+                                <span class="indice-title">Paso 7: persistence.xml</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso8" class="indice-link">
+                                <span class="indice-number">4.9</span>
+                                <span class="indice-title">Paso 8: Cliente EJB</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indice-subitem">
+                            <a href="#paso9" class="indice-link">
+                                <span class="indice-number">4.10</span>
+                                <span class="indice-title">Paso 9: Desplegar</span>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#mejores-practicas" class="indice-link">
+                                <span class="indice-number">5.</span>
+                                <span class="indice-title">Mejores prácticas</span>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#rendimiento" class="indice-link">
+                                <span class="indice-number">6.</span>
+                                <span class="indice-title">Consideraciones de rendimiento</span>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#alternativas" class="indice-link">
+                                <span class="indice-number">7.</span>
+                                <span class="indice-title">EJB vs Alternativas modernas</span>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="indice-item">
+                            <a href="#recursos" class="indice-link">
+                                <span class="indice-number">8.</span>
+                                <span class="indice-title">Recursos adicionales</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>EJB</h1>
+            <p>Investigación sobre EJB</p>
+        </header>
+
+        <section id="introduccion">
+            <h2>1. Introducción a EJB</h2>
+            <p>Enterprise JavaBeans (EJB) es una API del lado servidor dentro del estándar Java EE (ahora Jakarta EE). Está diseñada para encapsular la lógica de negocio en aplicaciones empresariales distribuidas, proporcionando mecanismos estándar para transacciones, concurrencia, seguridad, persistencia y mensajería. Permite a los desarrolladores enfocarse en el negocio, mientras el contenedor EJB se encarga de la infraestructura subyacente.</p>
+            
+            <div id="tipos-ejb">
+                <h3>1.1 Tipos de EJB</h3>
+                <ol>
+                    <li><strong>Session Beans</strong>: Para lógica de negocio
+                        <ul>
+                            <li>Stateless: No mantienen estado entre llamadas</li>
+                            <li>Stateful: Mantienen estado durante una sesión</li>
+                            <li>Singleton: Una única instancia compartida</li>
+                        </ul>
+                    </li>
+                    <li><strong>Message-Driven Beans (MDB)</strong>: Para procesamiento asíncrono de mensajes JMS</li>
+                    <li><strong>Entity Beans</strong> (Obsoletos desde EJB 3.0, reemplazados por JPA)</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="ventajas">
+            <h2>2. Ventajas de EJB</h2>
+            <ul>
+                <li>Gestión automática de transacciones</li>
+                <li>Seguridad declarativa</li>
+                <li>Pooling de instancias</li>
+                <li>Integración con JPA para persistencia</li>
+                <li>Escalabilidad</li>
+                <li>Inyección de dependencias</li>
+            </ul>
+        </section>
+        <section id="estructura">
+            <h2>3. Estructura EJB</h2>
+            <img src="../image/EstructuraEJB.jpg" alt="Esquema de Estructura EJB" loading="lazy">
+         </section>
+        
+        <section id="implementacion">
+            <h2>4. Implementación paso a paso en NetBeans con MySQL y Java EE</h2>
+            
+            <div id="requisitos">
+                <h3>4.1 Requisitos previos</h3>
+                <ol>
+                    <li>NetBeans IDE (versión 8.2 o superior)</li>
+                    <li>Java JDK 8 o superior</li>
+                    <li>Servidor de aplicaciones compatible con Java EE (GlassFish, Payara, WildFly)</li>
+                    <li>MySQL Server</li>
+                    <li>MySQL Connector/J</li>
+                </ol>
+            </div>
+            
+            <div id="paso1">
+                <h3>4.2 Paso 1: Configurar el entorno</h3>
+                <ol>
+                    <li>Instala NetBeans con soporte para Java EE</li>
+                    <li>Instala tu servidor de aplicaciones (ej. GlassFish)</li>
+                    <li>Configura el servidor en NetBeans: Servicios → Servers → agregar servidor</li>
+                </ol>
+            </div>
+            
+            <div id="paso2">
+                <h3>4.3 Paso 2: Crear un nuevo proyecto</h3>
+                <ol>
+                    <li>File → New Project</li>
+                    <li>Selecciona "Java EE" → "Enterprise Application"</li>
+                    <li>Nombre del proyecto: "EjemploEJB"</li>
+                    <li>Selecciona tu servidor Java EE</li>
+                    <li>Marca las opciones para crear EJB Module y Web Application Module</li>
+                </ol>
+            </div>
+            
+            <div id="paso3">
+                <h3>4.4 Paso 3: Configurar la base de datos MySQL</h3>
+                <pre><code>create database ejemplo_ejb;
+use ejemplo_ejb;
+create table clientes (
+    id int primary key auto_increment,
+    nombre varchar(100),
+    email varchar(100)
+);</code></pre>
+                <p>Agrega el driver JDBC de MySQL a tu servidor de aplicaciones:
+                Copia mysql-connector-java-x.x.xx.jar al directorio lib de tu servidor</p>
+            </div>
+            
+            <div id="paso4">
+                <h3>4.5 Paso 4: Configurar DataSource en el servidor</h3>
+                <ol>
+                    <li>En GlassFish:
+                        <ul>
+                            <li>Abre la consola admin (normalmente en http://localhost:4848)</li>
+                            <li>Resources → JDBC → JDBC Connection Pools → New</li>
+                            <li>Nombre: "EjemploEJB_Pool"</li>
+                            <li>Resource Type: javax.sql.ConnectionPoolDataSource</li>
+                            <li>Database Vendor: MySQL</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <div id="paso5">
+                <h3>4.6 Paso 5: Crear una entidad JPA</h3>
+                <ol>
+                    <li>En el módulo EJB, haz clic derecho → New → Entity Class</li>
+                    <li>Nombre: "Cliente"</li>
+                    <li>Paquete: "com.ejemplo.ejb.entities"</li>
+                </ol>
+                <pre><code>@Entity
+@Table(name = "clientes")
+public class Cliente implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String nombre;
+    private String email;
+    
+}</code></pre>
+            </div>
+            
+            <div id="paso6">
+                <h3>4.7 Paso 6: Crear un Session Bean</h3>
+                <ol>
+                    <li>Haz clic derecho en el módulo EJB → New → Session Bean</li>
+                    <li>Nombre: "ClienteFacade"</li>
+                    <li>Paquete: "com.ejemplo.ejb.services"</li>
+                    <li>Tipo: Stateless</li>
+                </ol>
+                <pre><code>@Stateless
+public class ClienteFacade {
+
+    @PersistenceContext(unitName = "EjemploEJB_PU")
+    private EntityManager em;
+    
+    public void create(Cliente cliente) {
+        em.persist(cliente);
+    }
+    
+    public List&lt;Cliente&gt; findAll() {
+        return em.createQuery("select c from Cliente c", Cliente.class).getResultList();
+    }
+    
+    
+}</code></pre>
+            </div>
+            
+            <div id="paso7">
+                <h3>4.8 Paso 7: Configurar persistence.xml</h3>
+                <p>En src/main/resources/META-INF/persistence.xml:</p>
+                <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
+    &lt;persistence-unit name="EjemploEJB_PU" transaction-type="JTA"&gt;
+        &lt;jta-data-source&gt;jdbc/EjemploEJB&lt;/jta-data-source&gt;
+        &lt;class&gt;com.ejemplo.ejb.entities.Cliente&lt;/class&gt;
+        &lt;properties&gt;
+            &lt;property name="javax.persistence.schema-generation.database.action" value="update"/&gt;
+            &lt;property name="eclipselink.logging.level" value="FINE"/&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre>
+            </div>
+            
+            <div id="paso8">
+                <h3>4.9 Paso 8: Crear un cliente para el EJB (JSF o Servlet)</h3>
+                <p>Ejemplo con JSF:</p>
+                <ol>
+                    <li>En el módulo web, crea un Managed Bean:</li>
+                </ol>
+                <pre><code>@Named
+@RequestScoped
+public class ClienteBean {
+    
+    @EJB
+    private ClienteFacade clienteFacade;
+    
+    private Cliente cliente = new Cliente();
+    private List&lt;Cliente&gt; clientes;
+    
+    public void guardar() {
+        clienteFacade.create(cliente);
+        cliente = new Cliente();
+        clientes = null;
+    }
+    
+    public List&lt;Cliente&gt; getClientes() {
+        if(clientes == null) {
+            clientes = clienteFacade.findAll();
+        }
+        return clientes;
+    }
+    
+    
+}</code></pre>
+            </div>
+            
+            <div id="paso9">
+                <h3>4.10 Paso 9: Desplegar y probar</h3>
+                <ol>
+                    <li>Haz clic derecho en el proyecto principal → Deploy</li>
+                    <li>Abre tu navegador en la URL de la aplicación (ej. http://localhost:8080/EjemploEJB-web)</li>
+                    <li>Prueba a agregar clientes y ver la lista</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="mejores-practicas">
+            <h2>5. Mejores prácticas con EJB</h2>
+            <ol>
+                <li><strong>Separación de capas</strong>: Mantén la lógica de negocio en los EJBs y la presentación en los Managed Beans o Servlets</li>
+                <li><strong>Manejo de excepciones</strong>: Usa @ApplicationException para excepciones de negocio</li>
+                <li><strong>Transacciones</strong>: Aprovecha las transacciones declarativas con @TransactionAttribute</li>
+                <li><strong>Seguridad</strong>: Usa anotaciones como @RolesAllowed para seguridad declarativa</li>
+                <li><strong>Inyección de dependencias</strong>: Prefiere @EJB sobre JNDI lookup</li>
+                <li><strong>Pooling</strong>: Configura adecuadamente el pool de tus EJBs en el servidor</li>
+            </ol>
+        </section>
+        
+        <section id="rendimiento">
+            <h2>6. Consideraciones de rendimiento</h2>
+            <ol>
+                <li>Los Stateless EJBs son más escalables que los Stateful</li>
+                <li>Evita mantener estado innecesario en Stateful EJBs</li>
+                <li>Usa @Lock para controlar el acceso concurrente en Singleton EJBs</li>
+                <li>Considera el uso de @Asynchronous para operaciones largas</li>
+            </ol>
+        </section>
+        
+        <section id="alternativas">
+            <h2>7. EJB vs Alternativas modernas</h2>
+            <p>Mientras que EJB sigue siendo relevante en entornos empresariales, existen alternativas como:</p>
+            <ol>
+                <li><strong>Spring Framework</strong>: Ofrece características similares con mayor flexibilidad</li>
+                <li><strong>Micronaut/Quarkus</strong>: Para aplicaciones nativas de la nube</li>
+                <li><strong>CDI (Contexts and Dependency Injection)</strong>: Más ligero que EJB</li>
+            </ol>
+            <p>Sin embargo, EJB sigue siendo una opción robusta para aplicaciones Java EE/Jakarta EE empresariales que requieren transacciones distribuidas, seguridad integrada y otros servicios empresariales.</p>
+        </section>
+        
+        <section id="recursos">
+            <h2>8. Recursos adicionales</h2>
+            <ol>
+                <li>Documentación oficial de Jakarta EE: <a href="https://jakarta.ee/" target="_blank">https://jakarta.ee/</a></li>
+                <li>Tutoriales de Oracle sobre EJB: <a href="https://javaee.github.io/tutorial/partentbeans.html" target="_blank">https://javaee.github.io/tutorial/partentbeans.html</a></li>
+                <li>Documentación de GlassFish: <a href="https://javaee.github.io/glassfish/documentation" target="_blank">https://javaee.github.io/glassfish/documentation</a></li>
+                <li>Libro "Beginning Java EE 7" de Antonio Goncalves</li>
+            </ol>
+            <p>Esta implementación básica puede extenderse con características adicionales como:</p>
+            <ul>
+                <li>Servicios web SOAP/REST con JAX-WS/JAX-RS</li>
+                <li>Seguridad con JAAS</li>
+                <li>Mensajería con JMS y MDBs</li>
+                <li>Eventos CDI</li>
+                <li>Programación asíncrona</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
