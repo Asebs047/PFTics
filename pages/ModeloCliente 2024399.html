@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelo Cliente-Servidor en JDBC</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/modeloCliente_2024399.css">
+</head>
+<body>
+
+    <header>
+        <h1>Modelo Cliente-Servidor en JDBC</h1>
+    </header>
+
+    <nav>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#analisis">Análisis</a>
+        <a href="#curiosidades">Curiosidades</a>
+    </nav>
+
+    <main>
+        <section id="que-es">
+            <h2>¿Qué es el modelo cliente-servidor en JDBC?</h2>
+            <p>
+                El modelo cliente-servidor en <strong>JDBC (Java Database Connectivity)</strong> 
+                es un esquema de comunicación en el que el cliente (una aplicación Java) 
+                se conecta a un servidor de base de datos para enviar consultas y recibir resultados.
+            </p>
+            <p>
+                El cliente utiliza las clases y métodos de JDBC para establecer la conexión, 
+                enviar comandos SQL y procesar las respuestas. 
+                El servidor se encarga de ejecutar las consultas en la base de datos y devolver los datos solicitados.
+            </p>
+        </section>
+
+        <section id="analisis">
+            <h2>Análisis</h2>
+            <p>
+                El uso del modelo cliente-servidor en JDBC tiene varias ventajas:
+            </p>
+            <ul>
+                <li>Permite separar la lógica de negocio (en el cliente) de la gestión de datos (en el servidor).</li>
+                <li>Facilita el mantenimiento y escalabilidad del sistema.</li>
+                <li>Soporta conexiones con distintos tipos de bases de datos gracias a los controladores JDBC.</li>
+            </ul>
+            <p>
+                Sin embargo, también presenta retos:
+            </p>
+            <ul>
+                <li>Requiere una buena gestión de conexiones para evitar sobrecargar el servidor.</li>
+                <li>Puede tener problemas de latencia en redes lentas.</li>
+                <li>Depende de que el servidor de base de datos esté siempre disponible.</li>
+            </ul>
+        </section>
+
+        <section id="curiosidades">
+            <h2>Curiosidades</h2>
+            <ul>
+                <li>JDBC fue lanzado por primera vez en 1997 como parte de Java Development Kit (JDK) 1.1.</li>
+                <li>Existen diferentes tipos de controladores JDBC: Tipo 1 (puente JDBC-ODBC), Tipo 2, Tipo 3 y Tipo 4 (el más usado actualmente).</li>
+                <li>En aplicaciones modernas, JDBC suele combinarse con frameworks como Hibernate o Spring JDBC para facilitar el manejo de datos.</li>
+                <li>El modelo cliente-servidor no solo se usa en bases de datos, sino también en aplicaciones web y sistemas distribuidos.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
