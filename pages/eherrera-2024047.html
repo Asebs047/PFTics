@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Documentación Completa de Java Servlets</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Fuente Lexend -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #fff5f5;
+    overflow-x: hidden;
+  }
+  .sidebar {
+    background-color: white;
+    height: 100vh;
+    padding: 2.5rem 1.5rem;
+    border-right: 3px solid #e9a1bf;
+    position: fixed;
+    width: 280px;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgb(0 0 0 / 0.1);
+    z-index: 1000;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: #bb91c7;
+    border-radius: 10px;
+  }
+  .sidebar h4 {
+    text-align: center;
+    color: #230161;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: 1.5px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 12px 18px;
+    color: #444544;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: background-color 0.35s ease, color 0.35s ease;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+  .sidebar a:hover,
+  .sidebar a:focus {
+    background-color: #bb91c7;
+    color: white;
+    box-shadow: inset 4px 0 0 0 #77027c;
+    outline: none;
+  }
+  .content {
+    margin-left: 300px;
+    padding: 3.5rem 4rem;
+    max-width: 900px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 6px 25px rgb(219 165 191 / 0.25);
+    min-height: 100vh;
+  }
+  h1 {
+    color: #e84447;
+    font-weight: 900;
+    margin-bottom: 3.5rem;
+    font-size: 3.6rem;
+    letter-spacing: 3px;
+    text-shadow: 0 1px 6px rgb(232 68 71 / 0.6);
+  }
+  h2 {
+    color: #049cbd;
+    margin-top: 5rem;
+    margin-bottom: 2.8rem;
+    font-weight: 700;
+    font-size: 2.4rem;
+    border-bottom: 3px solid #049cbd;
+    padding-bottom: 0.4rem;
+  }
+  h3 {
+    color: #77027c;
+    margin-top: 3.5rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  p, ul, ol {
+    color: #444544;
+    line-height: 1.9;
+    font-size: 1.15rem;
+    margin-bottom: 2.3rem;
+  }
+  ul, ol {
+    padding-left: 30px;
+  }
+  pre {
+    background-color: #230161;
+    color: #fff5f5;
+    padding: 22px 24px;
+    border-radius: 15px;
+    position: relative;
+    overflow-x: auto;
+    font-size: 1rem;
+    margin-bottom: 3.8rem;
+    box-shadow: 0 4px 20px rgb(35 1 97 / 0.6);
+    font-family: 'Source Code Pro', monospace;
+  }
+  button.copy-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #049cbd;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 3px 7px rgb(4 156 189 / 0.7);
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  button.copy-btn:hover,
+  button.copy-btn:focus {
+    background-color: #e84447;
+    box-shadow: 0 4px 14px rgb(232 68 71 / 0.9);
+    outline: none;
+  }
+  button.copy-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
+  code {
+    font-family: 'Source Code Pro', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar" role="navigation" aria-label="Índice de contenido" tabindex="0">
+  <h4>📚 Contenido</h4>
+  <a href="#introduccion">Introducción</a>
+  <a href="#que-es-servlet">¿Qué es un Servlet?</a>
+  <a href="#ciclo-vida">Ciclo de Vida del Servlet</a>
+  <a href="#manejo-peticiones">Manejo de Peticiones HTTP</a>
+  <a href="#sesiones">Sesiones y Cookies</a>
+  <a href="#filtros">Filtros</a>
+  <a href="#configuracion">Configuración (Anotaciones y web.xml)</a>
+  <a href="#integracion-jsp">Integración con JSP</a>
+  <a href="#maven">Uso con Maven</a>
+  <a href="#despliegue">Despliegue</a>
+  <a href="#ejemplo-completo">Ejemplo Completo</a>
+  <a href="#conclusiones">Conclusiones</a>
+</div>
+
+<div class="content" role="main" tabindex="-1">
+  <h1 id="introduccion" tabindex="-1">Servlets Java: Documentación Completa y Detallada</h1>
+
+  <section id="que-es-servlet">
+    <h2>¿Qué es un Servlet?</h2>
+    <p>
+      Los <strong>Servlets</strong> son componentes Java que se ejecutan en un servidor web para procesar solicitudes y generar respuestas. 
+      Se utilizan para construir aplicaciones web dinámicas, donde el contenido de las páginas web se genera de forma automática basándose en la lógica de negocio.
+    </p>
+    <p>
+      A diferencia de las páginas HTML estáticas, los Servlets permiten crear contenido personalizado para cada usuario, manejar formularios, sesiones, conexiones a bases de datos, y mucho más.
+    </p>
+    <p>
+      Funcionan dentro de un <em>contenedor web</em> (como Apache Tomcat, GlassFish o Jetty) que gestiona la vida del Servlet y su interacción con las solicitudes HTTP.
+    </p>
+  </section>
+
+  <section id="ciclo-vida">
+    <h2>Ciclo de Vida del Servlet</h2>
+    <p>
+      El ciclo de vida de un Servlet es controlado por el contenedor web y consta de tres fases principales:
+    </p>
+    <ol>
+      <li><strong>Inicialización (<code>init()</code>):</strong> El servlet se carga en memoria y se prepara para recibir peticiones. Solo se ejecuta una vez.</li>
+      <li><strong>Procesamiento (<code>service()</code>):</strong> Por cada petición, el contenedor invoca el método <code>service()</code>, que determina qué método HTTP se usó (GET, POST, etc.) y llama al método adecuado como <code>doGet()</code> o <code>doPost()</code>.</li>
+      <li><strong>Destrucción (<code>destroy()</code>):</strong> Cuando el contenedor decide retirar el servlet (por reinicio o cierre), llama a este método para liberar recursos.</li>
+    </ol>
+    <p>Ejemplo simple con estos métodos:</p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+@Override
+public void init() throws ServletException {
+    // Código para inicializar recursos
+}
+
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+    resp.getWriter().println("&lt;h1&gt;Hola, servlet iniciado&lt;/h1&gt;");
+}
+
+@Override
+public void destroy() {
+    // Código para liberar recursos
+}
+    </code></pre>
+  </section>
+
+  <section id="manejo-peticiones">
+    <h2>Manejo de Peticiones HTTP</h2>
+    <p>
+      Los Servlets manejan las peticiones HTTP sobrescribiendo métodos como <code>doGet()</code>, <code>doPost()</code>, <code>doPut()</code>, <code>doDelete()</code>, etc., dependiendo del tipo de solicitud enviada por el cliente.
+    </p>
+    <p>
+      Por ejemplo, para manejar una petición <strong>GET</strong>, se debe implementar el método <code>doGet()</code>:
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+@Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("&lt;h1&gt;Respuesta a una petición GET&lt;/h1&gt;");
+}
+    </code></pre>
+    <p>
+      Para manejar una petición <strong>POST</strong>, se utiliza <code>doPost()</code>, que es comúnmente usada para procesar datos enviados desde formularios HTML:
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String nombre = request.getParameter("nombre");
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("&lt;h1&gt;Hola, " + nombre + "&lt;/h1&gt;");
+}
+    </code></pre>
+    <p>
+      Para capturar otros tipos de peticiones HTTP (PUT, DELETE, etc.), se pueden sobrescribir sus respectivos métodos <code>doPut()</code>, <code>doDelete()</code>, etc.
+    </p>
+  </section>
+
+  <section id="sesiones">
+    <h2>Sesiones y Cookies</h2>
+    <p>
+      El protocolo HTTP es <strong>sin estado</strong>, lo que significa que cada petición es independiente. Para mantener información de un usuario entre varias peticiones, los Servlets usan sesiones y cookies.
+    </p>
+    <p>
+      Una <strong>sesión</strong> es un objeto <code>HttpSession</code> que almacena información específica de un usuario mientras dure su interacción con la aplicación. Por ejemplo, datos de login, preferencias, carrito de compra, etc.
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+// Obtener o crear sesión
+HttpSession session = request.getSession();
+
+// Guardar atributo
+session.setAttribute("usuario", "Sebastián");
+
+// Obtener atributo
+String usuario = (String) session.getAttribute("usuario");
+    </code></pre>
+    <p>
+      Por otro lado, las <strong>cookies</strong> son pequeños archivos almacenados en el navegador del cliente que pueden usarse para identificar sesiones o guardar información simple.
+    </p>
+  </section>
+
+  <section id="filtros">
+    <h2>Filtros</h2>
+    <p>
+      Los filtros (<code>Filter</code>) permiten interceptar solicitudes y respuestas antes de que lleguen al Servlet o después de que lo procesan. Se usan para implementar funciones transversales como autenticación, autorización, logging, compresión, entre otros.
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+public class MiFiltro implements Filter {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        // Lógica antes de la petición
+        System.out.println("Antes del Servlet");
+
+        // Continuar la cadena de filtros y el servlet
+        chain.doFilter(request, response);
+
+        // Lógica después de la petición
+        System.out.println("Después del Servlet");
+    }
+}
+    </code></pre>
+    <p>
+      Los filtros se configuran en <code>web.xml</code> o mediante anotaciones, y pueden aplicarse a uno o varios servlets o URLs.
+    </p>
+  </section>
+
+  <section id="configuracion">
+    <h2>Configuración</h2>
+    <h3>Anotaciones (desde Servlet 3.0)</h3>
+    <p>
+      La forma moderna y recomendada para registrar Servlets es mediante anotaciones en la clase:
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+import jakarta.servlet.annotation.WebServlet;
+
+@WebServlet("/ruta")
+public class MiServlet extends HttpServlet {
+    // implementación
+}
+    </code></pre>
+    <h3>Archivo web.xml</h3>
+    <p>
+      Alternativamente, se puede usar el archivo <code>web.xml</code> para configurar el mapeo de Servlets:
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+&lt;servlet&gt;
+  &lt;servlet-name&gt;MiServlet&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;com.ejemplo.MiServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;MiServlet&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/ruta&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+    </code></pre>
+    <p>
+      Aunque es menos usado hoy día, es útil para configuraciones avanzadas y despliegues heredados.
+    </p>
+  </section>
+
+  <section id="integracion-jsp">
+    <h2>Integración con JSP</h2>
+    <p>
+      Los JSP permiten separar la lógica de presentación de la lógica de negocio. Un servlet procesa la petición y luego redirige o envía la información al JSP para que genere la vista.
+    </p>
+    <p>
+      Esto mejora la mantenibilidad y facilita que diseñadores web trabajen en la interfaz sin modificar Java.
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+// En Servlet
+request.setAttribute("usuario", "Sebastián");
+request.getRequestDispatcher("/saludo.jsp").forward(request, response);
+    </code></pre>
+    <p>En el JSP (<code>saludo.jsp</code>):</p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+&lt;h1&gt;Hola, &lt;%= request.getAttribute("usuario") %&gt;!&lt;/h1&gt;
+    </code></pre>
+  </section>
+
+  <section id="maven">
+    <h2>Uso con Maven</h2>
+    <p>
+      Maven es la herramienta estándar para gestionar dependencias, compilación y empaquetado de proyectos Java.  
+      Para usar Servlets, debes incluir la dependencia oficial de Jakarta Servlet API.
+    </p>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+&lt;dependency&gt;
+  &lt;groupId&gt;jakarta.servlet&lt;/groupId&gt;
+  &lt;artifactId&gt;jakarta.servlet-api&lt;/artifactId&gt;
+  &lt;version&gt;6.0.0&lt;/version&gt;
+  &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+    </code></pre>
+    <p>
+      El alcance <code>provided</code> indica que el servidor provee esta librería en tiempo de ejecución.
+    </p>
+  </section>
+
+  <section id="despliegue">
+    <h2>Despliegue</h2>
+    <p>
+      El resultado de tu proyecto Java web es un archivo empaquetado llamado <code>.war</code> (Web Archive).
+      Este archivo contiene tus servlets, JSPs, recursos y configuración.
+    </p>
+    <p>
+      Para desplegar:
+    </p>
+    <ol>
+      <li>Construye tu proyecto con Maven: <code>mvn clean package</code>.</li>
+      <li>Obtén el archivo <code>.war</code> generado en la carpeta <code>target</code>.</li>
+      <li>Coloca este archivo en el directorio de despliegue de tu servidor web (por ejemplo, Tomcat <code>webapps</code>).</li>
+      <li>Inicia el servidor o reinícialo.</li>
+      <li>Accede desde el navegador a la URL correspondiente (como <code>http://localhost:8080/tuApp</code>).</li>
+    </ol>
+  </section>
+
+  <section id="ejemplo-completo">
+    <h2>Ejemplo Completo: Servlet que usa JSP</h2>
+    <p>
+      Este ejemplo muestra un formulario HTML que envía datos a un servlet, que procesa y redirige a un JSP para mostrar el resultado.
+    </p>
+    <h3>Formulario HTML (<code>index.html</code>)</h3>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+&lt;form action="saludar" method="post"&gt;
+  &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" required /&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+    </code></pre>
+    <h3>Servlet (<code>SaludoServlet.java</code>)</h3>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+import java.io.IOException;
+
+@WebServlet("/saludar")
+public class SaludoServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String nombre = request.getParameter("nombre");
+        request.setAttribute("nombreUsuario", nombre);
+        request.getRequestDispatcher("/saludo.jsp").forward(request, response);
+    }
+}
+    </code></pre>
+    <h3>Página JSP (<code>saludo.jsp</code>)</h3>
+    <pre><button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar</button><code>
+&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Saludo&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola, &lt;%= request.getAttribute("nombreUsuario") %&gt;!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+  </section>
+
+  <section id="conclusiones">
+    <h2>Conclusiones</h2>
+    <p>
+      Los Servlets son una tecnología fundamental para construir aplicaciones web con Java, permitiendo crear servicios robustos y escalables.
+      Aunque existen frameworks más modernos, entender Servlets es clave para comprender cómo funciona el backend web en Java.
+    </p>
+    <p>
+      La integración con JSP y otras tecnologías permite separar responsabilidades y facilita el desarrollo colaborativo.
+      Aprender bien Servlets es una excelente base para luego dominar frameworks como Spring MVC, JSF o frameworks REST.
+    </p>
+  </section>
+</div>
+
+  <!-- Footer -->
+  <footer style="margin-top: 4rem; padding: 2rem 0; background-color: #230161; color: white; text-align: center; font-weight: 600; font-family: 'Lexend', sans-serif;">
+    <p>© 2025 Documentación Java Servlets. Creado por Sebastián Herrera - 2024047.</p>
+    <p>IN5CV - PE5BV</p>
+  </footer>
+</div> <!-- cierre content -->
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function copyCode(button) {
+    const code = button.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      button.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff;margin-right:8px;"><path d="M9 16.2l-3.5-3.5L4 14l5 5 12-12-1.4-1.4L9 16.2z"/></svg> ¡Copiado!';
+      setTimeout(() => {
+        button.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff;margin-right:8px;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar';
+      }, 2200);
+    });
+  }
+</script>
+
+</body>
+</html>
