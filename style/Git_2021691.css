@@ -1,0 +1,134 @@
+/* En tu archivo estilos.css */
+
+body {
+    font-family: sans-serif;
+    background-color: bisque; /* Color de fondo ligero */
+}
+
+/* EN TU ARCHIVO estilos.css */
+
+.contenedor-principal {
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    
+    /* ANTES: margin: 40px auto; */
+    /* AHORA: */
+    margin: 40px 0; /* 40px arriba/abajo, 0 en los lados */
+}
+
+.contenido {
+    flex: 0 0 auto; /* Ocupa 2/3 del espacio disponible */
+    background-color: #e9a1bf;
+    padding: 0px;
+    width: 66.66666667%;
+}
+
+.barra-lateral {
+    flex: 0 0 auto; /* Ocupa 1/3 del espacio disponible */
+    background-color:#e9a1bf;
+    padding: 50px;
+    width: 33.33333333%;
+}
+/* En tu archivo estilos.css */
+
+/* AHORA (anchos iguales) */
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ambas columnas ocupan la misma fracción de espacio */
+    gap: 30px;
+}
+
+/* El CSS para .contenido y .barra-lateral no necesita cambios */
+.contenido {
+    background-color: #e9a1bf;
+    padding: 0px;
+}
+
+.barra-lateral {
+    background-color: #e9a1bf;
+    padding: 25px;
+}
+/* En tu archivo estilos.css */
+
+/* EN TU ARCHIVO estilos.css */
+
+.contenedor-principal {
+    display: flex;
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    
+    /* Cambiamos 'auto' por valores específicos */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 3%; /* Por ejemplo, un 5% de la anchura de la pantalla */
+    margin-right: auto; /* Dejamos este en auto para que ocupe el espacio restante */
+}
+
+/* El CSS para .contenido y .barra-lateral no necesita cambios */
+.contenido {
+    background-color: #ffffff;
+    padding: 25px;
+}
+
+.barra-lateral {
+    background-color: #eef0f3;
+    padding: 25px;
+}
+
+
+
+
+
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 3; }
+}
+
+.image {
+    animation: aparecer 1s ease-in;
+    display: block;         
+    margin: 0 auto; 
+    width :700px;
+    height: 400px;       
+}
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap');
+.body{
+    margin-left: 180px;
+    margin-right: 180px;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.5;
+    word-wrap: break-word;
+    animation: aparecer 1s ease-in;
+    background-color: #f8f9fa;
+    font-family: 'Lexend', Arial, sans-serif;
+    
+}
+
+.titulo{
+    text-align: center;
+    text-align: justify;
+}
+
+.indice a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.cod{
+    font-size: .8em;
+    color: #d63384;
+    word-wrap: break-word;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.list{
+    color: #003366 ;
+}
+:not(pre)>code[class*=language-], pre[class*=language-] {
+    background: #272822;
+}
