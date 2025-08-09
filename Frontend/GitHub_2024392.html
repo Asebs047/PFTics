@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de GitHub</title>
+    <link rel="stylesheet" href="/style/GitHub_2024392.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.eTCbdR_AFzbqHMPXhrJWUQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="GitHub Logo" class="github-logo">
+            <h1>El Universo de GitHub</h1>
+            <p class="subtitle">Tu guía definitiva para dominar el control de versiones</p>
+        </div>
+        <div class="scroll-indicator">▼</div>
+    </header>
+
+    <nav class="sticky-nav">
+        <ul>
+            <li><a href="#que-es">¿Qué es?</a></li>
+            <li><a href="#conceptos">Conceptos</a></li>
+            <li><a href="#flujo">Flujo de trabajo</a></li>
+            <li><a href="#comandos">Comandos</a></li>
+            <li><a href="#colaboracion">Colaboración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="que-es" class="card intro-section">
+            <h2>¿Qué es GitHub?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>GitHub es una plataforma de desarrollo colaborativo que utiliza el sistema de control de versiones Git. Es como una red social para programadores, donde puedes alojar proyectos, colaborar con otros desarrolladores y contribuir a proyectos de código abierto.</p>
+                    
+                    <div class="analogy">
+                        <h3>Imagínalo así:</h3>
+                        <p>GitHub es como un <strong>álbum de fotos digital</strong> para tu código:</p>
+                        <ul>
+                            <li>Cada "foto" es una versión de tu proyecto</li>
+                            <li>Puedes volver a versiones anteriores cuando quieras</li>
+                            <li>Puedes compartirlo con quien desees</li>
+                            <li>Otros pueden sugerir mejoras</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="image-placeholder">
+                    <img src="https://elc.github.io/blog/images/git-guide-with-visual-interface/image_4.png" alt="Interfaz de GitHub">
+                </div>
+            </div>
+        </section>
+
+        <section id="conceptos" class="card concepts-section">
+            <h2>Conceptos Fundamentales</h2>
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <div class="concept-icon">📦</div>
+                    <h3>Repositorio (Repo)</h3>
+                    <p>Es el proyecto completo, con todos sus archivos y el historial de cambios. Puede ser público o privado.</p>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">🌿</div>
+                    <h3>Rama (Branch)</h3>
+                    <p>Versión paralela del proyecto donde puedes hacer cambios sin afectar la versión principal.</p>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">💾</div>
+                    <h3>Commit</h3>
+                    <p>Un "guardado" de los cambios realizados, con un mensaje que explica qué se modificó.</p>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">🔄</div>
+                    <h3>Pull Request (PR)</h3>
+                    <p>Solicitud para incorporar cambios de una rama a otra, usualmente para revisión.</p>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">🎯</div>
+                    <h3>Issue</h3>
+                    <p>Problema, mejora o tarea que necesita atención en el proyecto.</p>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">🤝</div>
+                    <h3>Fork</h3>
+                    <p>Copia personal de un repositorio que puedes modificar sin afectar el original.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="flujo" class="card workflow-section">
+            <h2>Flujo de Trabajo en GitHub</h2>
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Clonar el repositorio</h3>
+                    <p>Copia el proyecto a tu máquina local:</p>
+                    <div class="code-block">
+                        <code>git clone https://github.com/usuario/repositorio.git</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Crear una rama</h3>
+                    <p>Trabaja en cambios aislados:</p>
+                    <div class="code-block">
+                        <code>git checkout -b nombre-de-tu-rama</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Hacer commits</h3>
+                    <p>Guarda tus cambios con mensajes descriptivos:</p>
+                    <div class="code-block">
+                        <code>git commit -m "Explicación de los cambios"</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Subir cambios</h3>
+                    <p>Envía tu rama al repositorio remoto:</p>
+                    <div class="code-block">
+                        <code>git push origin nombre-de-tu-rama</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Crear Pull Request</h3>
+                    <p>Solicita que revisen e integren tus cambios en la rama principal.</p>
+                </div>
+            </div>
+            <div class="workflow-image">
+                <img src="https://www.nicepng.com/png/detail/955-9558351_github-branching-workflow-diagram-git-flow.png" alt="Diagrama de flujo de GitHub">
+            </div>
+        </section>
+
+        <section id="comandos" class="card commands-section">
+            <h2>Comandos Git Esenciales</h2>
+            <div class="command-tables">
+                <div class="command-table">
+                    <h3>Configuración Inicial</h3>
+                    <table>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td><code>git config --global user.name "Tu Nombre"</code></td>
+                            <td>Establece tu nombre para los commits</td>
+                        </tr>
+                        <tr>
+                            <td><code>git config --global user.email "tu@email.com"</code></td>
+                            <td>Establece tu email para los commits</td>
+                        </tr>
+                        <tr>
+                            <td><code>git init</code></td>
+                            <td>Inicializa un nuevo repositorio Git</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="command-table">
+                    <h3>Trabajo Diario</h3>
+                    <table>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td><code>git status</code></td>
+                            <td>Muestra el estado de los archivos</td>
+                        </tr>
+                        <tr>
+                            <td><code>git add nombre-archivo</code></td>
+                            <td>Añade cambios al área de staging</td>
+                        </tr>
+                        <tr>
+                            <td><code>git add .</code></td>
+                            <td>Añade todos los cambios</td>
+                        </tr>
+                        <tr>
+                            <td><code>git commit -m "mensaje"</code></td>
+                            <td>Guarda los cambios con un mensaje</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="command-table">
+                    <h3>Ramas y Colaboración</h3>
+                    <table>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td><code>git branch</code></td>
+                            <td>Lista todas las ramas</td>
+                        </tr>
+                        <tr>
+                            <td><code>git checkout nombre-rama</code></td>
+                            <td>Cambia a otra rama</td>
+                        </tr>
+                        <tr>
+                            <td><code>git merge nombre-rama</code></td>
+                            <td>Fusiona una rama con la actual</td>
+                        </tr>
+                        <tr>
+                            <td><code>git pull</code></td>
+                            <td>Descarga cambios y fusiona</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="colaboracion" class="card collaboration-section">
+            <h2>Colaboración en GitHub</h2>
+            <div class="collab-content">
+                <div class="collab-text">
+                    <h3>El poder de trabajar en equipo</h3>
+                    <p>GitHub brilla cuando se trata de colaboración. Aquí algunas características clave:</p>
+                    <ul>
+                        <li><strong>Code Review:</strong> Revisa cambios línea por línea antes de fusionarlos</li>
+                        <li><strong>Issues:</strong> Sistema de seguimiento de tareas y errores</li>
+                        <li><strong>Projects:</strong> Tableros Kanban para organizar el trabajo</li>
+                        <li><strong>Actions:</strong> Automatización de procesos (CI/CD)</li>
+                        <li><strong>Wiki:</strong> Documentación integrada para tu proyecto</li>
+                    </ul>
+                    <div class="pro-tip">
+                        <h4>Consejo Profesional</h4>
+                        <p>Antes de contribuir a un proyecto open source, revisa su archivo CONTRIBUTING.md que suele contener las pautas para colaborar.</p>
+                    </div>
+                </div>
+                <div class="collab-image">
+                    <img src="https://i.pinimg.com/originals/87/46/b8/8746b8383a27697f09916d4f73987767.png" alt="Colaboración en GitHub">
+                </div>
+            </div>
+        </section>
+
+        <section class="card resources-section">
+            <h2>Recursos Adicionales</h2>
+            <div class="resources-grid">
+                <a href="https://docs.github.com/es/get-started/start-your-journey/about-github-and-git" class="resource-card">
+                    <h3>Documentación Oficial</h3>
+                    <p>La fuente más confiable para aprender GitHub</p>
+                </a>
+                <a href="https://git-scm.com/book/es/v2" class="resource-card">
+                    <h3>Pro Git (Libro)</h3>
+                    <p>Libro gratuito sobre Git, la base de GitHub</p>
+                </a>
+                <a href="https://dcreations.es/blog/git/git-para-principiantes-tutorial-paso-a-paso-espana" class="resource-card">
+                    <h3>Tutorial Interactivo</h3>
+                    <p>Aprende GitHub con una guía paso a paso de Git para principiantes</p>
+                </a>
+                <a href="https://education.github.com/git-cheat-sheet-education.pdf" class="resource-card">
+                    <h3>Cheat Sheet</h3>
+                    <p>Lista rápida de comandos esenciales</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Creado por Wilson Florian - 2024392 🐻‍❄️</p>
+        </div>
+    </footer>
+</body>
+</html>
