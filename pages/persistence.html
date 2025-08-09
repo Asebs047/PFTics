@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistence.xml — DB / Persistencia (Guía)</title>
+    <link rel="stylesheet" href="../style/persistence_2024442.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1><i class="fas fa-database"></i> DB / Persistencia — <span class="badge">persistence.xml</span></h1>
+                <p>Guía práctica y ejemplo del archivo <code>persistence.xml</code> (JPA) — qué es, dónde va, y las
+                    configuraciones clave.</p>
+            </div>
+        </header>
+
+        <nav>
+            <a href="#intro"><i class="fas fa-info-circle"></i> Introducción</a>
+            <a href="#ubicacion"><i class="fas fa-folder-open"></i> Ubicación</a>
+            <a href="#estructura"><i class="fas fa-sitemap"></i> Estructura</a>
+            <a href="#ejemplo"><i class="fas fa-file-code"></i> Ejemplo</a>
+            <a href="#propiedades"><i class="fas fa-cogs"></i> Propiedades</a>
+            <a href="#consejos"><i class="fas fa-lightbulb"></i> Consejos</a>
+        </nav>
+
+        <section id="intro" class="card">
+            <h2><i class="fas fa-info-circle"></i> Introducción</h2>
+            <p>En aplicaciones Java que usan JPA (Java Persistence API), <code>persistence.xml</code> es el descriptor
+                de configuración que describe las <em>persistence units</em>. Cada unidad define cómo la aplicación se
+                conecta y usa un proveedor JPA para mapear entidades a la base de datos.</p>
+        </section>
+
+        <section id="ubicacion" class="card">
+            <h2><i class="fas fa-folder-open"></i> Ubicación</h2>
+            <ul>
+                <li><strong>Ubicación estándar:</strong> <code>META-INF/persistence.xml</code> dentro del classpath.
+                </li>
+                <li><strong>Visibilidad:</strong> El empaquetado determina cómo se descubren las unidades de
+                    persistencia.</li>
+            </ul>
+        </section>
+
+        <section id="estructura" class="card">
+            <h2><i class="fas fa-sitemap"></i> Estructura principal</h2>
+            <div class="grid">
+                <div>
+                    <ul>
+                        <li><code>&lt;persistence&gt;</code> — raíz con versión.</li>
+                        <li><code>&lt;persistence-unit&gt;</code> — define una unidad de persistencia.</li>
+                        <li><code>&lt;provider&gt;</code> — clase del proveedor JPA.</li>
+                        <li><code>&lt;jta-data-source&gt;</code> o <code>&lt;non-jta-data-source&gt;</code>.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><code>&lt;class&gt;</code> — entidades.</li>
+                        <li><code>&lt;mapping-file&gt;</code> — archivos ORM externos.</li>
+                        <li><code>&lt;properties&gt;</code> — configuración extra.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ejemplo" class="card">
+            <h2><i class="fas fa-file-code"></i> Ejemplo de persistence.xml</h2>
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence ... version="2.2"&gt;
+  &lt;persistence-unit name="miUnidad" transaction-type="RESOURCE_LOCAL"&gt;
+    &lt;provider&gt;org.hibernate.jpa.HibernatePersistenceProvider&lt;/provider&gt;
+    &lt;class&gt;com.miempresa.modelo.Cliente&lt;/class&gt;
+    &lt;properties&gt;
+      &lt;property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/&gt;
+    &lt;/properties&gt;
+  &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+        </section>
+
+        <section id="propiedades" class="card">
+            <h2><i class="fas fa-cogs"></i> Propiedades comunes</h2>
+            <ul>
+                <li><strong>javax.persistence.jdbc.*</strong> — Conexión DB.</li>
+                <li><strong>hibernate.dialect</strong> — Dialecto SQL.</li>
+                <li><strong>hibernate.hbm2ddl.auto</strong> — Esquema.</li>
+            </ul>
+        </section>
+
+        <section id="consejos" class="card">
+            <h2><i class="fas fa-lightbulb"></i> Consejos prácticos</h2>
+            <ul>
+                <li>Usa JTA en contenedores.</li>
+                <li>No uses <code>create</code> en producción.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p><i class="fas fa-code"></i> Guía creada para comprender <code>persistence.xml</code> en JPA.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
