@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="../style/hibernate 2024505.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/atom-one-dark.min.css">
+    <title>Configuración de Hibernate en tu Proyecto Web</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-title">
+            Configuración de Hibernate
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li><a href="#introduccion">1. Introducción</a></li>
+                <li><a href="#dependencies">2. Dependencias</a></li>
+                <li><a href="#persistence-xml">3. Archivo persistence.xml</a>
+                    <ul class="sub-nav-list">
+                        <li><a href="#unidad-persistencia">3.1. Unidad de Persistencia</a></li>
+                        <li><a href="#propiedades">3.2. Propiedades de Conexión</a></li>
+                    </ul>
+                </li>
+                <li><a href="#configuracion-hibernate">4. Configuración Detallada de Hibernate</a></li>
+                <li><a href="#ejemplo-codigo">5. Código de Utilidad</a></li>
+                <li><a href="#recomendaciones">6. Recomendaciones</a></li>
+                <li><a href="#autor">7. Autor</a></li>
+                <li><a href="../MenuDatabase.html">Volver</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+
+            <section id="introduccion" class="content-section">
+                <h2>1. Introducción a Hibernate</h2>
+                <p>
+                    <strong>Hibernate</strong> eHibernate es un framework de mapeo objeto-relacional (Object-Relational Mapping – ORM) para el lenguaje de programación Java. Su principal función es simplificar 
+                    la interacción entre una aplicación Java y una base de datos relacional, permitiendo que las clases y objetos de Java se asocien de forma directa con las tablas y registros de la base de datos.
+                    En lugar de escribir consultas SQL manuales para operaciones como insertar, actualizar, eliminar o consultar datos, Hibernate traduce automáticamente las acciones realizadas sobre objetos en 
+                    instrucciones SQL equivalentes. Esto no solo ahorra tiempo, sino que también mejora la legibilidad y el mantenimiento del código.
+                    Además, Hibernate gestiona de forma automática aspectos complejos como:
+                    <p>La persistencia de los objetos.</p>
+                    <p>El manejo de relaciones entre tablas (uno a uno, uno a muchos, muchos a muchos).</p>
+                    <p>La caché para optimizar el rendimiento.</p>
+                    <p>La compatibilidad con diferentes motores de bases de datos sin necesidad de modificar el código Java.</p>
+                    <p>Gracias a estas características, Hibernate permite desarrollar aplicaciones más rápidas, seguras y fáciles 
+                        de mantener, reduciendo la dependencia directa del SQL y brindando un mayor enfoque en la lógica de negocio.</p>
+
+                </p>
+                <p>
+                    A continuación, se detalla paso a paso cómo configurar Hibernate en un proyecto web.
+                </p>
+            </section>
+            
+            <hr>
+
+            <section id="dependencies" class="content-section">
+                <h2>2. Dependencias</h2>
+                <p>
+                    Asegúrate de que tu archivo <code>pom.xml</code> (si usas Maven) o <code>build.gradle</code> incluya las dependencias necesarias. Necesitarás el conector JDBC para tu base de datos (en este caso, MySQL) y la librería de Hibernate. Ejemplo: 
+                </p>
+                <div class="code-container">
+                    <pre><code class="language-xml">
+&lt;!-- Driver de MySQL --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;
+    &lt;version&gt;8.0.33&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Hibernate --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;5.6.15.Final&lt;/version&gt;
+&lt;/dependency&gt;
+                    </code></pre>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section id="persistence-xml" class="content-section">
+                <h2>3. El Archivo <code>persistence.xml</code></h2>
+                <p>
+                    El archivo de configuración principal de la persistencia se encuentra en <code>src/main/resources/META-INF/persistence.xml</code>. Este archivo define la <strong>Unidad de Persistencia</strong> y las propiedades de conexión.
+                    <strong>Ejemplo del persistence.xml: </strong>
+                </p>
+    <div class="code-container">
+        <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"&gt;
+
+    &lt;!-- Define Persistence Unit --&gt;
+    &lt;persistence-unit name="LibreriaPU" transaction-type="RESOURCE_LOCAL"&gt;
+        &lt;provider&gt;org.hibernate.jpa.HibernatePersistenceProvider&lt;/provider&gt;
+
+        &lt;!-- Clases de Entidad --&gt;
+        &lt;class&gt;model.Cliente&lt;/class&gt;
+        &lt;class&gt;model.Productos&lt;/class&gt;
+        &lt;!-- ... y todas tus clases de modelo --&gt;
+
+        &lt;properties&gt;
+            &lt;!-- Configuración de JDBC --&gt;
+            &lt;property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/proyecto_final_db?useSSL=false"/&gt;
+            &lt;property name="javax.persistence.jdbc.user" value="quintov"/&gt;
+            &lt;property name="javax.persistence.jdbc.password" value="admin"/&gt;
+            &lt;property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/&gt;
+
+            &lt;!-- Configuración de Hibernate --&gt;
+            &lt;property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" /&gt;
+            &lt;property name="hibernate.hbm2ddl.auto" value="update" /&gt;
+            &lt;property name="hibernate.show_sql" value="true"/&gt;
+            &lt;property name="hibernate.format_sql" value="true"/&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+
+&lt;/persistence&gt;
+        </code></pre>
+    </div>
+
+    <h3 id="unidad-persistencia">3.1. Unidad de Persistencia y Clases de Entidad</h3>
+    <p>
+        La etiqueta <code>&lt;persistence-unit&gt;</code> define un grupo de clases de entidad para un origen de datos específico. El atributo <code>name="LibreriaPU"</code> es el identificador que usarás en tu código Java. Cada clase de modelo debe ser listada con la etiqueta <code>&lt;class&gt;</code> para ser reconocida por Hibernate.
+    </p>
+
+    <h3 id="propiedades">3.2. Configuración de Conexión (Propiedades)</h3>
+    <p>
+        La sección <code>&lt;properties&gt;</code> es donde se personaliza el comportamiento de la base de datos y de Hibernate. Se divide en dos partes: las propiedades de **JDBC**, que manejan la conexión a la base de datos, y las propiedades específicas de **Hibernate**, que controlan su comportamiento interno.
+    </p>
+
+</section>
+
+<hr>
+
+<section id="configuracion-hibernate" class="content-section">
+    <h2>4. Configuración Detallada de Hibernate</h2>
+    <p>
+        Las siguientes propiedades son cruciales para el funcionamiento de Hibernate. Aquí se explica en detalle qué hace cada una.
+    </p>
+    <div class="code-container">
+        <pre><code class="language-xml">
+&lt;!-- Configuración de Hibernate --&gt;
+&lt;property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" /&gt;
+&lt;property name="hibernate.hbm2ddl.auto" value="update" /&gt;
+&lt;property name="hibernate.show_sql" value="true"/&gt;
+&lt;property name="hibernate.format_sql" value="true"/&gt;
+&lt;property name="hibernate.use_sql_comments" value="true"/&gt;
+        </code></pre>
+    </div>
+    <ul>
+    <li>
+        <strong>hibernate.dialect:</strong> 
+        Le indica a Hibernate qué dialecto SQL debe utilizar. Es fundamental para que Hibernate genere sentencias SQL optimizadas para tu base de datos específica (en este caso, MySQL 8).
+    </li>
+    <li>
+        <strong>hibernate.hbm2ddl.auto:</strong>
+        Define la estrategia de interacción con el esquema de la base de datos.
+        <ul>
+            <li><strong>update:</strong> Actualiza el esquema de la base de datos para que coincida con tus clases de entidad. Es útil en desarrollo, pero no recomendado en producción.</li>
+            <li><strong>create:</strong> Elimina el esquema anterior y crea uno nuevo en cada inicio.</li>
+            <li><strong>validate:</strong> Valida que el esquema de la base de datos coincida con las clases de entidad.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>hibernate.show_sql:</strong>
+        Cuando se establece en true, Hibernate imprime todas las sentencias SQL que ejecuta en la consola. Esto es muy útil para la depuración y para entender qué está haciendo el ORM.
+    </li>
+    <li>
+        <strong>hibernate.format_sql:</strong>
+        Si se activa (true), las sentencias SQL impresas en la consola se formatearán con saltos de línea y sangría para una mejor legibilidad.
+    </li>
+    <li>
+        <strong>hibernate.use_sql_comments:</strong>
+        Con un valor de true, Hibernate añade comentarios a las sentencias SQL para indicar la razón de cada consulta, lo que proporciona más contexto durante la depuración.
+    </li>
+</ul>
+</section>
+
+
+            <section id="ejemplo-codigo" class="content-section">
+                <h2>5. Código de Utilidad para la Conexión</h2>
+                <p>
+                    Para obtener una instancia de <code>EntityManager</code>, puedes crear una clase de utilidad que gestione el <code>EntityManagerFactory</code>.
+                </p>
+                <div class="code-container">
+                    <pre><code class="language-java">
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class UtilJPA {
+    private static EntityManagerFactory factory;
+
+    public static EntityManager getEntityManager() {
+        if (factory == null) {
+            // El nombre debe coincidir con el del persistence-unit
+            factory = Persistence.createEntityManagerFactory("LibreriaPU");
+        }
+        return factory.createEntityManager();
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section id="recomendaciones" class="content-section">
+                <h2>6. Recomendaciones</h2>
+                <p>
+                    <ul>
+                        <li><strong>Versiones</strong>: Asegúrate de que las versiones de Hibernate y el driver de MySQL sean compatibles.</li>
+                        <li><strong>Producción</strong>: En un entorno de producción, es recomendable no usar <code>hibernate.hbm2ddl.auto=update</code>, ya que puede modificar el esquema de la base de datos de forma no deseada.</li>
+                        <li><strong>Revisión de dependencias</strong>: Comprueba que no haya conflictos de librerías.</li>
+                    </ul>
+                </p>
+
+             <section id="autor" class="content-section">
+                <h2>7. Autor</h2>
+                <p>
+                    <ul>
+                        <li><strong>Nombre</strong>: Eddy Daniel Tucubal Sacbajá.</li>
+                        <li><strong>Carnet</strong>: 2024505.</li>
+                        <li><strong>Código Técnico</strong>: IN5CV.</li>
+                    </ul>
+                </p>
+
+            </section>
+
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+</html>
