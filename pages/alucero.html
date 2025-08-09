@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patrón DAO en Java - Explicación y Ejemplo</title>
+<link rel="stylesheet" href="../style/2021211.css">
+
+</head>
+<body>
+
+    <a class="btn-regresar" href="../pages/Backend.html" aria-label="Regresar">← Regresar</a>
+
+    <div class="container">
+    <header>
+        <h1>Data Access Object – Una forma clara y estructurada de manejar la persistencia de datos</h1>
+        <p>Explorando el patrón DAO en proyectos Java con capas bien definidas</p>
+    </header>
+
+    <nav id="indice" aria-label="Índice de secciones">
+        <a href="#que-es">¿Qué es el Patrón DAO?</a>
+        <a href="#para-que-sirve">¿Para qué sirve?</a>
+        <a href="#ventajas">Ventajas y Desventajas</a>
+        <a href="#paso-paso">Paso a paso para aplicarlo en Java</a>
+        <a href="#ejemplo-codigo">Ejemplo de código</a>
+        <a href="#capa-servicio">¿Qué es la capa de servicio?</a>
+        <a href="#capa-intermedia">Capa intermedia (Servlet)</a>
+    </nav>
+
+    <main class="content">
+
+        <section id="que-es" class="forma-blanca">
+        <h2>¿Qué es el Patrón DAO?</h2>
+        <p>El patrón Data Access Object (DAO) es una estrategia que permite separar la lógica de acceso a datos de la lógica de negocio, facilitando así el mantenimiento, pruebas y escalabilidad de las aplicaciones.</p>
+        <img src="../image/DAO-1.png" alt="DAO-1" class="imagen-placeholder" />
+        </section>
+
+        <section id="para-que-sirve" class="forma-blanca">
+        <h2>¿Para qué sirve?</h2>
+        <ul>
+            <li>Abstraer el acceso a la fuente de datos, permitiendo cambiar la implementación sin afectar la lógica de negocio.</li>
+            <li>Centralizar la gestión de datos para mejorar su mantenimiento.</li>
+            <li>Facilitar pruebas unitarias y de integración al desacoplar componentes.</li>
+        </ul>
+        <img src="../image/DAO-2.png" alt="DAO-1" class="imagen-placeholder" />
+        </section>
+
+
+        <section id="ventajas" class="forma-blanca">
+        <h2>Ventajas y Desventajas</h2>
+        <ul>
+            <li><strong>Ventajas:</strong> Modularidad, reutilización, mantenimiento sencillo y mejora en la gestión de transacciones.</li>
+            <li><strong>Desventajas:</strong> Puede agregar una capa extra y complejidad inicial al proyecto.</li>
+        </ul>
+        </section>
+
+        <section id="paso-paso" class="forma-blanca">
+        <h2>Paso a paso para aplicarlo en Java</h2>
+        <ol>
+            <li>Definir las interfaces DAO con los métodos necesarios (CRUD, consultas, etc.).</li>
+            <li>Crear clases que implementen esas interfaces con la lógica de acceso a base de datos.</li>
+            <li>Utilizar la capa DAO desde la lógica de negocio o servicio.</li>
+            <li>Implementar el manejo de transacciones y excepciones adecuadamente.</li>
+        </ol>
+        </section>
+
+        <section id="ejemplo-codigo" class="forma-codigo">
+        <h3>Ejemplo de código</h3>
+
+        <h4>Usuario.java (modelo):</h4>
+        <code>
+            <span class="keyword">package</span> <span class="type">model</span>;<br><br>
+
+            <span class="keyword">import</span> <span class="type">javax.persistence.Column</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.Entity</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.GeneratedValue</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.GenerationType</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.Id</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.Table</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.OneToMany</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.persistence.CascadeType</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.util.List</span>;<br><br>
+
+            <span class="comment">/**</span><br>
+            <span class="comment"> *</span><br>
+            <span class="comment"> * @author Lu0</span><br>
+            <span class="comment"> */</span><br>
+            <span class="keyword">@Entity</span><br>
+            <span class="keyword">@Table(name = </span><span class="type">"Usuarios"</span><span class="keyword">)</span><br>
+            <span class="keyword">public class</span> <span class="type">Usuario</span> {<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">@Id</span><br>
+            &nbsp;&nbsp;<span class="keyword">@GeneratedValue(strategy = GenerationType.IDENTITY)</span><br>
+            &nbsp;&nbsp;<span class="type">private int</span> idUsuario;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"nombre"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> nombre;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"apellido"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> apellido;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"telefono"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> telefono;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"correo"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> correo;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"direccion"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> direccion;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"genero"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> genero;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"rol"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> rol;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"estado"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> estado;<br>
+            &nbsp;&nbsp;<span class="keyword">@Column(name = </span><span class="type">"contrasena"</span><span class="keyword">)</span><br>
+            &nbsp;&nbsp;<span class="type">private String</span> contrasena;<br>
+            &nbsp;&nbsp;<span class="comment">// Relación uno a muchos con CarritoProductos</span><br>
+            &nbsp;&nbsp;<span class="keyword">@OneToMany(mappedBy = </span><span class="type">"usuario"</span><span class="keyword">, cascade = CascadeType.ALL)</span><br>
+            &nbsp;&nbsp;<span class="type">private List&lt;Carrito&gt;</span> carritos;<br>
+            &nbsp;&nbsp;<span class="comment">// Relación uno a muchos con Facturas</span><br>
+            &nbsp;&nbsp;<span class="keyword">@OneToMany(mappedBy = </span><span class="type">"usuario"</span><span class="keyword">, cascade = CascadeType.ALL)</span><br>
+            &nbsp;&nbsp;<span class="type">private List&lt;Factura&gt;</span> facturas;<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="type">Usuario()</span> { }<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="type">Usuario</span>(int idUsuario, String nombre, String apellido, String telefono, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String correo, String direccion, String genero, String rol, String estado, String contrasena) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.idUsuario = idUsuario;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.nombre = nombre;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.apellido = apellido;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.telefono = telefono;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.correo = correo;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.direccion = direccion;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.genero = genero;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.rol = rol;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.estado = estado;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.contrasena = contrasena;<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </code>
+
+        <h4>UsuarioDAO.java (DAO):</h4>
+        <code>
+            <span class="keyword">package</span> <span class="type">dao</span>;<br><br>
+
+            <span class="keyword">import</span> <span class="type">java.sql.Connection</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.sql.PreparedStatement</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.sql.ResultSet</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.sql.SQLException</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.util.ArrayList</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.util.List</span>;<br>
+            <span class="keyword">import</span> <span class="type">model.Usuario</span>;<br><br>
+            <span class="comment">/**</span><br>
+            <span class="comment"> *</span><br>
+            <span class="comment"> * @author Lu0</span><br>
+            <span class="comment"> */</span><br>
+            <span class="keyword">public class</span> <span class="type">UsuarioDAO</span> {<br>
+            &nbsp;&nbsp;<span class="keyword">private</span> <span class="type">Connection</span> conexion;<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="type">UsuarioDAO</span>() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; this.conexion = ConexionBD.getConexion();<br>
+            &nbsp;&nbsp;}<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">public List&lt;Usuario&gt; listarTodos()</span> <span class="keyword">throws</span> <span class="type">SQLException</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; List&lt;Usuario&gt; usuarios = <span class="keyword">new</span> ArrayList&lt;&gt;();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="type">String</span> sql = <span class="type">"SELECT * FROM Usuarios"</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">try</span> (PreparedStatement stmt = conexion.prepareStatement(sql);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ResultSet rs = stmt.executeQuery()) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span> (rs.next()) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usuario usuario = <span class="keyword">new</span> Usuario();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setIdUsuario(rs.getInt(<span class="type">"idUsuario"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setNombre(rs.getString(<span class="type">"nombre"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setApellido(rs.getString(<span class="type">"apellido"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setTelefono(rs.getString(<span class="type">"telefono"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setCorreo(rs.getString(<span class="type">"correo"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setDireccion(rs.getString(<span class="type">"direccion"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setGenero(rs.getString(<span class="type">"genero"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setRol(rs.getString(<span class="type">"rol"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setEstado(rs.getString(<span class="type">"estado"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuario.setContrasena(rs.getString(<span class="type">"contrasena"</span>));<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usuarios.add(usuario);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">return</span> usuarios;<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </code>
+
+        <h4>Capa intermedia - Servlet de listar:</h4>
+        <code>
+            <span class="keyword">package</span> <span class="type">controller</span>;<br><br>
+
+            <span class="keyword">import</span> <span class="type">dao.UsuarioDAO</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.io.IOException</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.sql.SQLException</span>;<br>
+            <span class="keyword">import</span> <span class="type">java.util.List</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.servlet.ServletException</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.servlet.annotation.WebServlet</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.servlet.http.HttpServlet</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.servlet.http.HttpServletRequest</span>;<br>
+            <span class="keyword">import</span> <span class="type">javax.servlet.http.HttpServletResponse</span>;<br>
+            <span class="keyword">import</span> <span class="type">model.Usuario</span>;<br><br>
+
+            <span class="comment">/**</span><br>
+            <span class="comment"> *</span><br>
+            <span class="comment"> * @author Lu0</span><br>
+            <span class="comment"> */</span><br>
+            <span class="keyword">@WebServlet(</span><span class="type">"/ServletListarUsuarios"</span><span class="keyword">)</span><br>
+            <span class="keyword">public class</span> <span class="type">ServletListarUsuarios</span> <span class="keyword">extends</span> <span class="type">HttpServlet</span> {<br>
+            &nbsp;&nbsp;<span class="keyword">private final</span> UsuarioDAO usuarioDAO = <span class="keyword">new</span> UsuarioDAO();<br><br>
+
+            &nbsp;&nbsp;<span class="keyword">@Override</span><br>
+            &nbsp;&nbsp;<span class="keyword">protected void</span> doGet(HttpServletRequest request, HttpServletResponse response)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">throws</span> ServletException, IOException {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <span class="keyword">try</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List&lt;Usuario&gt; usuarios = usuarioDAO.listarTodos();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.setAttribute(<span class="type">"listaUsuarios"</span>, usuarios);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.getRequestDispatcher(<span class="type">"listaUsuarios.jsp"</span>).forward(request, response);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} <span class="keyword">catch</span> (SQLException e) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.setAttribute(<span class="type">"error"</span>, <span class="type">"Error al cargar la lista de usuarios: "</span> + e.getMessage());<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.getRequestDispatcher(<span class="type">"error.jsp"</span>).forward(request, response);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;}<br>
+            }<br>
+        </code>
+        </section>
+        <section id="capa-servicio" class="forma-blanca">
+        <h2>¿Qué es la capa de servicio?</h2>
+        <p>La capa de servicio es una capa adicional entre la capa DAO y la capa de presentación que contiene la lógica de negocio. Su función principal es manejar reglas, validaciones, y coordinación de llamadas a múltiples DAOs si es necesario.</p>
+        <ul>
+            <li>Permite mantener el código organizado y reutilizable.</li>
+            <li>Centraliza la lógica que no pertenece ni a la base de datos ni a la interfaz.</li>
+            <li>Facilita la implementación de transacciones y seguridad.</li>
+        </ul>
+        </section>
+    </main>
+    </div>
+</body>
+</html>
