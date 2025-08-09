@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JNDI y JDBC</title>
+    <link rel="stylesheet" href="../style/JNDI&JDBC 2024435.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+</head>
+
+<body>
+    <a href="MenuDatabase.html" class="back-button">Volver a Database</a>
+    <header class="seccion-principal">
+        <img src="https://i.postimg.cc/yxHrH83s/Logo-Paso-Paso.png" alt="Logo para ir a menu principal" class="logo">
+        <h1>JNDI y JDBC — La Conexión Empresarial en Java</h1>
+        <p class="intro-texto">Exploramos la arquitectura, tecnologías y la combinación de las conexiones empresariales
+            a bases de datos en Java.</p>
+    </header>
+
+    <main class="contenedor-principal">
+
+        <section>
+            <h2>La combinación de JNDI y JDBC: Introducción</h2>
+            <p><strong>JDBC (Java Database Connectivity)</strong> es la API estándar de Java que provee la base para la
+                comunicación con bases de datos relacionales. Actúa como un puente entre la aplicación Java y la base de
+                datos, permitiendo la ejecución de sentencias SQL y el manejo de los resultados. Por otro lado,
+                <strong>JNDI (Java Naming and Directory Interface)</strong> es una API para la búsqueda y el acceso a
+                recursos y objetos por nombre. Es un servicio de directorio centralizado que desacopla el nombre lógico
+                de un recurso de su implementación real.
+            </p>
+            <div class="tarjetas-agrupadas">
+                <div class="tarjeta-individual">
+                    <h4>JDBC: La Conexión Directa</h4>
+                    <p>Permite a los desarrolladores escribir código para conectar, ejecutar consultas y gestionar
+                        transacciones directamente con una base de datos.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>JNDI: El Directorio de Recursos</h4>
+                    <p>Funciona como un "directorio telefónico" para recursos en un entorno de servidor de aplicaciones,
+                        permitiendo a las aplicaciones obtener recursos como conexiones a bases de datos a través de un
+                        nombre lógico.</p>
+                </div>
+            </div>
+            <p>La combinación de JNDI y JDBC se manifiesta en la gestión de <code>DataSource</code> y <em>Connection
+                    Pools</em>, donde JNDI ofrece una forma robusta de gestionar y acceder a estas conexiones de forma
+                centralizada y segura.</p>
+        </section>
+
+        <section>
+            <h2>Arquitectura de JDBC y sus Drivers</h2>
+            <p>La arquitectura de JDBC consta de cuatro componentes principales: la aplicación Java, la API de JDBC, el
+                <code>JDBC Driver Manager</code> y los <code>JDBC Drivers</code>.
+            </p>
+            <p>Los <code>JDBC Drivers</code> son el componente clave que permite la comunicación específica con cada
+                sistema de gestión de bases de datos (SGBD). Se clasifican en cuatro tipos principales, cada uno con un
+                enfoque diferente para la conectividad:</p>
+            <div class="tarjetas-agrupadas">
+                <div class="tarjeta-individual">
+                    <h4>Tipo 1: Puente JDBC-ODBC</h4>
+                    <p>Convierte las llamadas de la API de JDBC en llamadas a la API de ODBC. Este tipo de driver está
+                        obsoleto y no es recomendable para aplicaciones modernas.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>Tipo 2: API Nativa</h4>
+                    <p>Traduce las llamadas JDBC en llamadas a la API de la base de datos nativa (ej. la de Oracle).
+                        Requiere la instalación de librerías nativas en el cliente.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>Tipo 3: Protocolo de Red</h4>
+                    <p>Utiliza un middleware para traducir las llamadas JDBC a un protocolo de red, que luego es
+                        interpretado por un servidor para comunicarse con la base de datos.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>Tipo 4: Protocolo Nativo</h4>
+                    <p>Es el driver más común y eficiente hoy en día. Convierte las llamadas JDBC directamente al
+                        protocolo de red de la base de datos, sin necesidad de middleware o librerías nativas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Gestión de Conexiones: El rol de JDBC en JPA y `persistence.xml`</h2>
+            <p>Aunque JDBC puede usarse directamente en el código Java, en aplicaciones empresariales modernas, a menudo
+                se gestiona de manera indirecta a través de una capa de abstracción como la API de Persistencia de Java
+                (JPA). Un archivo <strong><code>persistence.xml</code></strong> define una unidad de persistencia que le
+                indica a un proveedor de JPA (como Hibernate) cómo conectarse a la base de datos.
+            </p>
+            <p>Este archivo no utiliza JNDI, sino que define directamente las propiedades de la conexión JDBC. Es el
+                proveedor de JPA el que lee esta información y usa la API de JDBC internamente para establecer la
+                conexión, sin que el desarrollador tenga que escribir código JDBC explícito.</p>
+            <h3>Ejemplo de Configuración en `persistence.xml`</h3>
+            <p>El siguiente código muestra cómo se define la configuración de la conexión JDBC dentro de un
+                `persistence.xml` para una aplicación que usa Hibernate como proveedor de JPA.</p>
+            <pre><code class="language-xml">
+                &lt;persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"&gt;
+                    &lt;persistence-unit name="LibreriaPU" transaction-type="RESOURCE_LOCAL"&gt;
+                        &lt;provider&gt;org.hibernate.jpa.HibernatePersistenceProvider&lt;/provider&gt;
+                        &lt;!-- Clase de entidad --&gt;
+                        &lt;class&gt;model.Cliente&lt;/class&gt;
+                        &lt;properties&gt;
+                            &lt;!-- configuracion del JDBC --&gt;
+                            &lt;property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/proyecto_final_db?useSSL=false"/&gt;
+                            &lt;property name="javax.persistence.jdbc.user" value="root"/&gt;
+                            &lt;property name="javax.persistence.jdbc.password" value="root"/&gt;
+                            &lt;property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/&gt;
+                            &lt;!-- configuracion de Hibernate --&gt;
+                            &lt;property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/&gt;
+                            &lt;property name="hibernate.hbm2dd.auto" value="update"/&gt;
+                        &lt;/properties&gt;
+                    &lt;/persistence-unit&gt;
+                &lt;/persistence&gt;
+            </code></pre>
+            <p>Con esta configuración, la aplicación puede obtener una instancia de <code>EntityManager</code> (la
+                interfaz principal de JPA) para realizar operaciones de persistencia sin tener que escribir código JDBC.
+            </p>
+        </section>
+
+        <section>
+            <h2>Gestión de Conexiones: Connection Pools con JNDI</h2>
+            <p>En entornos de servidores de aplicaciones, la mejor práctica es usar JNDI para gestionar los
+                <strong>Connection Pools</strong>. El servidor configura el pool con las propiedades de JDBC (como la
+                URL, usuario, etc.) y la aplicación simplemente "busca" el recurso por su nombre lógico. Esto desacopla
+                completamente el código de la aplicación de los detalles de la base de datos.</p>
+            <h3>Ejemplo de Código para un Connection Pool con JNDI</h3>
+            <pre><code class="language-java">
+                // Ejemplo de cómo una aplicación Java obtiene una conexión de un pool
+                import javax.sql.DataSource;
+                import javax.naming.Context;
+                import javax.naming.InitialContext;
+                import java.sql.Connection;
+                import java.sql.SQLException;
+
+                public class JndiPoolExample {
+                    public Connection obtenerConexion() throws SQLException {
+                        try {
+                            Context initialContext = new InitialContext();
+                            DataSource datasource = (DataSource) initialContext.lookup("java:comp/env/jdbc/miPool");
+                            return datasource.getConnection();
+                        } catch (Exception ex) {
+                            System.err.println("Error al obtener la conexión del pool: " + ex.getMessage());
+                            throw new SQLException("No se pudo obtener la conexión del pool", ex);
+                        }
+                    }
+                }
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Comparación y Contexto Moderno: JDBC, JPA y JNDI</h2>
+            <p>Es fundamental entender que <strong>JDBC, JPA y JNDI no son tecnologías mutuamente excluyentes</strong>,
+                sino capas que trabajan juntas en un ecosistema robusto. </p>
+            <div class="tarjetas-agrupadas-especiales">
+                <div class="tarjeta-individual">
+                    <h4>JDBC: El Cimiento</h4>
+                    <p>Es la capa más baja. Ofrece la API para ejecutar SQL directamente y es la base sobre la que se
+                        construyen todas las demás soluciones de persistencia en Java.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>JPA y ORM: La Abstracción</h4>
+                    <p>Frameworks como Hibernate, que implementan JPA, se sitúan sobre JDBC. Abstraen la complejidad de
+                        las sentencias SQL, permitiendo a los desarrolladores trabajar con objetos Java y haciendo las
+                        aplicaciones más portables.</p>
+                </div>
+                <div class="tarjeta-individual">
+                    <h4>JNDI: La Gestión de Recursos</h4>
+                    <p>Proporciona un mecanismo centralizado para que el servidor de aplicaciones administre recursos
+                        como los Connection Pools. JNDI no se encarga de la conexión a la base de datos en sí, sino de
+                        ofrecer una forma limpia y segura para que las aplicaciones accedan a la conexión ya gestionada
+                        por el servidor.</p>
+                </div>
+            </div>
+            <p>En la práctica, una aplicación empresarial moderna podría usar <strong>JPA (con un framework como
+                    Hibernate)</strong> para la lógica de persistencia, con la <strong>configuración de la base de datos
+                    proporcionada a través de un `persistence.xml` (para aplicaciones stand-alone)</strong> o un
+                <strong>Connection Pool gestionado por JNDI (en un servidor de aplicaciones)</strong>, y todas estas
+                capas se basarían en la funcionalidad de <strong>JDBC</strong> para realizar las operaciones finales con
+                la base de datos.</p>
+        </section>
+
+
+        <footer class="pie-de-pagina">
+            <p>Investigación y contenido elaborado para tu página web. ¡Disfruta del contenido! ✨</p>
+        </footer>
+
+    </main>
+</body>
+
+</html><strong></strong>

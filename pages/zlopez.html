@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaFX HelloWorld with Maven | JavaFX Documentation</title>
+    <link rel="stylesheet" href="../style/zlopez.css">
+</head>
+<body>
+    <header>
+        <h1>JavaFX Documentation</h1>
+    </header>
+    
+    <div class="breadcrumb">
+        <a href="#">Home</a> &gt; <a href="#">Getting Started</a> &gt; HelloWorld with Maven
+    </div>
+    
+    <div class="content">
+        <h2>Run HelloWorld using Maven</h2>
+        
+        <p>This guide walks you through creating and running a simple JavaFX HelloWorld application using Maven.</p>
+        
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>JDK 11 or later (JDK 17 recommended)</li>
+            <li>Apache Maven 3.6.3 or later</li>
+            <li>An IDE (IntelliJ IDEA, Eclipse, or VS Code recommended)</li>
+        </ul>
+        
+        <div class="note">
+            <strong>Note:</strong> JavaFX is not included in the standard JDK since JDK 11. You need to either download JavaFX SDK or use Maven dependencies as shown in this guide.
+        </div>
+        
+        <h3>1. Create a Maven Project</h3>
+        <p>Create a new Maven project using your IDE or the command line:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>mvn archetype:generate \
+    -DgroupId=com.example \
+    -DartifactId=javafx-helloworld \
+    -DarchetypeArtifactId=maven-archetype-quickstart \
+    -DinteractiveMode=false</code></pre>
+        </div>
+        
+        <h3>2. Update pom.xml with JavaFX Dependencies</h3>
+        <p>Replace the contents of your <code>pom.xml</code> with the following:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;javafx-helloworld&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+            &lt;artifactId&gt;javafx-controls&lt;/artifactId&gt;
+            &lt;version&gt;17.0.2&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+                &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;0.0.8&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;mainClass&gt;com.example.App&lt;/mainClass&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</code></pre>
+        </div>
+        
+        <div class="note">
+            <strong>Version Note:</strong> Make sure to use the JavaFX version that matches your JDK version. For JDK 17, use JavaFX 17.x.
+        </div>
+        
+        <h3>3. Create the HelloWorld Application</h3>
+        <p>Replace the contents of <code>src/main/java/com/example/App.java</code> with:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>package com.example;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class App extends Application {
+    
+    @Override
+    public void start(Stage stage) {
+        Label label = new Label("Hello, JavaFX!");
+        StackPane root = new StackPane(label);
+        Scene scene = new Scene(root, 300, 200);
+        
+        stage.setTitle("JavaFX HelloWorld");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}</code></pre>
+        </div>
+        
+        <h3>4. Run the Application</h3>
+        <p>You can run the application using Maven:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>mvn clean javafx:run</code></pre>
+        </div>
+        
+        <p class="success">If everything is set up correctly, you should see a window with the text "Hello, JavaFX!" appear.</p>
+        
+        <h3>Troubleshooting</h3>
+        <p><strong>Common issues:</strong></p>
+        <ul>
+            <li><span class="warning">Error: JavaFX runtime components are missing</span> - Make sure you're using JDK 11+ and have the correct JavaFX dependencies in your pom.xml</li>
+            <li><span class="warning">Module not found errors</span> - If you're using modules, make sure to add a module-info.java file</li>
+            <li><span class="warning">ClassNotFoundException</span> - Verify the mainClass in the javafx-maven-plugin matches your application class</li>
+        </ul>
+        
+        <h3>Next Steps</h3>
+        <ul>
+            <li><a href="#">Learn more about JavaFX layouts</a></li>
+            <li><a href="#">Explore JavaFX controls</a></li>
+            <li><a href="#">Learn about FXML for UI design</a></li>
+        </ul>
+    </div>
+    
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.parentElement;
+            const code = codeBlock.querySelector('code').textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
