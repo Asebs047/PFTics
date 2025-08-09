@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap');
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -36,7 +38,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: var(--ui);
+  font-family: 'Lexend', Arial, sans-serif;
   background: linear-gradient(180deg, var(--bg) 0%, #100b1d 100%);
   color: var(--muted);
   line-height: 1.6;
@@ -643,7 +645,7 @@ h4 {
   background: #120d1f;
   padding: 1rem;
   border-radius: 8px;
-  font-family: var(--mono);
+  font-family: 'Lexend', Arial, sans-serif;
   font-size: 0.85rem;
   color: #e8e3f3;
   border: 1px solid rgba(255,255,255,0.05);
@@ -652,7 +654,7 @@ h4 {
 }
 
 .code code {
-  font-family: inherit;
+  font-family: 'Lexend', Arial, sans-serif;
 }
 
 /* Footer */
