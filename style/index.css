@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Lexend', Arial, sans-serif;
   background: #f0f8ff;
   min-height: 100vh;
   overflow: hidden;
@@ -21,7 +23,7 @@ body {
   height: 100vh;
   position: relative;
   z-index: 1;
-  gap: 40px; /* más espacio entre imagen y botones */
+  gap: 40px; 
 }
 
 .background-shape {
@@ -40,7 +42,7 @@ body {
 }
 
 .logo img {
-  width: 650px; /* más grande */
+  width: 650px;
   max-width: 95vw;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 0 15px #6c63ff55);
@@ -57,16 +59,17 @@ body {
 }
 
 .btn-nav {
-  padding: 20px 50px; /* botones más altos y anchos */
+  padding: 20px 50px; 
   background: linear-gradient(135deg, #6c63ff, #7e77ff);
   border: none;
-  border-radius: 35px; /* bordes más redondeados */
+  border-radius: 35px; 
   color: #fff;
   font-weight: 700;
-  font-size: 1.5rem; /* letra más grande */
+  font-size: 1.5rem; 
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s, color 0.2s;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  font-family: 'Lexend', Arial, sans-serif; 
 }
 
 .btn-nav:hover {
