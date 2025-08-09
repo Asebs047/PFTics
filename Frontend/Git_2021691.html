@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIT</title>
+  <link rel="stylesheet" href="/style/Git_2021691.css">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+</head>
+
+
+
+
+    <body class="body">
+      <div>
+
+
+        <img class="image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLnP6OmqDVCPB5Res4-7xWJK6DjMwnHa-HpQ&s"
+          alt="GIT" />
+      </div>
+
+      <h1>INDICE</h1>
+      <div class="indice" class="p-2 bg-light p-lg-4">
+        <ul>
+          <li class="my-3">
+            <a title="¿1. Qué es git?" href="#que-es-git">1. ¿Qué es Git?</a>
+            <ul class="ms-2 ms-lg-4">
+              <li>
+                <a href="#en-que-esta-escrito-git">a. ¿En que está escrito git?</a>
+              </li>
+              <li>
+                <a href="#por-que-deberias-de-aprenderlo">b. ¿Por que deberias de aprenderlo?</a>
+              </li>
+              <li>
+                <a href="#ventajas-de-dominar-git">c. Ventajas de dominar git</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="my-3">
+            <a title="2. Instalacion y configuracion de git: primeros pasos"
+              href="#instalacion-y-configuracion-de-git-primeros-pasos">2. Instalación y configuración de git: primeros
+              pasos esenciales</a>
+            <ul class="ms-2 ms-lg-4">
+              <li>
+                <a href="#instalacion-en-windows">a. Instalación en Windows</a>
+              </li>
+              <li>
+                <a href="#instalacion-en-macOS">b. Instalación en macOS</a>
+              </li>
+              <li>
+                <a href="#intalacion-en-linux">c. Instalación en Linux</a>
+              </li>
+              <li>
+                <a href="#verificar-la-instalacion-de-git">d. Verificar la instalación de Git</a>
+              </li>
+              <li>
+                <a href="#configuracion-inicial-de-git">e. Configuración Inicial de Git: Tu Nombre, Email y Editor
+                  Predeterminado</a>
+              </li>
+              <li>
+                <a href="#evita-problemas">f. Evita Problemas Comunes: Solución de Errores de Instalación de Git</a>
+              </li>
+            </ul>
+          </li>
+          <li class="my-3">
+            <a title="3. Comandos Git Básicos para Principiantes: Tu Kit de Supervivencia"
+              href="#comandos-git-basicos-para-principiantes">3. Comandos Git Básicos para Principiantes: Tu Kit de
+              Supervivencia
+              pasos esenciales</a>
+            <ul class="ms-2 ms-lg-4">
+              <li>
+                <a href="#git-init">a. Git Init: Cómo Inicializar un Repositorio Git Local</a>
+              </li>
+              <li>
+                <a href="#git-add">b. Git Add: Añadiendo Archivos al Área de Preparación (Staging Area)</a>
+              </li>
+              <li>
+                <a href="#git-commit">c. Git Commit: Guardando Tus Cambios con Mensajes Significativos</a>
+              </li>
+              <li>
+                <a href="#git-status">d. Git Status: Verificando el Estado de Tu Repositorio</a>
+              </li>
+            </ul>
+          <li class="my-3">
+            <a title="4. Trabajando con Repositorios Remotos: Git Push, Git Pull y Git Clone"
+              href="#trabajando-con-repositorios">4. Trabajando con Repositorios Remotos: Git Push, Git Pull y Git Clone
+              Supervivencia
+              pasos esenciales</a>
+            <ul class="ms-2 ms-lg-4">
+              <li>
+                <a href="#git-clone">a. Git Clone: Copiando un Repositorio Remoto a Tu Ordenador</a>
+              </li>
+              <li>
+                <a href="#git-push">b. Git Push: Subiendo Tus Cambios a un Repositorio Remoto</a>
+              </li>
+              <li>
+                <a href="#git-pull">c. Git Pull: Descargando Actualizaciones Desde un Repositorio Remoto</a>
+              </li>
+              <li>
+                <a href="#resolviendo-conflictos">d. Resolviendo Conflictos de Merge (Fusión) al Hacer Git Pull</a>
+              </li>
+            </ul>
+          </li>
+          <li class="my-3">
+            <a title="5. Ramas (Branches) en Git: Trabajo en Equipo y Experimentación Segura"
+              href="#ramas-branch">5. Ramas (Branches) en Git: Trabajo en Equipo y Experimentación Segura</a>
+            <ul class="ms-2 ms-lg-4">
+              <li>
+                <a href="#git-branch">a. Git Branch: Creando, Listando y Eliminando Ramas</a>
+              </li>
+              <li>
+                <a href="#git-checkout">b. Git Checkout: Navegando Entre Diferentes Ramas</a>
+              </li>
+              <li>
+                <a href="#git-merge">c. Git Merge: Fusionando Cambios de una Rama a Otra</a>
+              </li>
+              <br>
+            </ul>
+          </li>
+           <li class="my-3">
+            <a title="6. Conclusión: Tu Camino para Dominar Git"
+              href="#conclusion">6. Conclusión: Tu Camino para Dominar Git</a></li>
+        </ul>
+      </div>
+      <br>
+      <br>
+
+      <div class="contenedor-principal">
+        <main class="contenido">
+        <h1 id="que-es-git">¿Qué es Git?</h1>
+        <p>
+          Git es un software de control de versiones distribuido. El control de versiones es una forma de guardar los
+          cambios a lo largo del tiempo sin sobrescribir las versiones anteriores. Ser distribuido significa que cada
+          desarrollador que trabaja con un repositorio de Git tiene una copia de todo ese repositorio: cada
+          confirmación, cada rama, cada archivo. Si está acostumbrado a trabajar con sistemas de control de versiones
+          centralizados, ¡esta es una gran diferencia!<br><br>
+          Ya sea que haya trabajado o no con el control de versiones antes, hay algunas cosas que debe saber antes de
+          comenzar con Git:<br><br>
+          <strong>1.</strong> Las ramas son livianas y baratas, por lo que está bien tener muchas de ellas.<br><br>
+          <strong>2.</strong> Git almacena los cambios en hashes SHA, que funcionan comprimiendo archivos de texto. Eso
+          hace
+          que Git sea
+          un muy buen sistema de control de versiones (VCS) para la programación de software, pero no tan bueno para
+          archivos binarios como imágenes o videos. <br><br>
+          <strong>3.</strong> Los repositorios de Git se pueden conectar, por lo que puede trabajar en uno localmente en
+          su
+          propia máquina
+          y conectarlo a un repositorio compartido. De esta manera, puede enviar y extraer cambios a un repositorio y
+          colaborar fácilmente con otros.
+          <br>
+          <br>
+        <h2 id="en-que-esta-escrito-git">¿En qué está escrito Git?</h2>
+        Las herramientas que componen la distribución principal de Git están escritas en C, Shell, Perl y Tcl. Puede
+        encontrar el código fuente de Git en GitHub en git/git.
+        <br>
+        <br>
+        <h2 id="por-que-deberias-de-aprenderlo">¿Por que deberias de aprenderlo?</h2>
+        ¿Por qué es tan crucial aprender Git hoy en día? La respuesta es clara: es una herramienta indispensable en el
+        desarrollo de software moderno y en la gestión de proyectos digitales. Te permite rastrear cada cambio realizado
+        en
+        tu código, revertir a versiones anteriores si algo sale mal, y colaborar eficazmente con otros desarrolladores
+        sin
+        que sus trabajos se interfieran. Para cualquier programador, diseñador web o emprendedor digital que trabaje con
+        código, saber usar Git es una habilidad fundamental.
+        <br>
+        <br>
+        <h2 id="ventajas-de-dominar-git">Ventajas de dominar GIT</h2>
+        Dominar Git te ofrece una serie de ventajas clave
+        <br>
+        <br>
+        <li>
+          <strong class="list">1. Historial Completo de Cambios:</strong>
+          Git registra cada modificación, quién la hizo y cuándo. Esto te da la capacidad de volver atrás en el tiempo a
+          cualquier versión anterior de tu código. Es como tener un "botón de deshacer" ilimitado para tu proyecto.
+        </li>
+        <br>
+        <li>
+          <strong class="list">2. Colaboración Eficaz:</strong>
+          Permite que múltiples desarrolladores trabajen en el mismo proyecto simultáneamente sin interferir entre sí.
+          Los
+          cambios se pueden fusionar de forma controlada, minimizando los conflictos.
+        </li>
+        <br>
+        <li>
+          <strong class="list">3. Seguridad y Fiabilidad:</strong>
+          Reduce el riesgo de perder código, ya que cada commit (una instantánea de tu proyecto) es como un "punto de
+          guardado" seguro que puedes restaurar en cualquier momento
+        </li>
+        <br>
+        <li>
+          <strong class="list">4. Flexibilidad:</strong>
+          Facilita la creación de ramas (branches) para experimentar con nuevas funcionalidades o corregir
+          errores sin afectar a la versión principal y estable del proyecto.
+        </li>
+        <br>
+        <li>
+          <strong class="list">5. Estándar de la Industria:</strong>
+          La inmensa mayoría de empresas, equipos de desarrollo y proyectos de código abierto
+          utilizan Git. Es la herramienta de control de versiones por excelencia y una habilidad exigida en el mercado
+          laboral.
+        </li>
+        <br>
+        <br>
+        <h1 id="instalacion-y-configuracion-de-git-primeros-pasos">Instalación y Configuración de Git:
+          Primeros pasos esenciales</h1>
+        Antes de sumergirnos en los comandos Git básicos, el primer paso es instalar Git en tu sistema operativo. El
+        proceso
+        es relativamente sencillo, pero varía ligeramente según si utilizas Windows, macOS o Linux. A continuación, te
+        proporcionamos una guía paso a paso detallada para cada uno. <br><br>
+        Una vez instalado, la configuración inicial de Git es crucial para que tus commits se identifiquen
+        correctamente.
+        Esto asegura que cada cambio que realices en un repositorio Git esté asociado a tu identidad.
+        <br>
+        <br>
+        <h2 id="instalacion-en-windows">Instalación en Windows</h2>
+        <li>
+          <strong class="list">1. Descarga el instalador</strong>
+          Visita la pagina oficial de git <a href="https://git-scm.com/downloads/win"
+            rel="noopener noreferrer nofollow">git-scm.com/dowloand/win</a> la
+          descarga del archivo <code class="cod">.exe</code> comenzará automaticamente. <br><br>
+          <strong class="list">2. Ejecuta el instalador:</strong>
+          Abre el archivo <code class="cod">.exe</code> descargado y sigue las instrucciones del asistente de
+          instalación.<br><br>
+          <strong class="list">3. Opciones de instalación (recomendaciones):</strong>
+        <li>-Se aconseja mantener la mayoría de las opciones por defecto, a menos que tengas necesidades específicas.
+        </li>
+        <br>
+        <li>Asegúrate de que las opciones "Git Bash Here" y "Git GUI Here" estén marcadas para facilitar el acceso desde
+          el
+          explorador de archivos.</li><br>
+        <li> En "Adjusting your PATH environment", selecciona la opción recomendada "Git from the command line and also
+          from
+          3rd-party software". Esto te permitirá usar Git desde cualquier terminal (CMD, PowerShell, etc.).</li><br>
+        <li> Puedes elegir VS Code como tu editor de texto predeterminado si lo utilizas habitualmente.</li><br>
+        <strong class="list">4. Finaliza la instalación:</strong>
+        Haz clic en "Install" y luego en "Finish".
+        </li>
+        <br>
+        <br>
+        <h2 id="instalacion-en-macOS">Instalación en macOS</h2>
+        <li>
+          <strong class="list">1. Usando Homebrew (Recomendado para desarrolladores):</strong><br>
+          Si no tienes Homebrew (un gestor de paquetes para macOS), instálalo abriendo la Terminal y ejecutando (COPIE Y
+          PEGUE LO SIGUIENTE):
+          <pre class="language-bash"
+            id="pre"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+          <br>
+          <br>
+          Una vez instalado Homebrew, instala Git con:
+          <pre class="language-bash">brew install git<code></code></pre>
+        </li><br>
+        <li>
+          <strong class="list">2. Usando Xcode Command Line Tools:</strong><br>
+          macOS suele incluir las herramientas de línea de comandos de Xcode, que contienen Git. Si no las tienes,
+          puedes
+          instalarlas abriendo la Terminal y ejecutando:
+          <pre class="language-bash"><code>xcode-select --install</code></pre>
+        </li><br><br>
+        <h2 id="intalacion-en-linux">Instalación en Linux</h2>
+        <p>Git suele estar preinstalado o disponible en los repositorios de software de la mayoría de las distribuciones
+          de
+          Linux.</p>
+        <li>1. <strong class="list">Debian/Ubuntu (COPIE Y PEGUE):</strong></li>
+        <pre class="language-bash"><code>sudo apt update sudo apt install git</code></pre><br><br>
+        <li>2. <strong class="list">Fedora (COPIE Y PEGUE):</strong></li>
+        <pre id="pre" class="language-bash"><code>sudo dnf install git</code></pre><br><br>
+        <li>3. <strong class="list">Arch Linux (COPIE Y PEGUE):</strong></li>
+        <pre class="language-bash"><code>sudo pacman -S git</code></pre>
+        <br>
+        <br>
+        <br>
+        <h2 id="verificar-la-instalacion-de-git">Verificar la Instalación de Git</h2>
+        Después de la instalación, abre tu terminal preferida (Git Bash en Windows, Terminal en macOS/Linux) y ejecuta
+        el siguiente comando para verificar que Git se ha instalado correctamente y para ver su versión: <br><br>
+        <pre class="language-bash"><code>git --version</code></pre><br>Deberías ver una salida similar a <code class="cod">git version 2.XX.X</code>,
+        confirmando que
+        ya
+        puedes usar Git.
+        <br>
+        <br>
+        <br>
+        <h2 id="configuracion-inicial-de-git">Configuración Inicial de Git: Tu Nombre, Email y Editor
+          Predeterminado</h2>
+        <p>Una vez que Git está instalado, es fundamental configurar Git con tu identidad. Esto es lo primero que harás
+          para
+          que Git sepa quién eres cuando realices cambios en los repositorios.
+
+          Para configurar tu nombre de usuario, ejecuta los siguientes comandos en tu terminal, reemplazando <code
+            class="cod">Tu Nombre</code> con tu nombre real:</p>
+        <pre class="language-bash"><code></code>git config --global user.name "Tu Nombre"</pre><br><br>
+        Luego, configura tu dirección de correo electrónico, reemplazando <code class="cod">tu_email@example.com</code>
+        con tu email:
+        <pre class="language-bash"><code>git config --global user.email "tu_email@example.com"</code></pre>
+        <br>
+        <br>
+        <br>
+        Es vital usar la misma dirección de correo electrónico que utilizarás en plataformas de alojamiento de
+        repositorios
+        como GitHub o GitLab para que tus commits se vinculen correctamente a tu perfil.
+
+        La opción <code class="cod">--global</code> indica que esta configuración se aplicará a todos los repositorios
+        Git en tu sistema. Si deseas
+        una configuración diferente para un proyecto específico, puedes omitir <code class="cod">--global</code> y
+        ejecutar los comandos dentro de
+        la
+        carpeta raíz de ese proyecto.
+
+        Finalmente, puedes configurar tu editor de texto predeterminado que Git utilizará para escribir mensajes de
+        commit
+        más largos o para resolver conflictos de fusión. Si utilizas Visual Studio Code, por ejemplo:
+        <pre class="language-bash"><code>git config --global core.editor "code --wait"</code></pre>
+        <br>
+        <br>
+        Para Sublime Text sería <code class="cod">"subl -n -w"</code>, para Vim <code class="cod">"vim"</code>, etc.
+        Puedes verificar tu configuración actual en cualquier momento con:
+        <pre class="language-bash"><code>git config --list</code></pre><br><br><br>
+
+        <p>
+        <h2 id="evita-problemas">Evita Problemas Comunes: Solución de Errores de Instalación de Git</h2>
+        Aunque la instalación de Git suele ser sencilla, ocasionalmente pueden surgir problemas. Aquí te presentamos
+        algunos
+        de los más comunes y sus soluciones, pensados para principiantes en Git:
+        </p><br>
+        <h3>
+          <li class="list">Comando <code class="cod">git</code> no reconocido </li>
+        </h3>
+        <strong class="list">Causa:</strong> Git no se añadió correctamente a la variable de entorno PATH de tu sistema.
+        <p><strong class="list">- Solución (Windows):</strong> Durante la instalación, asegúrate de seleccionar la
+          opción para añadir
+          Git a tu PATH. Si ya lo has instalado, puedes añadirlo manualmente desde la configuración de variables de
+          entorno
+          del sistema (busca "Editar las variables de entorno del sistema").</p>
+        <p><strong class="list">- Solución (macOS/Linux):</strong> Asegúrate de que la instalación se completó sin
+          errores y que tu
+          terminal está configurada para reconocer los ejecutables en /usr/local/bin (para Homebrew) o las rutas
+          estándar.
+          Cierra y vuelve a abrir tu terminal.</p><br>
+        <h3>
+          <li class="list">Permisos de instalación insuficientes:</li>
+        </h3>
+        <strong class="list">- Causa:</strong> Intentas instalar Git en un directorio sin los permisos necesarios.
+        <p><strong class="list">- Solución:</strong> Ejecuta el instalador como administrador (Windows) o usa <code
+            class="cod">sudo</code> (Linux/macOS) si es
+          necesario para la instalación del gestor de paquetes (ej. <code class="cod">sudo apt install git</code>).</p>
+        <br>
+        <h3>
+          <li class="list">Problemas con SSL/Certificados al clonar/hacer push:</li>
+        </h3>
+        <strong class="list">- Causa: </strong> A veces, las redes corporativas o configuraciones de seguridad pueden
+        interferir.
+        <p><strong class="list">- Solución temporal (no recomendada a largo plazo):</strong> 
+          <pre class="language-bash"><code>git config --global http.sslVerify false</code></pre>
+          <br>
+           Esta opción deshabilita la verificación SSL y no es segura para entornos de producción. La solución adecuada 
+           sería configurar un proxy si estás detrás de uno, o pedir a tu administrador de red que ajuste las 
+           configuraciones de firewall.
+        </p>
+        <br>
+        <h3>
+          <li>Configuración <code class="cod">user.name</code> o <code class="cod">user.email</code> incorrecta:</li>
+        </h3>
+        <strong>Causa:</strong> Los commits se muestran con un nombre o email incorrecto.
+        <p><strong>Solución:</strong>Vuelve a ejecutar los comandos <code
+            class="cod">git config --global user.name "Tu Nombre"</code> y <code class="cod">git config
+      --global user.email "tu_email@example.com"</code> con la información correcta. Para cambiar un commit ya
+          realizado,
+          necesitarás opciones más avanzadas como <code class="cod">git commit --amend</code> o <code
+            class="cod">git rebase -i</code> (fuera del alcance de esta guía para
+          Git desde cero).</p><br>
+        Tomarse el tiempo para una correcta instalación y configuración de Git te ahorrará muchos dolores de cabeza y te
+        permitirá empezar a trabajar sin problemas. ¡Estás listo para el siguiente paso y comenzar a dominar Git!
+        <br>
+        <br>
+        <br>
+        <h1 id="comandos-git-basicos-para-principiantes">Comandos Git Básicos para Principiantes: Tu Kit de
+          Supervivencia</h1>
+        <p>Una vez que Git está instalado y configurado, es hora de poner manos a la obra con los comandos Git básicos.
+          Estos son los pilares de tu interacción diaria con el control de versiones. Aquí te explicaremos cómo usar Git
+          con
+          ejemplos prácticos para que puedas empezar a aplicar el versionado de código de inmediato. <br><br>
+
+          Para nuestros ejemplos Git, vamos a imaginar que estamos creando la documentación para un nuevo proyecto de
+          dCreations.es, llamado "dCreations-Docs".</p><br>
+        <h2 id="git-init">Git Init: Cómo Inicializar un Repositorio Git Local</h2>
+        <p>El comando <code class="cod">git init</code> es el primer paso para comenzar a usar Git en un proyecto.
+          Convierte
+          un directorio existente
+          en un nuevo repositorio Git local, o crea uno nuevo y lo inicializa. Esencial para aprender Git.</p>
+        <p>
+          ¿Para qué sirve? Para que Git pueda empezar a rastrear los cambios en los archivos de un proyecto, es
+          necesario
+          "inicializar" ese proyecto como un repositorio Git.</p>
+        <strong>¿Como usarlo?</strong>
+        <li>Crea una nueva carpeta para tu proyecto (si no la tienes ya). Por ejemplo:
+          <pre class="language-bash"><code>mkdir dCreations-Docs</code></pre>
+        <li>Muevete a tu carpeta creado con <code class="cod">cd "nombre de tu carpeta creada"</code> Por ejemplo:
+          <pre class="language-bash"><code>cd dCreations-Docs</code></pre>
+        <li>Dentro de esa carpeta, ejecuta <code class="cod">git init:</code></li>
+        <pre class="language-bash"><code>git init</code></pre>
+        </li>
+        <p><strong>Qué sucede:</strong> Al ejecutar <code class="cod">git init</code>, Git crea una subcarpeta oculta
+          llamada <code class="cod">.git</code> dentro de tu directorio de
+          proyecto. Esta carpeta contiene todos los metadatos necesarios para que Git funcione, incluyendo el historial
+          de
+          commits, las ramas, la configuración, etc. ¡Nunca borres ni modifiques manualmente la carpeta <code
+            class="cod">.git</code>!
+          <br>
+        <p><code class="cod">Initialized empty Git repository in /ruta/a/tu/proyecto/dCreations-Docs/.git/</code><br>
+          Ahora tu proyecto <code class="cod">dCreations-Docs</code> es un repositorio Git local, listo para empezar a
+          registrar cambios.</p>
+        </p>
+        <br>
+        <br>
+        <h2 id="git-add">Git Add: Añadiendo Archivos al Área de Preparación (Staging Area)</h2>
+        <p>El comando <code class="cod">git add</code> es fundamental para preparar los cambios que quieres guardar en
+          tu
+          historial. No guarda los
+          cambios directamente, sino que los mueve a un "área de preparación" (también conocida como "staging area" o
+          "índice"). Este es un paso intermedio crucial antes de realizar un commit.</p>
+        <P>
+          <strong>¿Para qué sirve?</strong> Permite seleccionar específicamente qué cambios (archivos nuevos,
+          modificados
+          o
+          eliminados)
+          deseas incluir en tu próximo commit. Esto te da un control granular sobre tu historial de versiones y es clave
+          para un buen flujo de trabajo Git.
+        </P>
+        <p>
+          <strong class="list">Cómo usarlo:</strong> Vamos a crear un archivo en nuestro proyecto <code
+            class="cod">dCreations-Docs</code> y añadirlo.
+        </p>
+        <li class="list"><strong>1. Crea un archivo de ejemplo</strong>
+          <pre class="language-bash"><code>echo "# Bienvenid@ a dCreations Docs" > README.md
+            echo "¡Hola mundo!" > index.html</code></pre>
+        </li>
+        <li class="list"><strong>2. Añadir un archivo específico al área de preparación:</strong>
+          <pre class="language-bash"><code>git add README.md</code></pre>
+        </li>
+        <li class="list"><strong>3. Añadir todos los archivos modificados/nuevos al área de preparación:</strong>
+          <pre class="language-bash"><code>git add .</code></pre>
+        </li>
+        <p>Este comando es muy común, ya que añade todos los cambios en el directorio de trabajo actual al área de
+          preparación.</p>
+        <li class="list"><strong>4. Añadir archivos solo si ya han sido rastreados (útil para modificaciones):</strong>
+          <pre class="language-bash"><code>git add -u</code></pre>
+        </li>
+        <p><strong class="list">Qué sucede:</strong> Después de <code class="cod">git add</code>, los archivos
+          seleccionados
+          están listos para ser "guardados" en un commit. No se
+          han guardado permanentemente aún; solo están esperando en el staging area.</p>
+        <br>
+        <br>
+        <br>
+        <h2 id="git-commit">Git Commit: Guardando Tus Cambios con Mensajes Significativos</h2>
+        <p>El comando <code class="cod">git commit</code> es el corazón del control de versiones. Toma los cambios que
+          has
+          añadido al área de
+          preparación (<code class="cod">git add</code>) y los guarda permanentemente en el historial de tu repositorio
+          Git.
+          Cada commit es una
+          "instantánea" de tu proyecto en un momento dado, un hito seguro al que puedes regresar.</p>
+        <p><strong class="list">¿Para qué sirve?</strong> Para registrar una versión de tu proyecto en el historial de
+          Git.
+          Cada commit debe ir acompañado
+          de un mensaje que describa de forma clara y concisa los cambios realizados. Este mensaje es vital para la
+          trazabilidad y la colaboración.</p>
+        <p><strong class="list">Cómo usarlo:</strong> Después de haber añadido tus archivos al área de preparación con
+          <code class="cod">git add</code>, puedes hacer un commit Git:
+        </p>
+        <pre class="language-bash"><code>git commit -m "Mensaje descriptivo del commit"</code></pre>
+        <p>La opción <code class="cod">-m</code> te permite proporcionar el mensaje del commit directamente en la línea
+          de
+          comando. Para mensajes más
+          largos y estructurados, simplemente ejecuta <code class="cod">git commit</code> sin <code
+            class="cod">-m</code>,
+          y
+          Git abrirá tu editor de texto predeterminado
+          (configurado anteriormente) para que escribas el mensaje.</p>
+        <p>Ejemplo: Continuando con nuestro proyecto <code class="cod">dCreations-Docs:</code>
+          <pre class="language-bash"><code>git add .
+git commit -m "feat: Añadir archivos iniciales de documentación (README y index)"</code></pre>
+        </p>
+        <p><strong class="list">Qué sucede:</strong> Git guarda los cambios como un nuevo commit en tu historial. Cada
+          commit tiene un hash único (un
+          identificador largo), el autor, la fecha y el mensaje que proporcionaste. Este es un punto seguro al que
+          puedes
+          regresar en el futuro.</p>
+        <p>Una buena práctica es que el mensaje del commit sea conciso (primera línea de menos de 50 caracteres) y
+          descriptivo, indicando el tipo de cambio (ej. <code class="cod">feat</code>: para nuevas funcionalidades,
+          <code class="cod">fix</code>: para correcciones de errores).</p>
+        <br>
+        <br>
+        <br>
+        <h2 id="git-status">Git Status: Verificando el Estado de Tu Repositorio</h2>
+        <p>El comando <code class="cod">git status</code> es tu mejor amigo para entender qué está pasando en tu
+          repositorio
+          Git. Te proporciona un
+          resumen detallado del estado actual de tu directorio de trabajo y del área de preparación. Es el comando que
+          usarás constantemente.</p>
+        <p><strong class="list">¿Para qué sirve?</strong> Para saber qué archivos han sido modificados, cuáles están
+          listos
+          para ser committeados (en el
+          staging area), y cuáles son nuevos y aún no están siendo rastreados por Git. Es vital para saber dónde te
+          encuentras en tu flujo de trabajo Git y qué acciones necesitas tomar a continuación.</p>
+        <p><strong class="list">Cómo usarlo:</strong> Simplemente ejecuta:</p>
+          <pre class="language-bash"><code>git status</code></pre>
+        <h3 class="list">Ejemplos de salidas:</h3>
+        <li class="list">1. Repositorio limpio (nada pendiente):
+          <p><img src="image/limpio.png"></p>
+          <p>(Si aún no hay commits en la rama principal, te indicará "No commits yet". Una
+            vez tengas commits y estés enlazado a un remoto, dirá "Your branch is up to date with 'origin/main'" y
+            "nothing
+            to
+            commit, working tree clean").</p>
+        </li><br>
+        <li><strong class="list">2. Archivos nuevos sin rastrear:</strong> Si creas un nuevo archivo, por ejemplo <code
+            class="cod">styles.css:</code></li>
+        <pre class="language-bash"><code>echo "body { color: blue; }" > styles.css git status</code></pre>
+        <p>Salida:</p>
+        <p><img src="image/singuardar.png"></p>
+        <p>Git te informa de que <code class="cod">styles.css</code> es un "Untracked file" (archivo sin rastrear) y te
+          sugiere usar <code class="cod"> git add</code> para
+          incluirlo.</p>
+        <li><strong class="list">3. Archivos modificados y en el área de preparación:</strong> Modificamos <code
+            class="cod">README.md</code>
+          y lo añadimos:</li>
+        <pre class="language-bash"><code>echo "Más contenido sobre Git." >> README.md git add README.md git status</code></pre>
+        <p>Salida:</p>
+        <p><img src="image/salida1.png"></p>
+        Aquí, <code class="cod">README.md</code> está en el área de preparación, listo para el commit. Git incluso te da
+        una
+        pista para "unstage"
+        (deshacer el add) si cambias de opinión.
+        <br>
+        <li><strong class="list">Archivos modificados pero NO en el área de preparación:</strong> Modificamos <code
+            class="cod">index.html</code> pero no lo añadimos:</li>
+        <pre class="language-bash"><code>echo "<p>Contenido adicional para la web de dCreations.</p>" >> index.html
+          git status</code></pre>
+        <p>Salida:</p>
+        <p><img src="image/salida.png"></p>
+        <p><code class="cod">index.html</code> ha sido modificado, pero esos cambios aún no están en el área de
+          preparación.
+          Git te sugiere <code class="cod">git add</code>
+          para incluirlos.</p>
+        <p>Dominar <code class="cod">git status</code> te da la confianza para saber siempre el estado actual de tu
+          proyecto
+          y qué acciones necesitas
+          tomar a continuación. Es una herramienta clave para un flujo de trabajo Git eficiente y una habilidad
+          fundamental para cualquier desarrollador Git.</p>
+        <br>
+        <br>
+        <br>
+        <h1 id="trabajando-con-repositorios">Trabajando con Repositorios Remotos: Git Push, Git Pull y Git
+          Clone</h1>
+          <p>Hasta ahora, hemos trabajado con un repositorio Git local en tu ordenador. Sin embargo, para colaborar con
+            otros
+            desarrolladores, compartir tu trabajo o para tener una copia de seguridad de tu proyecto en la nube,
+            necesitas
+            un repositorio remoto. Plataformas como GitHub, GitLab o Bitbucket son las más populares para alojar estos
+            repositorios remotos</p>
+          <p>Estos comandos son esenciales para interactuar con esos repositorios remotos, permitiéndote compartir tu
+            trabajoy mantener tu copia local actualizada. Te guiarán en cómo usar Git en entornos colaborativos</p>
+          <br>
+          <h2 id="git-clone">Git Clone: Copiando un Repositorio Remoto a Tu Ordenador</h2>
+          <p>El comando <code class="cod">git clone</code> se utiliza para copiar un repositorio existente desde una
+            ubicación
+            remota (como GitHub) a
+            tu máquina local. Es la forma más común de obtener una copia inicial de un proyecto Git.</p>
+          <p><strong class="list">¿Para qué sirve?</strong> Es la manera de obtener una copia completa de un proyecto
+            Git
+            existente. Descarga todo el
+            historial del proyecto, todas sus ramas y establece automáticamente la conexión con el repositorio remoto
+            original.</p>
+          <p><strong class="list">Cómo usarlo:</strong> Necesitarás la URL del repositorio remoto. Por ejemplo, si
+            tienes un repositorio en GitHub:</p>
+          <pre class="language-bash"><code>git clone URL_del_repositorio</code></pre>
+          <p><strong class="list">Ejemplo:</strong> Imagina que el repositorio de <code
+              class="cod">dCreations-Docs</code>
+            ya existe en GitHub en la URL <code class="cod">https://github.com/dcreations/dCreations-Docs.git</code></p>
+          <pre class="language-bash"><code>git clone https://github.com/dcreations/dCreations-Docs.git</code></pre>
+          <h2><strong class="list">Qué sucede</strong></h2>
+          <li>
+            1. Git creará una nueva carpeta con el nombre del repositorio (<code class="cod">dCreations-Docs</code> en
+            este
+            caso) en el directorio
+            donde ejecutaste el comando.
+          </li><br>
+          <li>
+            2. Dentro de esa carpeta, descargará todos los archivos del proyecto y su historial completo.
+          </li><br>
+          <li>
+            3. Automáticamente configurará una conexión remota llamada <code class="cod">origin</code> que apunta a la
+            URL
+            del repositorio del que
+            clonaste.
+            <p><img src="image/clonacion.png"></p>
+            <p>Ahora tienes una copia local del proyecto <code class="cod">dCreations-Docs</code> y estás listo para
+              empezar
+              a
+              trabajar en él y aplicar
+              tu flujo de trabajo Git.</p>
+          </li>
+          <br>
+
+          <h2 id="git-push">Git Push: Subiendo Tus Cambios a un Repositorio Remoto</h2>
+          <p>El comando <code class="cod">git push</code> se utiliza para enviar los commits que has realizado en tu
+            repositorio Git local al
+            repositorio remoto.</p>
+          <p><strong class="list">¿Para qué sirve?</strong> Para compartir tus cambios con otros colaboradores y para
+            tener
+            una copia de seguridad actualizada de tu trabajo en la plataforma remota. Es fundamental para la
+            sincronización y la colaboración en equipo.</p>
+          <p><strong class="list">Cómo usarlo:</strong> Una vez que hayas hecho commits en tu rama local, puedes subirlos al remoto:</p>
+          <pre class="language-bash"><code>git push nombre_remoto nombre_rama</code></pre><br>
+          Comúnmente, el nombre remoto es <code class="cod">origin</code> (el que Git configura por defecto al clonar) y
+          la rama principal suele ser <code class="cod">main</code> o <code class="cod">masterF</code>.
+          <p><strong class="list">Ejemplo:</strong> Si has hecho algunos commits en tu rama main local:
+            <img src="image/gitbranch.png">
+          </p>
+          <p>La primera vez que haces <code class="cod">git push</code> en una rama nueva, es posible que tengas que
+            establecer el "upstream" (rama de
+            seguimiento) con:</p>
+          <pre class="language-bash"><code>git push -u origin main</code></pre>
+          <code class="cod">-u</code> (o <code class="cod">--set-upstream</code>) le dice a Git que tu rama local <code
+            class="cod">main</code> debe rastrear la rama <code class="cod">main</code> en <code
+            class="cod">origin</code>.
+          Después de esto, los <code class="cod">git push</code> futuros solo necesitarán git push (sin especificar
+          origin main), lo que simplifica tu flujo de trabajo Git.
+          <p><strong class="list">Qué sucede:</strong> Git intentará enviar tus commits al repositorio remoto. Si no hay
+            conflictos y tu rama remota está actualizada, tus cambios se subirán exitosamente.</p>
+          <br>
+          <br>
+          <h2 id="git-pull">Git Pull: Descargando Actualizaciones Desde un Repositorio Remoto</h2>
+          <p>El comando <code class="cod">git pull</code> se utiliza para descargar los cambios desde un repositorio
+            remoto y fusionarlos automáticamente con tu rama local actual.</p>
+          <p><strong class="list">¿Para qué sirve?</strong> Para mantener tu copia local del proyecto actualizada con
+            los últimos cambios realizados por otros colaboradores en el repositorio remoto. Es esencial para la 
+            colaboración fluida y para evitar conflictos importantes.</p>
+          <p><strong class="list">Cómo usarlo:</strong></p>
+          <pre class="language-bash"><code>git pull nombre_remoto nombre_rama</code></pre>
+          <p>Comúnmente:</p>
+          <pre class="language-bash"><code>git pull origin main</code></pre>
+          <p><strong class="list">Qué sucede:</strong> <code class="cod">git pull</code> es en realidad una combinación
+            de
+            dos
+            operaciones internas de Git:</p>
+          <li>1. <code class="cod">git fetch:</code> Descarga los cambios del remoto a tu repositorio local, pero no los
+            integra aún en tu directorio de
+            trabajo</li><br>
+          <li>2. <code class="cod">git merge:</code> Descarga los cambios del remoto a tu repositorio local, pero no los
+            integra aún en tu directorio de
+            trabajo</li>
+          <p>Si hay nuevos cambios en el remoto, Git los descargará y los aplicará a tu código.</p>
+          <img src="image/cambios.png">
+          <br>
+          <br>
+          <br>
+          <h2 id="resolviendo-conflictos">Resolviendo Conflictos de Merge (Fusión) al Hacer Git Pull</h2>
+          <p>Los conflictos de merge (o conflictos de fusión) son una parte normal del trabajo en equipo con Git.
+            Ocurren
+            cuando dos ramas han modificado la misma parte del mismo archivo, y Git no puede decidir automáticamente qué
+            versión mantener. Es una habilidad clave a desarrollar para dominar Git.</p>
+          <p><strong class="list">¿Cuándo ocurren?</strong> Principalmente al hacer <code class="cod">git pull</code>
+            (que
+            incluye un merge implícito) o <code class="cod">git merge</code> explícitamente, si tu repositorio local
+            tiene
+            cambios que chocan con los
+            del repositorio remoto.</p>
+          <p><strong class="list">Cómo identificarlos:</strong> Cuando ocurre un conflicto, Git te lo informará
+            claramente
+            en la terminal:</p>
+          <img src="image/merge.png"><br>
+          Además, los archivos con conflictos contendrán marcadores especiales que indican las secciones conflictivas.
+          <br>
+          <p><strong class="list">Cómo resolverlos (paso a paso):</strong></p>
+          <li><strong class="list">Identifica los archivos en conflicto:</strong><code class="cod">git status</code> te
+            mostrará los archivos "unmerged" (sin fusionar).</li> <br>
+          <li><strong class="list">Abre los archivos en conflicto en tu editor de texto:</strong> Verás marcadores como
+            estos, que señalan las dos versiones que entran en conflicto</li><br>
+          <img src="image/version.png">
+          <p><code class="cod">- <<<<<<< HEAD:</code> Marca el inicio de los cambios en tu rama actual (HEAD apunta a tu
+            último commit).</p>
+          <p><code class="cod">- =======:</code> Separa tus cambios de los cambios entrantes.</p>
+          <p><code class="cod">- >>>>>>>hash_del_commit_remoto_o_nombre_de_rama:</code> Marca el final de los cambios de
+            la
+            rama que estás fusionando.</p>
+          <li>3. <strong class="list">Edita el archivo manualmente:</strong> Decide qué versión quieres mantener o cómo
+            combinar ambas. Elimina todos los marcadores <code class="cod"><<<<<<<</code>,<code
+              class="cod">=======</code>
+            y
+            <code class="cod">>>>>>>></code>. Por ejemplo, si eliges la versión remota:
+          </li>
+          <img src="image/version2.png"><br>
+          O si combinas para crear una nueva línea: <br>
+          <img src="image/lamejor.png"><br><br>
+          <li>4.<strong class="list"> Marca el conflicto como resuelto:</strong> Una vez que hayas editado el archivo y
+            quitado los marcadores de conflicto,
+            dile a Git que has resuelto el conflicto:</li>
+          <pre class="language-bash"><code>git add nombre_archivo_resuelto</code></pre>
+          Repite esto para todos los archivos en conflicto que <code class="cod">git status</code> te indique. <br><br>
+          <li>5. <strong class="list">Completa el merge:</strong> Una vez que todos los conflictos estén marcados como
+            resueltos (con <code class="cod">git add</code> para cada uno), haz un nuevo commit para finalizar el merge.
+            Git
+            te proporcionará un
+            mensaje de commit predeterminado que puedes editar:</li>
+          <pre class="language-bash"><code>git commit -m "Merge branch 'main' of https://github.com/dcreations/dCreations-Docs into main (resolving conflicts)"</code></pre>
+          O simplemente <code class="cod">git commit</code> para abrir tu editor y revisar/modificar el mensaje.
+          <p>Una vez committeado, el conflicto estará resuelto y el historial de versiones se actualizará. La práctica
+            constante te ayudará a resolver conflictos de merge con mayor facilidad y a mejorar tu flujo de trabajo Git.
+          </p>
+          <br>
+          <br>
+          <br>
+          <h1 class="titulo" id="ramas-branch">Ramas (Branches) en Git: Trabajo en Equipo y Experimentación Segura</h1>
+            <p>Las ramas son una de las características más poderosas y útiles de Git, fundamentales para el trabajo en equipo y 
+              el desarrollo de nuevas funcionalidades. Una rama Git representa una línea de desarrollo independiente
+               dentro de tu proyecto.</p>
+               <p>Imagina que tu proyecto es un árbol. La rama principal (generalmente <code class="cod">main</code> o <code class="cod">master</code>) 
+                es el tronco. Cuando quieres añadir una nueva característica, corregir un error o probar una idea,
+                  creas una "rama" que sale de ese tronco. Puedes trabajar en esa rama, hacer tus commits Git,
+                   y experimentar sin afectar al código principal y estable. Una vez que tu trabajo está completo,
+                    probado y listo, puedes "fusionar" (merge) esa rama de vuelta al tronco principal.</p>
+                    <br>
+                    <h2 class="titulo" id="git-branch">Git Branch: Creando, Listando y Eliminando Ramas</h2>
+                    <p>El comando <code class="cod">git branch </code> te permite gestionar las ramas Git en tu repositorio 
+                      Git local.</p>
+                      <p><strong class="list">¿Para qué sirve?</strong> Para ver las ramas existentes en tu proyecto,
+                         crear nuevas ramas o eliminar ramas que ya no necesitas.</p>
+                         <h3 class="list">Cómo usarlo:</h3>
+                         <li>1. <strong class="list">Listar todas las ramas:</strong></li>
+                         <pre class="language-bash"><code>git branch</code></pre>
+                         - La rama actual en la que te encuentras se indicará con un asterisco (<code class="cod">*</code>).<br> <br>
+                        
+                          <li>2. <strong class="list">Crear una nueva rama:</strong></li>
+                          <pre class="language-bash"><code> git branch nombre_de_la_nueva_rama</code></pre>
+                          Esto solo crea la rama, pero no te cambia a ella.
+                          <p><strong class="list">Ejemplo:</strong> Vamos a crear una rama Git para desarrollar una nueva
+                             sección de preguntas frecuentes para <code class="cod">dCreations-Docs.</code></p>
+                             <pre class="language-bash"><code>git branch feature/faq-section</code></pre><br>
+                             <br>
+                             <li>3. <strong class="list">Eliminar una rama: </strong>Puedes eliminar una rama una vez que 
+                              su trabajo ha sido fusionado en otra rama y ya no es necesaria.</li>
+                              <pre class="language-bash"><code>git branch -d nombre_de_la_rama_a_eliminar</code></pre>
+                              <p>- <code class="cod">-d</code> significa "delete" (seguro). Git no te dejará eliminar una rama que no ha sido 
+                                fusionada para evitar pérdida accidental de trabajo.</p>
+                                <p>- Para forzar la eliminación de una rama (incluso si no está fusionada, con el riesgo
+                                   de perder cambios): <code class="cod">git branch -D nombre_de_la_rama_a_eliminar</code> . ¡Usa <code class="cod">-D</code> con
+                                    extrema precaución!</p>
+                                    <p><strong class="list">Ejemplo:</strong> Después de fusionar 
+                                      <code class="cod">feature/faq-section</code>, podemos eliminarla:</p>
+                                      <pre class="language-bash"><code>git branch -d feature/faq-section</code></pre>
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <h2 class="titulo" id="git-checkout">Git Checkout: Navegando Entre Diferentes Ramas</h2>
+                                      <p>El comando <code class="cod">git checkout</code> se usa para cambiar de una rama a otra, o para crear una
+                                         nueva rama y cambiarte a ella instantáneamente. Es fundamental para trabajar con el
+                                          control de versiones basado en ramas.</p>
+                                          <p><strong class="list">¿Para qué sirve?</strong> Para moverte entre las diferentes líneas de desarrollo de tu
+                                             proyecto. Cuando cambias de rama, Git actualiza automáticamente tu directorio de 
+                                             trabajo para reflejar los archivos y el historial de esa rama.</p>
+                                             <h3><strong class="list">Cómo usarlo:</strong></h3>
+                                             <li>1. <strong class="list">Cambiar a una rama existente:</strong></li>
+                                             <pre class="language-bash"><code>git checkout nombre_de_la_rama</code></pre>
+                                             <p><strong class="list">Ejmplo:</strong> Cambiando a nuestra rama de FAQ:</p>
+                                             <pre class="language-bash"><code>git checkout feature/faq-section</code></pre>
+                                             Switched to branch 'feature/faq-section'
+                                             <br>
+                                             <br>
+                                             <li>2. <strong class="list">Crear una nueva rama y cambiarte a ella inmediatamente (atajo muy útil):</strong></li>
+                                             <pre class="language-bash"><code> git checkout -b nombre_de_la_nueva_rama</code></pre>
+                                             <p>- <code class="cod">-b</code> es un atajo para <code class="cod">git branch nueva-rama</code> seguido de
+                                               <code class="cod">git checkout nueva-rama</code>.</p>
+                                               <br>
+                                               <p><strong class="list">Ejemplo:</strong> Creamos y cambiamos a una rama para corregir un bug:</p>
+                                               <pre class="language-bash"><code> git checkout -b bugfix/header-error</code></pre>
+                                               Switched to a new branch 'bugfix/header-error'
+                                               <br>
+                                               <br>
+                                               <h2 class="titulo" id="git-merge">Git Merge: Fusionando Cambios de una Rama a Otra</h2>
+                                               <p>El comando <code class="cod">git merge</code> se utiliza para combinar el historial de una rama 
+                                                Git en otra. Es cómo se integran las nuevas funcionalidades o las
+                                                 correcciones de errores en la rama principal</p>
+                                                 <p><strong class="list">¿Para qué sirve?</strong> Cuando has terminado de
+                                                   trabajar en una rama (por ejemplo, una rama de funcionalidad o de
+                                                    corrección de errores) y deseas integrar esos cambios en la rama
+                                                     principal o en otra rama de desarrollo. Es un paso clave
+                                                     en cualquier flujo de trabajo Git.</p>
+                                                     <h3><strong class="list">Cómo usarlo:</strong></h3>
+                                                     <li>1. <strong class="list">Asegúrate de estar en la rama receptora de los cambios</strong>. 
+                                                      Por ejemplo, si quieres fusionar <code class="cod">feature/faq-section</code> en <code class="cod">main</code>,
+                                                       primero debes estar en <code class="cod">main</code>:</li>
+                                                       <pre class="language-bash"><code>git checkout main</code></pre><br><br>
+                                                       <li>2. <strong class="list">Ejecuta el comando <code class="cod">git merge </code> seguido del nombre de la rama que quieres fusionar en la rama actual:</strong></li>
+                                                       <pre class="language-bash"><code>git merge nombre_de_la_rama_a_fusionar</code></pre>
+                                                       <br>
+                                                       <br>
+                                                       <p><strong class="list">Ejemplo:</strong> Hemos terminado la sección de FAQ en 
+                                                        <code class="cod">feature/faq-section</code> y queremos fusionarla con <code class="cod">main</code>.</p>
+                                                        <pre class="language-bash"><code>git checkout main
+# Esto asegura que estás en la rama 'main'
+# Si hay cambios recientes en 'main' en el remoto, haz un pull primero para evitar conflictos
+git pull origin main
+git merge feature/faq-section</code></pre>
+            <br>
+            <p><strong class="list">Qué sucede:</strong> Git intentará combinar los cambios. Pueden ocurrir dos tipos 
+              de merge:</p>
+            <li>- <strong class="list">Fast-forward merge:</strong> Si la rama receptora (ej. main) no ha tenido nuevos commits desde que se creó 
+              la rama que se va a fusionar, Git simplemente "avanza" el puntero de la rama receptora hasta el último
+               commit de la otra rama. No se crea un nuevo commit de merge.</li>
+               <pre><code>Updating b8e9f0g..c1d2e3f
+Fast-forward
+   docs/faq.md | 10 ++++++++++
+   1 file changed, 10 insertions(+)</code></pre>
+   <br>
+   <p>Si hay conflictos de merge, Git te lo indicará y deberás resolverlos manualmente antes de completar el 
+    commit de merge (como se explicó en la sección anterior).</p>
+    <br>
+    <br>
+    <br>
+    <h2 class="titulo" id="flujo-trabajo">Flujo de Trabajo con Ramas:Gitflow para Principiantes</h2>
+    <p>Aunque existen varios flujos de trabajo Git (como GitHub Flow, GitLab Flow, Trunk-Based Development), el Gitflow
+       es uno de los más estructurados y populares, especialmente para proyectos con ciclos de lanzamiento definidos. 
+       Para principiantes en Git, entender la lógica básica de las ramas es suficiente para empezar a dominar Git.</p>
+       <h3><strong class="list">Conceptos clave del flujo de trabajo con ramas (simplificado):</strong></h3>
+       <li>1. <code class="cod">main</code> (<strong class="list">o</strong> <code class="cod">master</code>): Esta rama 
+        siempre debe contener código estable, listo para producción. Los commits directos a <code class="cod">main</code> 
+        son raros y se desaconsejan.</li>
+        <br>
+        <li>2. <code class="cod">develop</code> : Esta rama es la principal para el desarrollo activo. Todos los nuevos features 
+          se fusionan aquí. Es el punto de integración para el trabajo diario.</li>
+          <br>
+          <li>3. <strong class="list">Ramas de</strong> <code class="cod">feature</code>:</li>
+          <p>Se crean a partir de <code class="cod">develop</code> para desarrollar una nueva funcionalidad o mejora.
+            <br>
+            <br>
+              - Nomenclatura común: <code class="cod">feature/nombre-de-la-funcionalidad </code>(ej. <code class="cod">feature/user-authentication</code>).
+                <br>
+                <br>
+              - Trabajas en esta rama, haces tus commits aisladamente.
+              <br>
+              <br>
+              - Una vez terminada y probada, se fusiona de vuelta a <code class="cod">develop</code>.</p>
+              <br>
+              <li>4. <strong class="list">Ramas de</strong> <code class="cod">hotfix</code> :</li>
+              <p>
+                - Se crean a partir de <code class="cod">main</code> (o <code class="cod">master</code>) para corregir 
+                errores críticos en producción que no pueden esperar a la próxima versión.
+                <br>
+                <br>
+                - Nomenclatura común: <code class="cod">hotfix/nombre-del-bug</code> (ej. <code class="cod">hotfix/login-bug</code>).
+                <br>
+                <br>
+                - Una vez corregido y probado, se fusiona tanto a <code class="cod">main</code> (para la corrección inmediata en producción) como 
+                a <code class="cod">develop </code>(para incorporar el fix al desarrollo futuro y evitar que reaparezca)
+                <br>
+                <br>
+              </p>
+                <li>5. <strong class="list">Ramas de</strong> <code class="cod">release</code> <strong class="list">(opcional para principiantes):</strong></li>
+                <p>- Se crean a partir de <code class="cod">develop</code> cuando el desarrollo de una nueva versión está completo y listo para 
+                  ser probado para un lanzamiento.
+                  <br>
+                  <br>
+                - Aquí se realizan los últimos arreglos y se prepara el código para el despliegue. Una vez lista, 
+                se fusiona a <code class="cod">main</code> (para el lanzamiento) y también de vuelta a <code class="cod">develop</code>
+                 (para asegurar que cualquier ajuste final se incorpore al desarrollo continuo).</p>
+
+                  <p>Este flujo de trabajo Git basado en ramas permite una gran flexibilidad y seguridad, ya que el 
+                    desarrollo principal (<code class="cod">develop</code>) y la versión estable (<code class="cod">main</code>) están protegidos, y los cambios se 
+                    integran de forma controlada.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="titulo" id="conclusion">Conclusión: Tu Camino para Dominar Git</h2>
+                    <p>Felicidades. Has completado una inmersión profunda en Git para principiantes, desde la instalación 
+                      y configuración hasta los comandos Git básicos y la comprensión de los repositorios remotos y
+                       el potente concepto de las ramas. Ahora tienes las herramientas y el conocimiento para empezar 
+                       a utilizar esta indispensable herramienta de control de versiones en tus proyectos.
+                        <br>
+                        <br>
+                        Recuerda que la clave para dominar Git es la práctica constante. Crea tus propios proyectos, 
+                        experimenta con los comandos, colabora con otros y no temas cometer errores. Git está diseñado 
+                        precisamente para ayudarte a recuperarte de ellos. Con cada commit, cada pull y cada merge, 
+                        te sentirás más cómodo y eficiente en tu flujo de trabajo Git.
+                        <br>
+                        <br>
+                        En dCreations.es, estamos comprometidos a ofrecerte el mejor contenido para programadores, 
+                        diseñadores y emprendedores digitales. Esperamos que este tutorial Git en español te haya sido de 
+                        gran utilidad.
+                        <br>
+                        <br>
+                        ¿Listo para tu siguiente paso? Te animamos a explorar nuestros otros tutoriales y guías, o a 
+                        poner en práctica lo aprendido creando tu primer repositorio Git en GitHub o GitLab.
+                         ¡El mundo del desarrollo te espera!</p>
+        </p> 
+      </main>
+      <aside class="barra-lateral">
+        <section class="widget popular-feeds">
+          <h3 class="widget-title">Datos del Creador y sus fuentes</h3>
+          <div class="popular-feed-loop">
+            Centro Educativo Técnico Laboral Kinal <br>
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/b1441693498989.Y3JvcCwxMDI3LDgwNCwxODUsMA.png" width="250px" ><br>
+            <p>Mi nombre es Iosef Suarez Gil y esta pagina esta dedicada a los que quieran aperender sobre git
+              Actualmente estoy Cursando el  grado de 5to Informática en el Centro Educativo Tecnico Laboral Kinal
+            </p>
+            <br>
+            <br>
+            <P>FUENTES:</P>
+            <a href="https://dcreations.es/blog/git/git-para-principiantes-tutorial-paso-a-paso-espana#ramas-branches-en-git-trabajo-en-equipo-y-experimentacion-segura">GIT</a>
+            <p>Bienvenido a mi página sobre Git
+
+Este espacio está dedicado a todas las personas que desean aprender a usar Git, una de las herramientas más importantes en el mundo de la programación y el desarrollo de software. Aquí encontrarás guías, ejemplos y explicaciones claras para que puedas comprender desde lo más básico hasta conceptos más avanzados.
+
+¿Qué es Git?
+Git es un sistema de control de versiones que te permite registrar los cambios en tus proyectos, trabajar en equipo de forma ordenada y mantener un historial completo de tu trabajo. Gracias a Git, es posible colaborar con otros programadores sin perder información y recuperar versiones anteriores de tu código cuando sea necesario.
+
+En esta página aprenderás:
+
+Cómo instalar y configurar Git.
+
+Los comandos más usados y su función.
+
+Cómo crear y gestionar repositorios.
+
+Cómo trabajar en equipo usando plataformas como GitHub.</p>
+          </div>
+        </section>
+            
+        </aside>
+</div>
+</body>
+
+</html>

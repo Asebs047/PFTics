@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bootstrap_2024449</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style/Bootstrap_2024449.css">
+</head>
+<body>
+  <nav class="sidebar-nav">
+    <div class="nav-brand">
+      <div class="logo-blob" aria-hidden="true">
+        <svg viewBox="0 0 128 128" width="40" height="40">
+          <path fill="#7952B3" d="M30.8 42.4c1.4-1.4 3.1-2.4 5.1-2.4h56.2c2 0 3.7.8 5.1 2.2 1.4 1.4 2.2 3.1 2.2 5.1v56.2c0 2-1 3.8-2.4 5.2-1.4 1.4-3.1 2.4-5.1 2.4H35.9c-2 0-3.7-.8-5.1-2.2-1.4-1.4-2.2-3.1-2.2-5.1V47.5c0-1.9.9-3.7 2.2-5.1z"></path>
+          <path fill="#563D7C" d="M78.2 66.4c-3.1-1.9-6.5-2.9-10.2-2.9-3.7 0-7.1.9-10.2 2.8-3.1 1.9-5.5 4.6-7.2 8.1-1.7 3.5-2.6 7.5-2.6 12 0 1.3 1.1 2.4 2.4 2.4h35.2c1.3 0 2.4-1.1 2.4-2.4 0-4.5-.9-8.5-2.6-12-1.7-3.6-4.1-6.4-7.2-8.3zm-10.2 11.3c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"></path>
+          <path fill="#FFFFFF" d="M78.4 66.7c3.1 1.9 5.5 4.6 7.2 8.1 1.7 3.5 2.6 7.5 2.6 12 0 1.3-1.1 2.4-2.4 2.4H52.6c-1.3 0-2.4-1.1-2.4-2.4 0-4.5.9-8.5 2.6-12 1.7-3.6 4.1-6.4 7.2-8.3 3.1-1.9 6.5-2.8 10.2-2.8 3.7 0 7.1.9 10.2 2.8zm-10.2 11.3c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4z"></path>
+        </svg>
+        <h1>Guía Bootstrap</h1>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <div class="nav-group">
+        <span class="group-title">Fundamentos</span>
+        <a href="#intro" class="nav-link">
+          <span class="link-icon">📦</span>
+          <span class="link-text">Introducción</span>
+        </a>
+        <a href="#instalacion" class="nav-link">
+          <span class="link-icon">⚙️</span>
+          <span class="link-text">Instalación</span>
+        </a>
+      </div>
+      
+      <div class="nav-group">
+        <span class="group-title">Diseño</span>
+        <a href="#grid" class="nav-link">
+          <span class="link-icon">📐</span>
+          <span class="link-text">Sistema Grid</span>
+        </a>
+      </div>
+      
+      <div class="nav-group">
+        <span class="group-title">Componentes</span>
+        <a href="#componentes" class="nav-link">
+          <span class="link-icon">🧩</span>
+          <span class="link-text">UI Components</span>
+        </a>
+        <a href="#utilidades" class="nav-link">
+          <span class="link-icon">🛠️</span>
+          <span class="link-text">Utilidades</span>
+        </a>
+      </div>
+      
+      <div class="nav-group">
+        <span class="group-title">Avanzado</span>
+        <a href="#personalizacion" class="nav-link">
+          <span class="link-icon">🎨</span>
+          <span class="link-text">Personalización</span>
+        </a>
+        <a href="#avanzado" class="nav-link">
+          <span class="link-icon">🚀</span>
+          <span class="link-text">Temas Expertos</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="nav-footer">
+      <a href="https://getbootstrap.com/" target="_blank" class="docs-link">
+        <span class="link-icon">📚</span>
+        <span class="link-text">Documentación Oficial</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <header class="content-header">
+      <div class="breadcrumbs">
+        <a href="#">Guía Bootstrap</a> / <span>Introducción</span>
+      </div>
+      <h1>Guía visual: <span class="accent">Bootstrap</span></h1>
+      <p class="subtitle">De principiante a experto — todo lo que necesitas saber sobre el framework CSS más popular.</p>
+    </header>
+
+  <main class="container">
+
+    <!-- Intro -->
+    <section id="intro" class="card hero">
+      <div class="left">
+        <div class="section-header">
+          <span class="section-tag">Fundamentos</span>
+          <h2>¿Qué es Bootstrap?</h2>
+        </div>
+        <p class="lead">
+          <strong>Bootstrap</strong> es el framework front-end de código abierto más popular para desarrollar sitios web y aplicaciones responsivas. Creado originalmente por Twitter, ahora es mantenido por una comunidad global de desarrolladores.
+        </p>
+        <div class="highlight-box">
+          <h4>¿Por qué usar Bootstrap?</h4>
+          <ul>
+            <li><strong>Diseño responsivo</strong> que se adapta automáticamente a móviles, tablets y desktop</li>
+            <li><strong>Consistencia visual</strong> en todos los navegadores y dispositivos</li>
+            <li><strong>Rapidez de desarrollo</strong> con componentes preconstruidos</li>
+            <li><strong>Personalizable</strong> mediante Sass variables y mixins</li>
+            <li><strong>Comunidad activa</strong> con miles de recursos y plantillas</li>
+          </ul>
+        </div>
+        <div class="version-info">
+          <span class="badge">v5.3.0</span> Última versión estable (Julio 2023)
+        </div>
+      </div>
+      <div class="right hero-image">
+        <div class="bootstrap-features">
+          <div class="feature-item">
+            <div class="feature-icon">📱</div>
+            <h5>Mobile-first</h5>
+            <p>Diseño que prioriza dispositivos móviles</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🧩</div>
+            <h5>Componentes</h5>
+            <p>40+ elementos listos para usar</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <h5>Personalizable</h5>
+            <p>Variables Sass para modificar estilos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instalación -->
+    <section id="instalacion" class="card">
+    <div class="section-header">
+      <span class="section-tag">Primeros pasos</span>
+      <h2>Instalación y configuración</h2>
+    </div>
+    
+    <div class="install-methods">
+      <div class="install-method">
+        <div class="method-header">
+          <h3>Método recomendado: CDN</h3>
+          <span class="badge blue">Más simple</span>
+        </div>
+        <p>La forma más rápida de empezar con Bootstrap es usando los enlaces CDN. Copia y pega este código en el <code>&lt;head&gt;</code> de tu HTML:</p>
+        
+        <div class="code-container">
+          <div class="code-tab active">CSS</div>
+          <div class="code-tab">JavaScript</div>
+          
+          <pre class="code"><code>
+&lt;!-- CSS de Bootstrap --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+  rel="stylesheet" 
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+  crossorigin="anonymous"&gt;
+          </code></pre>
+          
+          <pre class="code" style="display: none"><code>
+&lt;!-- Bundle JS de Bootstrap (incluye Popper) --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
+  crossorigin="anonymous"&gt;&lt;/script&gt;
+          </code></pre>
+        </div>
+        
+        <div class="method-pros">
+          <h4>Ventajas:</h4>
+          <ul>
+            <li>No requiere instalación ni herramientas adicionales</li>
+            <li>Servido desde una red global para máxima velocidad</li>
+            <li>Fácil de actualizar cambiando la versión en la URL</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="install-method">
+        <div class="method-header">
+          <h3>Para proyectos profesionales: Package Managers</h3>
+          <span class="badge purple">Recomendado</span>
+        </div>
+        <p>Si trabajas con Node.js o necesitas más control sobre las dependencias:</p>
+        
+        <div class="package-managers">
+          <div class="package-manager">
+            <h4>npm</h4>
+            <pre class="code"><code>
+npm install bootstrap @popperjs/core
+            </code></pre>
+          </div>
+          
+          <div class="package-manager">
+            <h4>yarn</h4>
+            <pre class="code"><code>
+yarn add bootstrap @popperjs/core
+            </code></pre>
+          </div>
+          
+          <div class="package-manager">
+            <h4>Composer (PHP)</h4>
+            <pre class="code"><code>
+composer require twbs/bootstrap:5.3.0
+            </code></pre>
+          </div>
+        </div>
+        
+        <div class="method-pros">
+          <h4>Ventajas:</h4>
+          <ul>
+            <li>Integración perfecta con tu workflow de desarrollo</li>
+            <li>Control de versiones más preciso</li>
+            <li>Posibilidad de importar solo los componentes necesarios</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="note">
+      <strong>Nota importante:</strong> Bootstrap 5 ya no depende de jQuery. Para funcionalidades interactivas como modales o tooltips, necesitarás incluir Popper.js (ya incluido en el bundle JS).
+    </div>
+  </section>
+
+    <!-- Grid -->
+    <section id="grid" class="card">
+      <div class="section-header">
+        <span class="section-tag">Diseño</span>
+        <h2>Sistema Grid de Bootstrap</h2>
+      </div>
+      <p>El corazón de Bootstrap es su poderoso sistema de <strong>12 columnas</strong> que permite crear layouts complejos y responsivos con facilidad.</p>
+      
+      <div class="grid-visualization">
+        <div class="grid-example">
+          <div class="container-example">
+            <div class="row-example">
+              <div class="col-example col-6">.col-6</div>
+              <div class="col-example col-6">.col-6</div>
+            </div>
+            <div class="row-example">
+              <div class="col-example col-4">.col-4</div>
+              <div class="col-example col-4">.col-4</div>
+              <div class="col-example col-4">.col-4</div>
+            </div>
+            <div class="row-example">
+              <div class="col-example col-3">.col-3</div>
+              <div class="col-example col-6">.col-6</div>
+              <div class="col-example col-3">.col-3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h4>Breakpoints responsivos</h4>
+      <p>Bootstrap incluye 6 breakpoints para adaptar el diseño a diferentes tamaños de pantalla:</p>
+      
+      <div class="breakpoints-table">
+        <div class="breakpoint-row header">
+          <div>Breakpoint</div>
+          <div>Clase</div>
+          <div>Ancho</div>
+          <div>Uso</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Extra small</div>
+          <div><code>.col-</code></div>
+          <div>&lt;576px</div>
+          <div>Teléfonos</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Small</div>
+          <div><code>.col-sm-</code></div>
+          <div>≥576px</div>
+          <div>Teléfonos grandes</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Medium</div>
+          <div><code>.col-md-</code></div>
+          <div>≥768px</div>
+          <div>Tablets</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Large</div>
+          <div><code>.col-lg-</code></div>
+          <div>≥992px</div>
+          <div>Laptops</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Extra large</div>
+          <div><code>.col-xl-</code></div>
+          <div>≥1200px</div>
+          <div>Pantallas grandes</div>
+        </div>
+        <div class="breakpoint-row">
+          <div>Extra extra large</div>
+          <div><code>.col-xxl-</code></div>
+          <div>≥1400px</div>
+          <div>Pantallas extra grandes</div>
+        </div>
+      </div>
+      
+      <pre class="code"><code>
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-8"&gt;Contenido principal&lt;/div&gt;
+    &lt;div class="col-6 col-md-4"&gt;Sidebar&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+    </section>
+
+    <!-- Componentes -->
+    <section id="componentes" class="card">
+      <div class="section-header">
+        <span class="section-tag">UI</span>
+        <h2>Componentes principales</h2>
+      </div>
+      <p>Bootstrap incluye una amplia variedad de componentes listos para usar que siguen las mejores prácticas de diseño.</p>
+      
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="component-icon">🛎️</div>
+          <h4>Alertas</h4>
+          <p>Mensajes contextuales para feedback al usuario.</p>
+          <div class="component-example">
+            <div class="alert-example primary">Primary</div>
+            <div class="alert-example success">Success</div>
+          </div>
+        </div>
+        
+        <div class="component-card">
+          <div class="component-icon">🔘</div>
+          <h4>Botones</h4>
+          <p>Estilos predefinidos para acciones y formularios.</p>
+          <div class="component-example">
+            <div class="btn-example primary">Primary</div>
+            <div class="btn-example secondary">Secondary</div>
+          </div>
+        </div>
+        
+        <div class="component-card">
+          <div class="component-icon">📇</div>
+          <h4>Cards</h4>
+          <p>Contenedores flexibles para agrupar contenido.</p>
+          <div class="component-example">
+            <div class="card-example"></div>
+          </div>
+        </div>
+        
+        <div class="component-card">
+          <div class="component-icon">🍔</div>
+          <h4>Navbar</h4>
+          <p>Barra de navegación responsiva y personalizable.</p>
+          <div class="component-example">
+            <div class="navbar-example"></div>
+          </div>
+        </div>
+        
+        <div class="component-card">
+          <div class="component-icon">📋</div>
+          <h4>Formularios</h4>
+          <p>Inputs, selects y controles con estilos consistentes.</p>
+          <div class="component-example">
+            <div class="form-example"></div>
+          </div>
+        </div>
+        
+        <div class="component-card">
+          <div class="component-icon">🖼️</div>
+          <h4>Modales</h4>
+          <p>Ventanas emergentes para contenido adicional.</p>
+          <div class="component-example">
+            <div class="modal-example"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="note">
+        <strong>Tip:</strong> Bootstrap incluye más de 40 componentes incluyendo carruseles, tooltips, popovers, spinners, toasts y más. Revisa la <a href="https://getbootstrap.com/docs/5.3/components/" target="_blank">documentación oficial</a> para verlos todos.
+      </div>
+    </section>
+
+    <!-- Utilidades -->
+    <section id="utilidades" class="card">
+      <div class="section-header">
+        <span class="section-tag">Estilos</span>
+        <h2>Clases utilitarias</h2>
+      </div>
+      <p>Bootstrap incluye cientos de clases utilitarias para márgenes, paddings, colores, tipografía y más, siguiendo una metodología consistente.</p>
+      
+      <h4>Ejemplos comunes</h4>
+      <div class="utilities-grid">
+        <div class="utility-category">
+          <h5>Espaciado</h5>
+          <ul>
+            <li><code>.m-*</code> - Margen (0-5, auto)</li>
+            <li><code>.p-*</code> - Padding (0-5)</li>
+            <li><code>.gap-*</code> - Espacio entre elementos</li>
+          </ul>
+        </div>
+        <div class="utility-category">
+          <h5>Texto</h5>
+          <ul>
+            <li><code>.text-center</code> - Alineación</li>
+            <li><code>.fw-bold</code> - Peso de fuente</li>
+            <li><code>.fs-*</code> - Tamaño de fuente</li>
+          </ul>
+        </div>
+        <div class="utility-category">
+          <h5>Colores</h5>
+          <ul>
+            <li><code>.bg-primary</code> - Fondo</li>
+            <li><code>.text-danger</code> - Texto</li>
+            <li><code>.border-warning</code> - Bordes</li>
+          </ul>
+        </div>
+        <div class="utility-category">
+          <h5>Display</h5>
+          <ul>
+            <li><code>.d-none</code> - Ocultar</li>
+            <li><code>.d-flex</code> - Flexbox</li>
+            <li><code>.visible</code> - Visibilidad</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h4>Ejemplo práctico</h4>
+      <pre class="code"><code>
+&lt;!-- Tarjeta con utilidades --&gt;
+&lt;div class="bg-light p-4 rounded-3 shadow-sm mb-4"&gt;
+  &lt;h3 class="text-primary fw-bold mb-3"&gt;Título&lt;/h3&gt;
+  &lt;p class="text-muted fs-5"&gt;Contenido de ejemplo&lt;/p&gt;
+  &lt;button class="btn btn-success px-4 py-2"&gt;Acción&lt;/button&gt;
+&lt;/div&gt;
+      </code></pre>
+    </section>
+
+    <!-- Personalización -->
+    <section id="personalizacion" class="card">
+      <div class="section-header">
+        <span class="section-tag">Temas</span>
+        <h2>Personalización avanzada</h2>
+      </div>
+      <p>Bootstrap puede personalizarse completamente mediante variables Sass o sobrescribiendo estilos CSS.</p>
+      
+      <div class="customization-tabs">
+        <div class="customization-method active">
+          <h4>Variables Sass</h4>
+          <p>Modifica las variables antes de compilar Bootstrap:</p>
+          <pre class="code"><code>
+// Cambiar colores primarios
+$primary: #6f42c1;
+$danger: #dc3545;
+
+// Cambiar tipografía
+$font-family-sans-serif: "Inter", system-ui, -apple-system;
+
+// Modificar breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Incluir Bootstrap
+@import "bootstrap/scss/bootstrap";
+          </code></pre>
+        </div>
+        <div class="customization-method">
+          <h4>CSS personalizado</h4>
+          <p>Sobrescribe estilos después de cargar Bootstrap:</p>
+          <pre class="code"><code>
+/* Cambiar estilos de botones */
+.btn-primary {
+  background-color: #6f42c1;
+  border-color: #5a32a3;
+}
+
+/* Personalizar navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+          </code></pre>
+        </div>
+      </div>
+      
+      <div class="note">
+        <strong>Recomendación:</strong> Para proyectos grandes, usa Sass para personalizar Bootstrap antes de compilar. Esto genera CSS más optimizado que sobrescribir estilos después.
+      </div>
+    </section>
+
+    <!-- Avanzado -->
+    <section id="avanzado" class="card">
+      <div class="section-header">
+        <span class="section-tag">Profesional</span>
+        <h2>Temas avanzados</h2>
+      </div>
+      
+      <div class="advanced-topics">
+        <article class="topic-card">
+          <h4>Integración con frameworks JavaScript</h4>
+          <p>Bootstrap puede usarse con React, Angular o Vue mediante librerías especializadas:</p>
+          <ul>
+            <li><strong>React:</strong> react-bootstrap o Reactstrap</li>
+            <li><strong>Angular:</strong> ng-bootstrap</li>
+            <li><strong>Vue:</strong> bootstrap-vue o vue-bootstrap</li>
+          </ul>
+          <div class="code-example">
+            <pre class="code"><code>
+// Ejemplo con React Bootstrap
+import { Button, Card } from 'react-bootstrap';
+
+function MyComponent() {
+  return (
+    &lt;Card style={{ width: '18rem' }}&gt;
+      &lt;Card.Body&gt;
+        &lt;Card.Title&gt;Título&lt;/Card.Title&gt;
+        &lt;Button variant="primary"&gt;Click me&lt;/Button&gt;
+      &lt;/Card.Body&gt;
+    &lt;/Card&gt;
+  );
+}
+            </code></pre>
+          </div>
+        </article>
+        
+        <article class="topic-card">
+          <h4>Bootstrap Icons</h4>
+          <p>La biblioteca oficial de íconos SVG diseñada para Bootstrap:</p>
+          <pre class="code"><code>
+&lt;!-- Instalación --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"&gt;
+
+&lt;!-- Uso --&gt;
+&lt;i class="bi bi-heart-fill"&gt;&lt;/i&gt;
+&lt;i class="bi bi-github"&gt;&lt;/i&gt;
+&lt;i class="bi bi-arrow-right-circle"&gt;&lt;/i&gt;
+          </code></pre>
+          <p>Incluye más de 1,800 íconos gratuitos y de código abierto.</p>
+        </article>
+        
+        <article class="topic-card">
+          <h4>Optimización del bundle</h4>
+          <p>Para reducir el tamaño del CSS final:</p>
+          <ol>
+            <li>Importa solo los componentes que necesitas</li>
+            <li>Elimina utilidades no utilizadas</li>
+            <li>Usa PurgeCSS en producción</li>
+          </ol>
+          <pre class="code"><code>
+// Importación modular en Sass
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Solo los componentes necesarios
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/navbar";
+          </code></pre>
+        </article>
+      </div>
+    </section>
+    
+    <footer class="card footer">
+      <p>Hecho por Anderson Marco Miguel Sosa Balcarcel - 2024449</p>
+    </footer>
+  </main>
+</body>
+</html>

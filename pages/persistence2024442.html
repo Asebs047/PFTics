@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistence.xml — DB / Persistencia (Guía)</title>
+    <link rel="stylesheet" href="../style/persistence_2024442.css" />
+    <a href="MenuDatabase.html" class="back-button">Volver a Database</a>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>DB / Persistencia — <span class="badge">persistence.xml</span></h1>
+                <p>Guía práctica y ejemplo del archivo <code>persistence.xml</code> (JPA) — qué es, dónde va, y las
+                    configuraciones clave.</p>
+            </div>
+        </header>
+
+        <nav>
+            <a href="#intro">Introducción</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#estructura">Estructura</a>
+            <a href="#ejemplo">Ejemplo</a>
+            <a href="#propiedades">Propiedades comunes</a>
+            <a href="#consejos">Consejos</a>
+        </nav>
+
+        <section id="intro" class="card">
+            <h2>Introducción</h2>
+            <p>En aplicaciones Java que usan JPA (Java Persistence API), <code>persistence.xml</code> es el descriptor
+                de configuración que describe las <em>persistence units</em> (unidades de persistencia). Cada unidad
+                define cómo la aplicación se conecta y usa un proveedor JPA (por ejemplo, Hibernate o EclipseLink) para
+                mapear entidades a la base de datos.</p>
+        </section>
+
+        <section id="ubicacion" class="card">
+            <h2>Ubicación</h2>
+            <ul>
+                <li><strong>Ubicación estándar:</strong> <code>META-INF/persistence.xml</code> dentro del classpath (por
+                    ejemplo en <code>src/main/resources/META-INF/</code> para proyectos Maven).</li>
+                <li><strong>Visibilidad:</strong> El empaquetado (JAR/WAR) determina cómo se descubren las unidades de
+                    persistencia; servidores de aplicaciones también buscan en módulos desplegados.</li>
+            </ul>
+        </section>
+
+        <section id="estructura" class="card">
+            <h2>Estructura principal</h2>
+            <p>Los elementos más importantes que encontrarás en <code>persistence.xml</code> son:</p>
+            <div class="grid">
+                <div>
+                    <ul>
+                        <li><code>&lt;persistence version="x"&gt;</code> — raíz que declara la versión de JPA.</li>
+                        <li><code>&lt;persistence-unit name="..." transaction-type="JTA|RESOURCE_LOCAL"&gt;</code> —
+                            define una unidad de persistencia.</li>
+                        <li><code>&lt;provider&gt;</code> — clase del proveedor JPA (p.ej.
+                            <code>org.hibernate.jpa.HibernatePersistenceProvider</code>).</li>
+                        <li><code>&lt;jta-data-source&gt;</code> / <code>&lt;non-jta-data-source&gt;</code> — referencia
+                            a DataSource definido en el contenedor o en el app.</li>
+                        <li><code>&lt;class&gt;</code> — entidades listadas explícitamente (opcional si
+                            <code>exclude-unlisted-classes</code> es falso).</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><code>&lt;mapping-file&gt;</code> — archivos ORM externos.</li>
+                        <li><code>&lt;properties&gt;</code> — propiedades específicas del proveedor (dialect, show_sql,
+                            etc.).</li>
+                        <li><code>transaction-type</code> — JTA para contenedores/servidores, RESOURCE_LOCAL para
+                            gestión local de transacciones.</li>
+                        <li><code>exclude-unlisted-classes</code> — controla si se incluyen entidades automáticamente.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ejemplo" class="card">
+            <h2>Ejemplo de persistence.xml</h2>
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2"&gt;
+
+  &lt;persistence-unit name="miUnidadPersistencia" transaction-type="RESOURCE_LOCAL"&gt;
+    &lt;provider&gt;org.hibernate.jpa.HibernatePersistenceProvider&lt;/provider&gt;
+    &lt;class&gt;com.miempresa.modelo.Cliente&lt;/class&gt;
+    &lt;class&gt;com.miempresa.modelo.Mascota&lt;/class&gt;
+    &lt;properties&gt;
+      &lt;property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/&gt;
+      &lt;property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/midb?serverTimezone=UTC"/&gt;
+      &lt;property name="javax.persistence.jdbc.user" value="usuario"/&gt;
+      &lt;property name="javax.persistence.jdbc.password" value="clave"/&gt;
+      &lt;property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/&gt;
+      &lt;property name="hibernate.hbm2ddl.auto" value="update"/&gt;
+      &lt;property name="hibernate.show_sql" value="true"/&gt;
+      &lt;property name="hibernate.format_sql" value="true"/&gt;
+    &lt;/properties&gt;
+  &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+        </section>
+
+        <section id="propiedades" class="card">
+            <h2>Propiedades comunes y su propósito</h2>
+            <ul>
+                <li><strong>javax.persistence.jdbc.*</strong> — URL, usuario, contraseña y driver cuando se usa
+                    <code>RESOURCE_LOCAL</code>.</li>
+                <li><strong>hibernate.dialect</strong> — indica el dialecto SQL.</li>
+                <li><strong>hibernate.hbm2ddl.auto</strong> — controla la generación del esquema.</li>
+                <li><strong>hibernate.show_sql</strong> &amp; <strong>format_sql</strong> — útil para debugging.</li>
+                <li><strong>javax.persistence.schema-generation.*</strong> — alternativas estandarizadas para generación
+                    de esquema (JPA).</li>
+            </ul>
+        </section>
+
+        <section id="consejos" class="card">
+            <h2>Consejos prácticos</h2>
+            <ul>
+                <li>Para aplicaciones en contenedores, usa <code>transaction-type="JTA"</code> y referencia un
+                    <code>&lt;jta-data-source&gt;</code>.</li>
+                <li>Evita usar <code>hibernate.hbm2ddl.auto=create</code> en producción.</li>
+                <li>En proyectos grandes, lista entidades explícitamente.</li>
+                <li>Coloca el archivo en <code>src/main/resources/META-INF/</code>.</li>
+                <li>Para testing, puedes usar H2 en memoria.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Guía creada para comprender y usar <code>persistence.xml</code> en proyectos JPA.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
