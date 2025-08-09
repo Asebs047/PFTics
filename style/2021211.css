@@ -166,7 +166,7 @@ section.forma-blanca ol li {
 }
 
 .imagen-placeholder {
-  margin-top: 18px;
+  margin: 18px auto 0 auto; 
   height: 160px;
   border: 2px dashed var(--primary);
   border-radius: 14px;
@@ -179,6 +179,7 @@ section.forma-blanca ol li {
   user-select: none;
   animation: pulse 2.5s infinite ease-in-out;
 }
+
 
 
 section.forma-codigo {
