@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lexend', Arial, sans-serif;
+  background: #f0f8ff;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  gap: 40px; 
+}
+
+.background-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #e0f0ff 50%, #ffffff 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+  z-index: 0;
+}
+
+.logo {
+  z-index: 2;
+}
+
+.logo img {
+  width: 650px;
+  max-width: 95vw;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 15px #6c63ff55);
+}
+
+.logo img:hover {
+  transform: scale(1.07);
+}
+
+.buttons-container {
+  display: flex;
+  gap: 25px;
+  z-index: 2;
+}
+
+.btn-nav {
+  padding: 20px 50px; 
+  background: linear-gradient(135deg, #6c63ff, #7e77ff);
+  border: none;
+  border-radius: 35px; 
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem; 
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s, color 0.2s;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  font-family: 'Lexend', Arial, sans-serif; 
+}
+
+.btn-nav:hover {
+  background: #6c63ff;
+  transform: scale(1.08);
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    width: 90vw;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-nav {
+    width: 90vw;
+    font-size: 1.3rem;
+    padding: 18px 0;
+  }
+}
